@@ -1,0 +1,8 @@
+{
+  "name": "async-race",
+  "scripts": {},
+  "devDependencies": {
+    "cli": "^1.0.1",
+    "webpack": "^5.75.0"
+  }
+}
