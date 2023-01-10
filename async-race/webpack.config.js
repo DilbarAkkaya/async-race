@@ -12,9 +12,10 @@ const devServer = (isDev) => !isDev ? {} : {
     static: path.join(__dirname, 'public'),
   }
 };
+
 module.exports = ({develop}) => ({
   mode: develop ? 'development' : 'production',
-  devtool: develop ? 'inline-source-map' : 'none',
+  devtool: develop ? 'inline-source-map' : false,
   entry: {
     app: './src/index.js',
   },
@@ -48,7 +49,8 @@ module.exports = ({develop}) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: './public/favicon.svg'
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
@@ -58,5 +60,5 @@ module.exports = ({develop}) => ({
     }),
     new CleanWebpackPlugin({cleanStaleWebpackAssets: false}),
   ],
-  ...devServer(develop)
+  ...devServer(develop),
 });
