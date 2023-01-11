@@ -9,8 +9,9 @@
       "plugin:eslint-plugin/recommended"
   ],
   "ignorePatterns": ["webpack.config.js"],
+    "parser":"@babel/eslint-parser",
   "parserOptions": {
-      "ecmaVersion": "latest",
+      "ecmaVersion": 6,
       "sourceType": "module"
   },
   "plugins": [
