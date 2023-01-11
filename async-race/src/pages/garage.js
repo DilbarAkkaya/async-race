@@ -10,3 +10,10 @@ export function renderGarageView() {
   header.append(toWinnerButton);
   body.append(header);
 }
+
+export function renderGarageMain() {
+  const { body } = document;
+  const main = document.createElement('main');
+  main.innerText = 'Garage';
+  body.append(main);
+}
