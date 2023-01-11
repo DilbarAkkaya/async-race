@@ -14,6 +14,7 @@ const devServer = (isDev) => !isDev ? {} : {
   }
 };
 
+const esLintPlugin = (isDev) => isDev? [] : [new ESLintPugin({extensions: ['js']})];
 module.exports = ({develop}) => ({
   mode: develop ? 'development' : 'production',
   devtool: develop ? 'inline-source-map' : false,
@@ -60,7 +61,7 @@ module.exports = ({develop}) => ({
       patterns: [{ from: './public'}]
     }),
     new CleanWebpackPlugin({cleanStaleWebpackAssets: false}),
-    new ESLintPugin({extensions: ['js']})
+    ...esLintPlugin(develop),
   ],
   ...devServer(develop),
 });
