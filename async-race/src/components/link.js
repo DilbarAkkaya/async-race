@@ -1,7 +1,7 @@
 // import { createNewElement } from "../utils";
-export function createButtonElement(attrs, text) {
+export function createLinkElement(attrs, text) {
   const parent = new DocumentFragment();
-  const newElement = document.createElement('button');
+  const newElement = document.createElement('a');
   if (attrs) {
     Object.keys(attrs).forEach((key) => {
       if (key === 'class') {
