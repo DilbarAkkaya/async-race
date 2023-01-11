@@ -4,7 +4,6 @@ export function createButtonElement(attrs, text) {
   const newElement = document.createElement('button');
   if (attrs) {
     for (const key in attrs) {
-      console.log(key)
       if (key == 'class') {
         newElement.className = attrs[key];
       } else if (key == 'id') {
