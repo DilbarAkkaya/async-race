@@ -1,4 +1,4 @@
-export function createHeader(){
+export function createHeader() {
   const fragment = new DocumentFragment();
   const header = document.createElement('header');
   header.className = 'header';
