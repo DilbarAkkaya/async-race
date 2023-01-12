@@ -12,7 +12,6 @@ export function renderGarageView() {
   const header = createHeader();
   const main = createGarageMain();
   const mainPage = createNewElement('body', 'div', { class: 'main-page', id: 'main-page' });
-  console.log(mainPage);
   header.append(toGarageButton);
   header.append(toWinnerButton);
   body.prepend(header);

@@ -3,12 +3,6 @@ import { createNewElement } from '../utils';
 import { renderWinnersMain } from '../pages/winners';
 import { createErrorMain } from '../pages/error';
 
-export function route(event) {
-  event = event || window.event;
-  event.preventDefault();
-  window.history.pushState({}, '', event.target.href);
-  handleLocation();
-}
 const mainPage = createNewElement('body', 'div', { class: 'main-page', id: 'main-page' });
 
 function handleLocation() {
@@ -24,8 +18,13 @@ function handleLocation() {
     document.body.append(createErrorMain());
   }
 }
+export function route(event) {
+  const e = event || window.event;
+  e.preventDefault();
+  window.history.pushState({}, '', e.target.href);
+  handleLocation();
+}
 
 window.addEventListener('popstate', handleLocation);
 window.route = route;
 handleLocation();
-

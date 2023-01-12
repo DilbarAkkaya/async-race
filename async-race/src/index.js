@@ -1,4 +1,4 @@
 import './style.scss';
-import { renderGarageView, renderGarageMain } from './pages/garage';
+import { renderGarageView } from './pages/garage';
 
 renderGarageView();
