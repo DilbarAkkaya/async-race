@@ -4,8 +4,8 @@ import { createNewElement } from '../utils';
 import { createGarageMain } from './garageMain';
 import { route } from '../router/router';
 
-const toGarageButton = createLinkElement({ class: 'btn btn-primary', href: '/' }, 'To Garage');
-const toWinnerButton = createLinkElement({ class: 'btn btn-primary', href: '/winners' }, 'To Winners');
+export const toGarageButton = createLinkElement({ class: 'btn btn-primary', href: '/' }, 'To Garage');
+export const toWinnerButton = createLinkElement({ class: 'btn btn-primary', href: '/winners' }, 'To Winners');
 
 export function renderGarageView() {
   const { body } = document;

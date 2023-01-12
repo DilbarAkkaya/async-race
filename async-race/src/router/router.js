@@ -14,8 +14,8 @@ function handleLocation() {
     mainPage.innerHTML = '';
     mainPage.append(renderWinnersMain());
   } else {
-    document.body.innerHTML = '';
-    document.body.append(createErrorMain());
+    mainPage.innerHTML = '';
+    mainPage.append(createErrorMain());
   }
 }
 export function route(event) {
