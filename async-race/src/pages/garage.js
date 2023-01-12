@@ -4,20 +4,20 @@ import { createHeader } from '../components/header';
 // import { createGarageMain } from './garageMain';
 import { route } from '../router/router';
 
-export const toGarageButton = createLinkElement({ class: 'btn btn-primary', href: '/' }, 'To Garage');
-export const toWinnerButton = createLinkElement({ class: 'btn btn-primary', href: '/winners' }, 'To Winners');
+const garageButton = createLinkElement({ class: 'btn btn-primary', href: '/' }, 'To Garage');
+const winnerButton = createLinkElement({ class: 'btn btn-primary', href: '/winners' }, 'To Winners');
 
 export function renderGarageView() {
   const { body } = document;
   const header = createHeader();
   // const main = createGarageMain();
   // const mainPage = createNewElement('body', 'div', { class: 'main-page', id: 'main-page' });
-  header.append(toGarageButton);
-  header.append(toWinnerButton);
+  header.append(garageButton);
+  header.append(winnerButton);
   body.prepend(header);
   // mainPage.append(main);
   // body.append(garagePage);
 }
 
-toGarageButton.addEventListener('click', route);
-toWinnerButton.addEventListener('click', route);
+garageButton.addEventListener('click', route);
+winnerButton.addEventListener('click', route);
