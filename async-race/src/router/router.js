@@ -1,6 +1,6 @@
 import { createGarageMain } from '../pages/garage/garageMain';
 import { createNewElement } from '../utils';
-import { renderWinnersMain } from '../pages/winners/winners';
+import { createWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 
 const mainPage = createNewElement('body', 'div', { class: 'main-page', id: 'main-page' });
@@ -12,7 +12,7 @@ function handleLocation() {
     mainPage.append(createGarageMain());
   } else if (path === '/winners') {
     mainPage.innerHTML = '';
-    mainPage.append(renderWinnersMain());
+    mainPage.append(createWinnersMain());
   } else {
     mainPage.innerHTML = '';
     mainPage.append(createErrorMain());

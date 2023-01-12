@@ -1,4 +1,4 @@
-export function renderWinnersMain() {
+export function createWinnersMain() {
   const parent = new DocumentFragment();
   // const winnersPage = createNewElement('body', 'div', {class: 'winners', id: 'winners'});
   const main = document.createElement('main');
