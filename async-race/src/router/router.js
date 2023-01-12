@@ -1,4 +1,4 @@
-import { createGarageMain } from '../pages/garageMain';
+import { createGarageMain } from '../pages/garage/garageMain';
 import { createNewElement } from '../utils';
 import { renderWinnersMain } from '../pages/winners';
 import { createErrorMain } from '../pages/error';
