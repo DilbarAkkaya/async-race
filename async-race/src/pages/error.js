@@ -1,7 +1,7 @@
-export function createGarageMain() {
+export function createErrorMain() {
   const parent = new DocumentFragment();
   const main = document.createElement('main');
-  main.innerText = 'Garage';
+  main.innerText = 'Error';
   parent.append(main);
   return main;
 }

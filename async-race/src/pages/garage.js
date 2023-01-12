@@ -9,15 +9,16 @@ const toWinnerButton = createLinkElement({ class: 'btn btn-primary', href: '/win
 
 export function renderGarageView() {
   const { body } = document;
-  const garagePage = createNewElement('body', 'div', {class: 'garage-page', id: 'garage-page'});
   const header = createHeader();
   const main = createGarageMain();
+  const mainPage = createNewElement('body', 'div', { class: 'main-page', id: 'main-page' });
+  console.log(mainPage);
   header.append(toGarageButton);
   header.append(toWinnerButton);
   body.prepend(header);
-  garagePage.append(main);
-  
-  //body.append(garagePage);
+  mainPage.append(main);
+
+  // body.append(garagePage);
 }
 
 toGarageButton.addEventListener('click', route);

@@ -1,20 +1,29 @@
+import { createGarageMain } from "../pages/garageMain";
+import { createNewElement } from "../utils";
+import { renderWinnersMain } from "../pages/winners";
+import { createErrorMain } from "../pages/error";
+
 export function route(event) {
   event = event || window.event;
   event.preventDefault();
   window.history.pushState({}, "", event.target.href);
   handleLocation();
 };
-const routes = {
-  404: "/pages/404.html",
-  "/": "/pages/index.html",
-  "/winners": "/pages/winners.html"
-}
-async function handleLocation() {
+const mainPage = createNewElement('body', 'div', {class: 'main-page', id: 'main-page'});
+function handleLocation() {
   const path = window.location.pathname;
-  const route = routes[path] || routes[404];
-  const html = await fetch(route).then((data) => data.text());
-  document.getElementById("garage-page").innerHTML = html;
+  if(path === '/') {
+    mainPage.innerHTML = '';
+    mainPage.append(createGarageMain());
+  } else if(path === '/winners') {
+    mainPage.innerHTML = '';
+    mainPage.append(renderWinnersMain());
+  } else {
+  document.body.innerHTML = '';
+  document.body.append(createErrorMain());
+  }
 }
-window.addEventListener('popstate', handleLocation)
+
+window.addEventListener('popstate', handleLocation);
 window.route = route;
 handleLocation();
