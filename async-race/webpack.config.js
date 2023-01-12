@@ -10,6 +10,7 @@ const devServer = (isDev) => !isDev ? {} : {
     open: true,
     port: 8080,
     static: path.join(__dirname, 'public'),
+    historyApiFallback: true
   }
 };
 
@@ -18,10 +19,10 @@ module.exports = ({develop}) => ({
   mode: develop ? 'development' : 'production',
   devtool: develop ? 'inline-source-map' : false,
   entry: {
-    app: './src/index.js',
+    app: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '/dist'),
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[hash][ext]',
   },
