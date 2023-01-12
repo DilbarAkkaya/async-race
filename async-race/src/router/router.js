@@ -1,7 +1,7 @@
 import { createGarageMain } from '../pages/garage/garageMain';
 import { createNewElement } from '../utils';
-import { renderWinnersMain } from '../pages/winners';
-import { createErrorMain } from '../pages/error';
+import { renderWinnersMain } from '../pages/winners/winners';
+import { createErrorMain } from '../pages/error/error';
 
 const mainPage = createNewElement('body', 'div', { class: 'main-page', id: 'main-page' });
 
