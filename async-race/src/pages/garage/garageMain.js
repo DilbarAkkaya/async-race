@@ -17,11 +17,16 @@ export function renderGarageMain() {
   const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'RACE');
   const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'RESET');
   const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary' }, 'GENERATE CARS');
+  const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
+  const countCars = createNewElement('span', { class: 'count' });
   main.prepend(carCreateForm);
   main.append(carUpdateForm);
   main.append(containerButtons);
+  main.append(titleGarage);
   containerButtons.append(raceButton);
   containerButtons.append(resetButton);
   containerButtons.append(generateCarsButton);
+  titleGarage.append(countCars);
+
   return main;
 }
