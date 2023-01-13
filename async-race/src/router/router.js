@@ -1,15 +1,17 @@
-import { createGarageMain } from '../pages/garage/garageMain';
+import { renderGarageMain } from '../pages/garage/garageMain';
 import { createNewElement } from '../utils';
 import { createWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 
-const mainPage = createNewElement('body', 'div', { class: 'main-page', id: 'main-page' });
+const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' });
+const bodyElement = document.body;
+bodyElement.append(mainPage);
 
 function handleLocation() {
   const path = window.location.pathname;
   if (path === '/') {
     mainPage.innerHTML = '';
-    mainPage.append(createGarageMain());
+    mainPage.append(renderGarageMain());
   } else if (path === '/winners') {
     mainPage.innerHTML = '';
     mainPage.append(createWinnersMain());
