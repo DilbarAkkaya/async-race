@@ -1,9 +1,9 @@
-import { createNewElement } from '../utils';
-import { createInput } from './input';
-import { createButtonElement } from './button';
-import { COLORS } from '../constants';
+import { createNewElement } from '../../utils';
+import { createInput } from '../../components/input';
+import { createButtonElement } from '../../components/button';
+import { COLORS } from '../../constants';
 
-export function createForm(arg) {
+export function createCarForm(arg) {
   const parent = new DocumentFragment();
   const form = createNewElement('form', { class: arg, id: arg });
   const input = createInput('name-create', 'text');

@@ -1,6 +1,6 @@
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
-import { createForm } from '../../components/form';
+import { createCarForm } from './carCreateForm';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
@@ -11,12 +11,12 @@ function createGarageMain() {
 }
 export function renderGarageMain() {
   const main = createGarageMain();
-  const createCarForm = createForm('form-create');
+  const carCreateForm = createCarForm('form-create');
   const containerButtons = createNewElement('div', { class: 'btn-container' });
   const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'RACE');
   const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'RESET');
   const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary' }, 'GENERATE CARS');
-  main.prepend(createCarForm);
+  main.prepend(carCreateForm);
   main.append(containerButtons);
   containerButtons.append(raceButton);
   containerButtons.append(resetButton);
