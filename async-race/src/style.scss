@@ -1,4 +1,43 @@
-$bodyColor: orange;
+@import 'normalize.css';
+$bodyColor: #ffa500;
+$PrimaryColor: #ffffff;
+$SecondaryColor: #b3abab;
+$DarkColor: #000000;
+
 body {
   background-color: $bodyColor;
+  color: $PrimaryColor;
+  display: flex;
+  flex-direction: column;
+}
+
+main, header {
+  padding: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn {
+  width: 150px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid $DarkColor;
+  background-color: $SecondaryColor;
+  color: $DarkColor;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 5px 0;
+  margin-right: 10px;
 }
