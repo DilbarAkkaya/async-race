@@ -3,4 +3,4 @@ import { renderGarageView } from './pages/garage/garage';
 import { getCars } from './api';
 
 renderGarageView();
-console.log(getCars())
+getCars()
