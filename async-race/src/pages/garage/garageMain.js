@@ -1,7 +1,7 @@
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
 import { renderForm } from '../../components/form';
-import { renderCars} from './listOfCars';
+import { renderCars } from './listOfCars';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
