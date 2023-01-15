@@ -5,4 +5,4 @@ import { Car } from './pages/garage/classCar';
 
 renderGarageView();
 // getCars();
-new Car('ladaaa', 10, '.main').renderCar();
+//new Car('ladaaa', 10, '.main').renderCar();

@@ -1,6 +1,7 @@
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
 import { renderForm } from '../../components/form';
+import { renderCars} from './listOfCars';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
@@ -19,14 +20,16 @@ export function renderGarageMain() {
   const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary' }, 'generate cars');
   const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
   const countCars = createNewElement('span', { class: 'count' });
+  const listOfCars = createNewElement('ul', { class: 'list-cars' });
   main.prepend(carCreateForm);
   main.append(carUpdateForm);
   main.append(containerButtons);
   main.append(titleGarage);
+  main.append(listOfCars);
+  renderCars('.list-cars');
   containerButtons.append(raceButton);
   containerButtons.append(resetButton);
   containerButtons.append(generateCarsButton);
   titleGarage.append(countCars);
-
   return main;
 }

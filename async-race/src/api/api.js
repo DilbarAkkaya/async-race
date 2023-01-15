@@ -7,7 +7,4 @@ export async function getCars(page = 1, limitOfCarsOnPage = 7) {
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
 
-getCars()
-  .then((data) => data.forEach((element) => {
-    new Car(element.name, element.id, 'main').renderCar();
-  }));
+
