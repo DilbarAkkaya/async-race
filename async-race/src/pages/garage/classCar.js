@@ -1,5 +1,6 @@
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
+import { renderCarImage } from './carImage';
 
 export class Car {
   constructor(name, id, parentSelector) {
@@ -22,6 +23,7 @@ export class Car {
     const flagContainer = createNewElement('div', { class: 'flag', id: `flag-${this.id}` }, '🚩');
     carEngineContainer.append(startButton);
     carEngineContainer.append(stopButton);
+    carEngineContainer.append(renderCarImage());
     roadContainer.append(carEngineContainer);
     roadContainer.append(flagContainer);
     carInstance.append(buttonsContainer);
