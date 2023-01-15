@@ -15,7 +15,7 @@ export class Car {
     const removeButton = createButtonElement({ class: 'btn btn-primary', id: `remove-${this.id}` }, 'remove');
     const buttonsContainer = createNewElement('div', { class: 'car-btn' });
     const carName = createNewElement('span', { class: 'car-name' }, `${this.name}`);
-    const roadContainer = createNewElement('div', { class: 'road-container' });
+    const roadContainer = createNewElement('div', { class: 'road-container row' });
     const carEngineContainer = createNewElement('div', { class: 'car-engine-container' });
     const startButton = createButtonElement({ class: 'icon btn-start', id: `start-${this.id}` }, 'A');
     const stopButton = createButtonElement({ class: 'icon btn-stop', id: `stop-${this.id}` }, 'B');

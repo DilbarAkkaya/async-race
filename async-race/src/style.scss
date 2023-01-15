@@ -1,4 +1,5 @@
 @import 'normalize.css';
+@import './pages/garage/garage.scss';
 $bodyColor: #ffa500;
 $PrimaryColor: #ffffff;
 $SecondaryColor: #b3abab;
@@ -27,6 +28,9 @@ a {
   flex-direction: row;
 }
 
+li {
+  list-style-type: none;
+}
 .btn {
   width: 150px;
   border-radius: 10px;
