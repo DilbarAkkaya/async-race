@@ -3,10 +3,10 @@ import { createNewElement } from '../../utils';
 import { renderCarImage } from './carImage';
 
 export class Car {
-  constructor(name, id, parentSelector) {
+  constructor(name, id, color, parentSelector) {
     this.name = name;
-    // this.color = color,
     this.id = id;
+    this.color = color;
     this.parent = document.querySelector(parentSelector);
   }
 
@@ -23,7 +23,7 @@ export class Car {
     const flagContainer = createNewElement('div', { class: 'flag', id: `flag-${this.id}` }, '🚩');
     carEngineContainer.append(startButton);
     carEngineContainer.append(stopButton);
-    carEngineContainer.append(renderCarImage());
+    carEngineContainer.append(renderCarImage(this.color));
     roadContainer.append(carEngineContainer);
     roadContainer.append(flagContainer);
     carInstance.append(buttonsContainer);
