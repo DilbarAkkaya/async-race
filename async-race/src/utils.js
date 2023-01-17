@@ -1,23 +1,7 @@
-/* export function createNewElement(parentSelector, el, attrs, text) {
-  const parent = document.querySelector(parentSelector);
-  const newElement = document.createElement(el);
-  if (attrs) {
-    Object.keys(attrs).forEach((key) => {
-      if (key === 'class') {
-        newElement.className = attrs[key];
-      } else if (key === 'id') {
-        newElement.id = attrs[key];
-      } else {
-        newElement.setAttribute(key, attrs[key]);
-      }
-    });
-  }
-  if (text) {
-    newElement.innerHTML = text;
-  }
-  parent.append(newElement);
-  return newElement;
-} */
+import {
+  MODELS, NAMES, NUMBERS_HEX_CODE, THREE_PARES_HEX_DIGIT, HASH_SYMBOL,
+} from './constants';
+
 export function createNewElement(el, attrs, text) {
   const newElement = document.createElement(el);
   if (attrs) {
@@ -35,4 +19,20 @@ export function createNewElement(el, attrs, text) {
     newElement.innerHTML = text;
   }
   return newElement;
+}
+
+export function getRandomAuto() {
+  const model = MODELS[Math.floor(Math.random() * MODELS.length)];
+  const name = NAMES[Math.floor(Math.random() * NAMES.length)];
+  const randomAuto = `${model} ${name}`;
+  return randomAuto;
+}
+
+export function getRandomColor() {
+  let color = HASH_SYMBOL;
+  for (let i = 0; i < THREE_PARES_HEX_DIGIT; i++) {
+    const digitColor = NUMBERS_HEX_CODE.split('')[Math.floor(Math.random() * NUMBERS_HEX_CODE.length)];
+    color += digitColor;
+  }
+  return color;
 }
