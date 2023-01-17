@@ -7,11 +7,11 @@ const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' }
 const bodyElement = document.body;
 bodyElement.append(mainPage);
 
-function handleLocation() {
+async function handleLocation() {
   const path = window.location.pathname;
   if (path === '/') {
     mainPage.innerHTML = '';
-    mainPage.append(renderGarageMain());
+    mainPage.append(await renderGarageMain());
   } else if (path === '/winners') {
     mainPage.innerHTML = '';
     mainPage.append(createWinnersMain());
@@ -20,11 +20,11 @@ function handleLocation() {
     mainPage.append(createErrorMain());
   }
 }
-export function route(event) {
+export async function route(event) {
   const e = event || window.event;
   e.preventDefault();
   window.history.pushState({}, '', e.target.href);
-  handleLocation();
+  await handleLocation();
 }
 
 window.addEventListener('popstate', handleLocation);
