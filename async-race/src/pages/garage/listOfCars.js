@@ -10,13 +10,13 @@ export async function renderCars(parentSelector) {
 export async function renderTotalCountCars() {
   const { count } = await getCars();
   console.log(count);
-  const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
+
   const countCars = createNewElement('span', { class: 'count' });
   countCars.innerHTML = count;
   console.log(countCars);
-  titleGarage.append(countCars);
-  console.log(titleGarage);
-  return titleGarage
+  //titleGarage.append(countCars);
+ // console.log(titleGarage);
+  return countCars
 }
 /*     .then(({ count }) => {
       const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
@@ -27,7 +27,7 @@ export async function renderTotalCountCars() {
       console.log(titleGarage);
       return titleGarage
     }); */
-export async function rendertitleGarage() {
+/* export async function rendertitleGarage() {
   try {
     const res = await renderTotalCountCars();
     console.log('aaaaaaaaa', res)
@@ -37,4 +37,4 @@ export async function rendertitleGarage() {
     console.log('error')
   }
   return null
-};
+}; */

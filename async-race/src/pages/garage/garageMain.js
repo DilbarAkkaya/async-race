@@ -19,12 +19,14 @@ export async function renderGarageMain() {
   const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'race');
   const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'reset');
   const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary' }, 'generate cars'); 
+  const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
   const listOfCars = createNewElement('ul', { class: 'list-cars' });
   main.prepend(carCreateForm);
   main.append(carUpdateForm);
   main.append(containerButtons);
  // const maintitle = renderTotalCountCars();
-  main.append(await renderTotalCountCars());
+ main.append(titleGarage)
+  titleGarage.append(await renderTotalCountCars());
   //titleGarage.append(renderTotalCountCars());
 
   main.append(listOfCars);

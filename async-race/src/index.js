@@ -1,6 +1,8 @@
 import './style.scss';
 import { renderGarageView } from './pages/garage/garage';
 
-renderGarageView();
+document.addEventListener('DOMContentLoaded', async () => {
+  renderGarageView();
+})
 // getCars();
 // new Car('ladaaa', 10, '.main').renderCar();
