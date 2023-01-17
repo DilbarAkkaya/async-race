@@ -36,3 +36,11 @@ export function getRandomColor() {
   }
   return color;
 }
+
+export function generateRandomCars(count = 100) {
+  const randomCars = Array(count)
+    .fill({ randomAuto: '', randomColor: '' })
+    .map(() => (
+      { randomAuto: getRandomAuto(), randomColor: getRandomColor() }));
+  return randomCars;
+}
