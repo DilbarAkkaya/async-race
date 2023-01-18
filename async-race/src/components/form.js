@@ -23,7 +23,7 @@ export async function renderForm(attrValueForm, idValueInput, typeValueInput, te
 export async function inputName(input) {
  // await console.log('11111111111111111111')
   await input.addEventListener('input', ()=> {
-    store.inputName = '2'
+    store.inputName = input.value;
     console.log(input.value)
   })
 }
