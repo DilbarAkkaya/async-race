@@ -8,7 +8,6 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfBu
   const parent = new DocumentFragment();
   const form = createNewElement('form', { class: attrValueForm, id: attrValueForm });
   const input = createInput(idValueInput, typeValueInput);
-  console.log(input)
   const inputColor = createInput('color', 'color');
   inputColor.setAttribute('value', COLORS.white);
   const createButton = createButtonElement({ class: 'btn btn-primary', type: 'submit' }, textOfButton);
@@ -21,9 +20,7 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfBu
 }
 
 export function inputName(input) {
- // await console.log('11111111111111111111')
-  input.addEventListener('input', ()=> {
+  input.addEventListener('input', () => {
     store.inputName = input.value;
-    console.log(input.value)
-  })
+  });
 }

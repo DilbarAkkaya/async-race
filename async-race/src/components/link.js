@@ -1,4 +1,3 @@
-// import { createNewElement } from "../utils";
 export function createLinkElement(attrs, text) {
   const parent = new DocumentFragment();
   const newElement = document.createElement('a');

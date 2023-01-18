@@ -1,7 +1,7 @@
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
 import { renderForm, inputName } from '../../components/form';
-import { renderCarsAndCount, renderCarsItems } from './listOfCars';
+import { renderCarsAndCount } from './listOfCars';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
@@ -37,7 +37,6 @@ export function renderFormsButtons() {
 
 export function renderGarageMain() {
   renderFormsButtons();
-  //titleGarage.append(await renderTotalCountCars());
- renderCarsAndCount('.list-cars');
+  renderCarsAndCount('.list-cars');
   return main;
 }

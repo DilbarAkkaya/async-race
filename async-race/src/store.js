@@ -3,6 +3,6 @@ export const store = {
   inputName: '',
   dataApi: {
     items: [],
-    count: '4'
-  }
-}
+    count: '4',
+  },
+};
