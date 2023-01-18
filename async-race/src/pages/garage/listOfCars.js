@@ -1,24 +1,32 @@
 import { getCars } from '../../api/api';
 import { Car } from './classCar';
 import { createNewElement } from '../../utils';
+import { store } from '../../store';
 
-export async function renderCars(parentSelector) {
-  const res = await getCars()
-    .then(({ items }) => (items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar())));
-    return res;
+async function saveFetchCarsAndCountToStore() {
+  const res = await getCars();
+  store.dataApi.items = res.items;
+  store.dataApi.count = res.count;
+  console.log('22222', store)
 }
 
-export async function renderTotalCountCars() {
-  const { count } = await getCars();
-  console.log(count);
+export async function renderCarsAndCount(parentSelector) {
+  await saveFetchCarsAndCountToStore();
+ store.dataApi.items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar());
+  console.log('offff i am tired', store.dataApi.items)
+  const countCars = document.querySelector('.count');
+  countCars.innerHTML = store.dataApi.count;
+}
 
-  const countCars = createNewElement('span', { class: 'count' });
-  countCars.innerHTML = count;
+
+/* export async function renderTotalCountCars() {
+  const countCars = document.querySelector('.count');
+  countCars.innerHTML = store.dataApi.count;
   console.log(countCars);
   //titleGarage.append(countCars);
- // console.log(titleGarage);
+  // console.log(titleGarage);
   return countCars
-}
+} */
 /*     .then(({ count }) => {
       const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
       const countCars = createNewElement('span', { class: 'count' });

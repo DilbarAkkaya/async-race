@@ -1,10 +1,9 @@
 import './style.scss';
-import { renderGarageView } from './pages/garage/garage';
-import { renderFormsButtons } from './pages/garage/garageMain';
+import { renderCommonView } from './pages/garage/garage';
+import { renderFormsButtons, renderGarageMain } from './pages/garage/garageMain';
+import { getCars } from './api/api';
+import { renderCars } from './pages/garage/listOfCars';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  //renderFormsButtons()
- renderGarageView();
-})
-// getCars();
-// new Car('ladaaa', 10, '.main').renderCar();
+  renderCommonView();
+});

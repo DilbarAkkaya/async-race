@@ -1,4 +1,8 @@
 export const store = {
-  cars: 0,
+  carsCount: 4,
   inputName: '',
+  dataApi: {
+    items: [],
+    count: '4'
+  }
 }

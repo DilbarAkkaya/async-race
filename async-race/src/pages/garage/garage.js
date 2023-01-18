@@ -5,7 +5,7 @@ import { route } from '../../router/router';
 const garageButton = createLinkElement({ class: 'btn btn-primary', href: '/' }, 'To Garage');
 const winnerButton = createLinkElement({ class: 'btn btn-primary', href: '/winners' }, 'To Winners');
 
-export function renderGarageView() {
+export function renderCommonView() {
   const { body } = document;
   const header = createHeader();
   header.append(garageButton);

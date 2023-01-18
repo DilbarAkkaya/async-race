@@ -3,18 +3,20 @@ import { createNewElement } from '../utils';
 import { createWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 import { store } from '../store';
+import { renderGarageView } from '../pages/garage/garage';
 
 const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' });
 const bodyElement = document.body;
 bodyElement.append(mainPage);
 
-async function handleLocation() {
+function handleLocation() {
   const path = window.location.pathname;
   if (path === '/') {
     mainPage.innerHTML = '';
-    mainPage.append(renderFormsButtons())
-   // mainPage.append(await renderGarageMain());
+  //  mainPage.append(renderFormsButtons())
+   mainPage.append(renderGarageMain());
     const input = document.querySelector('input');
+    console.log(input)
     input.value = store.inputName
   } else if (path === '/winners') {
     mainPage.innerHTML = '';
@@ -24,12 +26,12 @@ async function handleLocation() {
     mainPage.append(createErrorMain());
   }
 }
-export async function route(event) {
+export function route(event) {
   const e = event || window.event;
   e.preventDefault();
   window.history.pushState(store, '', e.target.href);
   console.log(store)
-  await handleLocation();
+ handleLocation();
 }
 
 window.addEventListener('popstate', handleLocation);
