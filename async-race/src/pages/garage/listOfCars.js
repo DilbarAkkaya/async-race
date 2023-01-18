@@ -3,8 +3,9 @@ import { Car } from './classCar';
 import { createNewElement } from '../../utils';
 
 export async function renderCars(parentSelector) {
-  await getCars()
+  const res = await getCars()
     .then(({ items }) => (items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar())));
+    return res;
 }
 
 export async function renderTotalCountCars() {

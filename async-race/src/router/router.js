@@ -1,4 +1,4 @@
-import { renderGarageMain } from '../pages/garage/garageMain';
+import { renderFormsButtons, renderGarageMain } from '../pages/garage/garageMain';
 import { createNewElement } from '../utils';
 import { createWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
@@ -12,7 +12,8 @@ async function handleLocation() {
   const path = window.location.pathname;
   if (path === '/') {
     mainPage.innerHTML = '';
-    mainPage.append(await renderGarageMain());
+    mainPage.append(renderFormsButtons())
+   // mainPage.append(await renderGarageMain());
     const input = document.querySelector('input');
     input.value = store.inputName
   } else if (path === '/winners') {
