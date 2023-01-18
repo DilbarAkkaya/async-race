@@ -2,6 +2,7 @@ import { renderGarageMain } from '../pages/garage/garageMain';
 import { createNewElement } from '../utils';
 import { createWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
+import { store } from '../store';
 
 const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' });
 const bodyElement = document.body;
@@ -23,7 +24,8 @@ async function handleLocation() {
 export async function route(event) {
   const e = event || window.event;
   e.preventDefault();
-  window.history.pushState({}, '', e.target.href);
+  window.history.pushState(store, '', e.target.href);
+  console.log(store)
   await handleLocation();
 }
 

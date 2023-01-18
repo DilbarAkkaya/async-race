@@ -1,6 +1,6 @@
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
-import { renderForm } from '../../components/form';
+import { renderForm, inputName } from '../../components/form';
 import { red, renderCars, rendertitleGarage, renderTotalCountCars, title } from './listOfCars';
 import { getCars } from '../../api/api';
 
@@ -13,8 +13,8 @@ function createGarageMain() {
 }
 export async function renderGarageMain() {
   const main = createGarageMain();
-  const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create');
-  const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update');
+  const carCreateForm = await renderForm('form-create', 'name-create', 'text', 'create', inputName);
+  const carUpdateForm = await renderForm('form-update', 'name-update', 'text', 'update', inputName);
   const containerButtons = createNewElement('div', { class: 'btn-container' });
   const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'race');
   const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'reset');
