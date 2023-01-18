@@ -4,10 +4,10 @@ import { createButtonElement } from './button';
 import { COLORS } from '../constants';
 import { store } from '../store';
 
-export async function renderForm(attrValueForm, idValueInput, typeValueInput, textOfButton, inputFunc) {
+export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfButton, inputFunc) {
   const parent = new DocumentFragment();
-  const form = await createNewElement('form', { class: attrValueForm, id: attrValueForm });
-  const input = await createInput(idValueInput, typeValueInput);
+  const form = createNewElement('form', { class: attrValueForm, id: attrValueForm });
+  const input = createInput(idValueInput, typeValueInput);
   console.log(input)
   const inputColor = createInput('color', 'color');
   inputColor.setAttribute('value', COLORS.white);
@@ -20,9 +20,9 @@ export async function renderForm(attrValueForm, idValueInput, typeValueInput, te
   return form;
 }
 
-export async function inputName(input) {
+export function inputName(input) {
  // await console.log('11111111111111111111')
-  await input.addEventListener('input', ()=> {
+  input.addEventListener('input', ()=> {
     store.inputName = input.value;
     console.log(input.value)
   })
