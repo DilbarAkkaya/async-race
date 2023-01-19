@@ -1,5 +1,5 @@
 import { url } from '../constants';
-import { store } from '../store';
+import { store } from '../state/store';
 
 export async function getCars(page = 1, limitOfCarsOnPage = 7) {
 /*   const result = {

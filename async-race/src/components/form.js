@@ -2,7 +2,7 @@ import { createNewElement } from '../utils';
 import { createInput } from './input';
 import { createButtonElement } from './button';
 import { COLORS } from '../constants';
-import { store } from '../store';
+import { store } from '../state/store';
 
 export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfButton, inputFunc) {
   const parent = new DocumentFragment();

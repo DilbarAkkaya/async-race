@@ -1,6 +1,6 @@
 import { getCars } from '../../api/api';
 import { Car } from './classCar';
-import { store } from '../../store';
+import { store } from '../../state/store';
 
 /* async function saveFetchCarsAndCountToStore() {
   const res = await getCars();
