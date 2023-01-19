@@ -2,6 +2,7 @@ import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
 import { renderForm, inputName } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
+import { renderPagination } from './pagination';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
@@ -13,6 +14,7 @@ function createGarageMain() {
 
 const main = createGarageMain();
 const listOfCars = createNewElement('ul', { class: 'list-cars' });
+const paginationContainer = createNewElement('div', { class: 'pagination-container' });
 const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
 const countCars = createNewElement('span', { class: 'count' });
 const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create', inputName);
@@ -32,11 +34,13 @@ export function renderFormsButtons() {
   main.append(titleGarage);
   titleGarage.append(countCars);
   main.append(listOfCars);
+  main.append(paginationContainer);
   return main;
 }
 
 export function renderGarageMain() {
   renderFormsButtons();
   renderCarsAndCount('.list-cars');
+  //main.append(renderPagination());
   return main;
 }
