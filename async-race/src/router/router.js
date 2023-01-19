@@ -3,6 +3,7 @@ import { createNewElement } from '../utils';
 import { createWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 import { store } from '../state/store';
+import { updateGarageView } from '../pages/garage/updateGarageView';
 
 const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' });
 const bodyElement = document.body;
@@ -27,6 +28,7 @@ export function route(event) {
   const e = event || window.event;
   e.preventDefault();
   window.history.pushState(store, '', e.target.href);
+  updateGarageView();
   handleLocation();
 }
 
