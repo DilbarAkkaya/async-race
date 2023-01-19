@@ -17,6 +17,8 @@ const listOfCars = createNewElement('ul', { class: 'list-cars' });
 const paginationContainer = createNewElement('div', { class: 'pagination-container' });
 const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
 const countCars = createNewElement('span', { class: 'count' });
+const pageGarage = createNewElement('h2', { class: 'subtitle' }, 'Page  ');
+const pageNumber = createNewElement('span', { class: 'page' });
 const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create', inputName);
 const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update', inputName);
 const containerButtons = createNewElement('div', { class: 'btn-container' });
@@ -33,6 +35,8 @@ export function renderFormsButtons() {
   containerButtons.append(generateCarsButton);
   main.append(titleGarage);
   titleGarage.append(countCars);
+  main.append(pageGarage);
+  pageGarage.append(pageNumber);
   main.append(listOfCars);
   main.append(paginationContainer);
   return main;
