@@ -17,9 +17,9 @@ export class Car {
     const buttonsContainer = createNewElement('div', { class: 'car-btn' });
     const carName = createNewElement('span', { class: 'car-name' }, `${this.name}`);
     const roadContainer = createNewElement('div', { class: 'road-container row' });
-    const carEngineContainer = createNewElement('div', { class: 'car-engine-container' });
+    const carEngineContainer = createNewElement('div', { class: 'car-engine-container row' });
     const startButton = createButtonElement({ class: 'icon btn-start', id: `start-${this.id}` }, 'A');
-    const stopButton = createButtonElement({ class: 'icon btn-stop', id: `stop-${this.id}` }, 'B');
+    const stopButton = createButtonElement({ class: 'icon btn-stop', id: `stop-${this.id}`, disabled: 'true' }, 'B');
     const flagContainer = createNewElement('div', { class: 'flag', id: `flag-${this.id}` }, '🚩');
     carEngineContainer.append(startButton);
     carEngineContainer.append(stopButton);

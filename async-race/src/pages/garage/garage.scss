@@ -1,7 +1,38 @@
 $DarkColor: #000000;
+$PrimaryColor: #ffffff;
+$SecondaryColor: #b3abab;
+$SuccessColor: #adff2a;
+
 .road-container {
  justify-content: space-between;
+ border-bottom: 4px dashed $PrimaryColor;
 }
-.flag, .car-name {
+.car-name {
+  font-size: 26px;
+  align-self: end;
+}
+.flag {
   font-size: 36px;
+  align-self: end;
+}
+.car-item {
+  margin-bottom: 10px;
+}
+.car-engine-container {
+  margin-top: 10px;
+}
+.icon {
+  background: none;
+  border: 3px solid;
+  border-radius: 10px;
+  font-size: 26px;
+  font-weight: 700;
+  color: $SuccessColor;
+  margin-right: 5px;
+  height: 40px;
+  cursor: pointer;
+}
+.icon:disabled {
+  color: $SecondaryColor;
+  cursor: auto;
 }
