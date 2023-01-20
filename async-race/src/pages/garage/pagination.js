@@ -12,29 +12,31 @@ const next = createButtonElement({ class: 'btn btn-primary', id: 'next' }, 'next
 export function renderPagination() {
   const paginationContainer = document.querySelector('.pagination-container');
   paginationContainer.append(prev);
-  paginationContainer.append(next);  
+  paginationContainer.append(next);
   return paginationContainer
 }
 
-export async function updateStateGarage() {
- // const pageCount = Math.ceil(store.dataApi.count / store.carsPerPage);
- // 
-
- 
-  const start  = LIMIT_CARS_ON_PAGE * store.carsPage;
-  const end = start + LIMIT_CARS_ON_PAGE;
-  const paginetedData = store.dataApi.items.slice(start, end);
- // store.dataApi.items = paginetedData;
-return res}
-
-
-
-next.addEventListener('click', ()=>{
+function updatePageNumber() {
   const pageNumber = document.querySelector('.page');
-  //setStoreCars(3)
+  pageNumber.innerText = store.carsPage;
+}
+function incrementPage() {
   store.carsPage++;
+}
+function decrementPage() {
+  store.carsPage--;
+}
+export async function updateStateGarage() {
   updateGarageView();
   renderCarsAndCount('.list-cars', store.carsPage);
-  pageNumber.innerText = store.carsPage;
- // updateStateGarage()
+  updatePageNumber();
+}
+
+next.addEventListener('click', () => {
+  incrementPage()
+  updateStateGarage()
+})
+prev.addEventListener('click', () => {
+  decrementPage()
+  updateStateGarage()
 })
