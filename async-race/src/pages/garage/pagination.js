@@ -9,7 +9,7 @@ import { updateGarageView } from './updateGarageView';
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev' }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next' }, 'next');
 
-export function renderPagination() {
+export function renderPaginationButtons() {
   const paginationContainer = document.querySelector('.pagination-container');
   paginationContainer.append(prev);
   paginationContainer.append(next);
