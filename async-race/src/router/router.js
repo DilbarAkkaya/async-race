@@ -3,7 +3,7 @@ import { createNewElement } from '../utils';
 import { createWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 import { store } from '../state/store';
-import { updateGarageView } from '../pages/garage/updateGarageView';
+import { updateGarageView } from '../state/updateStateGarage';
 
 const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' });
 const bodyElement = document.body;

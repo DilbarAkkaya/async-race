@@ -2,8 +2,8 @@ import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
 import { renderForm, inputName } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
-import { renderPagination } from './pagination';
 import { store } from '../../state/store';
+import { clickNext, clickPrev } from './uiGarage';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
@@ -26,6 +26,8 @@ const containerButtons = createNewElement('div', { class: 'btn-container' });
 const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'race');
 const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'reset');
 const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary' }, 'generate cars');
+const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev' }, 'prev');
+const next = createButtonElement({ class: 'btn btn-primary', id: 'next' }, 'next');
 
 export function renderFormsButtons() {
   main.prepend(carCreateForm);
@@ -42,10 +44,18 @@ export function renderFormsButtons() {
   main.append(paginationContainer);
   return main;
 }
+export function renderPaginationButtons() {
+  paginationContainer.append(prev);
+  paginationContainer.append(next);
+  main.append(paginationContainer);
+  return paginationContainer;
+}
 
 export function renderGarageMain() {
   renderFormsButtons();
   renderCarsAndCount('.list-cars', store.carsPage);
-  //main.append(renderPagination());
+  renderPaginationButtons();
+  clickNext(next);
+  clickPrev(prev);
   return main;
 }
