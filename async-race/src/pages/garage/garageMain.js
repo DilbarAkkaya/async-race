@@ -3,7 +3,7 @@ import { createNewElement } from '../../utils';
 import { renderForm, inputName } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
 import { store } from '../../state/store';
-import { clickNext, clickPrev } from './uiGarage';
+import { clickCreate, clickNext, clickPrev } from './uiGarage';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
@@ -54,8 +54,6 @@ export function renderPaginationButtons() {
 export function renderGarageMain() {
   renderFormsButtons();
   renderCarsAndCount('.list-cars', store.carsPage);
-  renderPaginationButtons();
-  clickNext(next);
-  clickPrev(prev);
+  renderPaginationButtons(); 
   return main;
 }
