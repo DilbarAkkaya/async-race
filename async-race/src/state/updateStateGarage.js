@@ -6,10 +6,16 @@ export function updateGarageView() {
   carItems.forEach((item) => item.remove());
 }
 
-export function inputName() {
-  const input = document.querySelector('.input');
-  input.addEventListener('input', () => {
-    store.inputName = input.value;
+export function inputCreateListener() {
+  document.addEventListener('input', (event) => {
+    const inputName = document.querySelector('.input-create');
+    const inputColor = document.querySelector('.input-color');
+    if (event.target === inputName) {
+      store.inputName = inputName.value;
+    }
+    if (event.target === inputColor) {
+      store.inputColor = inputColor.value;
+    }
   });
 }
 
