@@ -5,8 +5,9 @@ import { inputCreateListener, inputName } from './state/updateStateGarage';
 
 document.addEventListener('DOMContentLoaded', async () => {
   renderCommonView();
+  clickCreate();
 });
 inputCreateListener();
 clickNext();
 clickPrev();
-clickCreate();
+

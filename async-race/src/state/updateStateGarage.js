@@ -1,5 +1,6 @@
 import { store } from './store';
 import { renderCarsAndCount } from '../pages/garage/listOfCars';
+import { COLORS } from '../constants';
 
 export function updateGarageView() {
   const carItems = document.querySelectorAll('.car-item');
@@ -7,9 +8,9 @@ export function updateGarageView() {
 }
 
 export function inputCreateListener() {
+  const inputName = document.querySelector('.input-create');
+  const inputColor = document.querySelector('.input-color');
   document.addEventListener('input', (event) => {
-    const inputName = document.querySelector('.input-create');
-    const inputColor = document.querySelector('.input-color');
     if (event.target === inputName) {
       store.inputName = inputName.value;
     }
@@ -17,6 +18,12 @@ export function inputCreateListener() {
       store.inputColor = inputColor.value;
     }
   });
+}
+export function cleanInputValue() {
+  const inputName = document.querySelector('.input-create');
+  const inputColor = document.querySelector('.input-color');
+  inputName.value = '';
+  inputColor.value = COLORS.black;
 }
 
 export function updatePageNumber() {

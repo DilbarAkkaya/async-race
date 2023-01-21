@@ -3,7 +3,7 @@ import { createNewElement } from '../../utils';
 import { renderForm } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
 import { store } from '../../state/store';
-import { inputName } from '../../state/updateStateGarage';
+import { inputName, updateGarageView } from '../../state/updateStateGarage';
 import { clickCreate, clickNext, clickPrev } from './uiGarage';
 
 function createGarageMain() {
@@ -54,6 +54,7 @@ export function renderPaginationButtons() {
 
 export function renderGarageMain() {
   renderFormsButtons();
+  updateGarageView();
   renderCarsAndCount('.list-cars', store.carsPage);
   renderPaginationButtons();
   return main;
