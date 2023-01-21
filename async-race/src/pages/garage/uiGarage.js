@@ -19,6 +19,7 @@ export function clickNext() {
     //renderCarsAndCount('.list-cars', store.carsPage)
     console.log(store.carsPage, 'thid is posle click')
     //await updateStateGarage();
+    updatePageNumber()
   });
 }
 export function clickPrev() {
