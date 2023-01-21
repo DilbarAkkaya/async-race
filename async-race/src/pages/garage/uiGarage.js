@@ -10,15 +10,22 @@ import { inputCreateListener } from '../../state/updateStateGarage';
 export function clickNext() {
   const next = document.getElementById('next');
   next.addEventListener('click', () => {
-    incrementPage();
-    updateStateGarage();
+    updateGarageView();
+    store.carsPage++
+   // saveFetchCarsAndCountToStore(store.carsPage)
+    console.log('posle saveef', store.carsPage)
+   // updateGarageView();
+   renderCarsAndCount('.list-cars', store.carsPage);
+    //renderCarsAndCount('.list-cars', store.carsPage)
+    console.log(store.carsPage, 'thid is posle click')
+    //await updateStateGarage();
   });
 }
 export function clickPrev() {
   const prev = document.getElementById('next');
   prev.addEventListener('click', () => {
     decrementPage();
-    updateStateGarage();
+   // updateStateGarage();
   });
 }
 
@@ -33,7 +40,7 @@ export function clickCreate() {
     console.log('car0000000000000', car)
     await createCar(car);
     updateGarageView()
-    saveFetchCarsAndCountToStore(store.carsPage)
+    //saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
     cleanInputValue()
    // formCreateName();

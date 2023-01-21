@@ -56,6 +56,7 @@ export function renderGarageMain() {
   renderFormsButtons();
   updateGarageView();
   renderCarsAndCount('.list-cars', store.carsPage);
+  console.log(store.carsPage, '555555555')
   renderPaginationButtons();
   return main;
 }

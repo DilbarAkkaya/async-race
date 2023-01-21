@@ -39,8 +39,8 @@ export function decrementPage() {
   store.carsPage--;
 }
 
-export async function updateStateGarage() {
+/* export async function updateStateGarage() {
   updateGarageView();
   renderCarsAndCount('.list-cars', store.carsPage);
   updatePageNumber();
-}
+} */
