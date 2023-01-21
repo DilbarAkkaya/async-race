@@ -23,10 +23,18 @@ export function clickNext() {
   });
 }
 export function clickPrev() {
-  const prev = document.getElementById('next');
+  const prev = document.getElementById('prev');
   prev.addEventListener('click', () => {
-    decrementPage();
-   // updateStateGarage();
+    updateGarageView();
+    store.carsPage--;
+   // saveFetchCarsAndCountToStore(store.carsPage)
+    console.log('posle saveef', store.carsPage)
+   // updateGarageView();
+   renderCarsAndCount('.list-cars', store.carsPage);
+    //renderCarsAndCount('.list-cars', store.carsPage)
+    console.log(store.carsPage, 'thid is posle click')
+    //await updateStateGarage();
+    updatePageNumber()
   });
 }
 
