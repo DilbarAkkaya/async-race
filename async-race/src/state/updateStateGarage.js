@@ -6,6 +6,13 @@ export function updateGarageView() {
   carItems.forEach((item) => item.remove());
 }
 
+export function inputName() {
+  const input = document.querySelector('.input');
+  input.addEventListener('input', () => {
+    store.inputName = input.value;
+  });
+}
+
 export function updatePageNumber() {
   const pageNumber = document.querySelector('.page');
   pageNumber.innerText = store.carsPage;

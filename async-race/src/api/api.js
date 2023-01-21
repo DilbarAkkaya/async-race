@@ -14,3 +14,13 @@ export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
+
+export async function createCar(body) {
+  await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).json();
+}

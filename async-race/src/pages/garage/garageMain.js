@@ -1,8 +1,9 @@
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
-import { renderForm, inputName } from '../../components/form';
+import { renderForm } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
 import { store } from '../../state/store';
+import { inputName } from '../../state/updateStateGarage';
 import { clickCreate, clickNext, clickPrev } from './uiGarage';
 
 function createGarageMain() {
@@ -20,8 +21,8 @@ const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
 const countCars = createNewElement('span', { class: 'count' });
 const pageGarage = createNewElement('h2', { class: 'subtitle' }, 'Page  ');
 const pageNumber = createNewElement('span', { class: 'page' }, store.carsPage);
-const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create', inputName);
-const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update', inputName);
+const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create', 'input-create');
+const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update', 'input-update');
 const containerButtons = createNewElement('div', { class: 'btn-container' });
 const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'race');
 const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'reset');
@@ -54,6 +55,6 @@ export function renderPaginationButtons() {
 export function renderGarageMain() {
   renderFormsButtons();
   renderCarsAndCount('.list-cars', store.carsPage);
-  renderPaginationButtons(); 
+  renderPaginationButtons();
   return main;
 }

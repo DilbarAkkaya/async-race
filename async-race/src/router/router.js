@@ -14,8 +14,6 @@ function handleLocation() {
   if (path === '/') {
     mainPage.innerHTML = '';
     mainPage.append(renderGarageMain());
-    const input = document.querySelector('input');
-    input.value = store.inputName;
   } else if (path === '/winners') {
     mainPage.innerHTML = '';
     mainPage.append(createWinnersMain());
@@ -34,4 +32,5 @@ export function route(event) {
 
 window.addEventListener('popstate', handleLocation);
 window.route = route;
+updateGarageView();
 handleLocation();
