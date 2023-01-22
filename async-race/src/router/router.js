@@ -28,6 +28,7 @@ export function route(event) {
   window.history.pushState(store, '', e.target.href);
   updateGarageView();
   handleLocation();
+  
 }
 
 window.addEventListener('popstate', handleLocation);

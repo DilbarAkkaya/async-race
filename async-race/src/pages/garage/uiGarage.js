@@ -7,22 +7,24 @@ import { updatePageNumber } from '../../state/updateStateGarage';
 import { saveFetchCarsAndCountToStore }from '../../pages/garage/listOfCars';
 import { inputCreateListener } from '../../state/updateStateGarage';
 
-export function clickNext() {
-  const next = document.getElementById('next');
-  next.addEventListener('click', () => {
+export function clickPaginationButtons() {
+  const main = document.querySelector('.main');
+  main.addEventListener('click', (e) => {
+    if (e.target.closest('#next')) {
     updateGarageView();
-    store.carsPage++
-   // saveFetchCarsAndCountToStore(store.carsPage)
-    console.log('posle saveef', store.carsPage)
-   // updateGarageView();
+    store.carsPage++;
    renderCarsAndCount('.list-cars', store.carsPage);
-    //renderCarsAndCount('.list-cars', store.carsPage)
-    console.log(store.carsPage, 'thid is posle click')
-    //await updateStateGarage();
-    updatePageNumber()
-  });
-}
-export function clickPrev() {
+    updatePageNumber();
+    }
+    if (e.target.closest('#prev')) {
+      updateGarageView();
+    store.carsPage--;
+   renderCarsAndCount('.list-cars', store.carsPage);
+    updatePageNumber();
+    }
+    });
+    }
+/* export function clickPrev() {
   const prev = document.getElementById('prev');
   prev.addEventListener('click', () => {
     updateGarageView();
@@ -36,7 +38,7 @@ export function clickPrev() {
     //await updateStateGarage();
     updatePageNumber()
   });
-}
+} */
 
 export function clickCreate() {
   const formCreateName = document.getElementById('form-create');
@@ -51,6 +53,7 @@ export function clickCreate() {
     updateGarageView()
     //saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
+
     cleanInputValue()
    // formCreateName();
    // updateStateGarage();

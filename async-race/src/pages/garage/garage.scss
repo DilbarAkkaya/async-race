@@ -2,6 +2,7 @@ $DarkColor: #000000;
 $PrimaryColor: #ffffff;
 $SecondaryColor: #b3abab;
 $SuccessColor: #adff2a;
+$lightColor: #c1c0c3;
 
 .list-cars {
   padding: 0;
@@ -38,4 +39,9 @@ $SuccessColor: #adff2a;
 .icon:disabled {
   color: $SecondaryColor;
   cursor: auto;
+}
+
+#prev:disabled, #next:disabled {
+ opacity: 0.6;
+ cursor: auto;
 }
