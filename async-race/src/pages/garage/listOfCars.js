@@ -45,5 +45,5 @@ export async function renderCarsAndCount(parentSelector, page) {
   const countCars = document.querySelector('.count');
   countCars.innerHTML = store.dataApi.count;
   renderPaginationButtons('.main');
-  updateStateGarage();
+  updateStateGarage('next', 'prev');
 }

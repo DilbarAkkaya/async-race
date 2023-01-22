@@ -44,9 +44,9 @@ export function decrementPage() {
   updatePageNumber();
 } */
 
-export const updateStateGarage = () => {
-  const next = document.getElementById('next');
-  const prev = document.getElementById('prev');
+export const updateStateGarage = (idNextButton, idPrevButton) => {
+  const next = document.getElementById(idNextButton);
+  const prev = document.getElementById(idPrevButton);
 
   if (store.carsPage * LIMIT_CARS_ON_PAGE < store.dataApi.count) {
     next.disabled = false;
