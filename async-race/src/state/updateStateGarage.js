@@ -9,8 +9,12 @@ export function updateGarageView() {
 export function inputCreateListener() {
   const inputName = document.querySelector('.input-create');
   const inputColor = document.querySelector('.input-color');
+  const createButton = document.getElementById('create');
+  const createColor = document.getElementById('color-name-create');
   document.addEventListener('input', (event) => {
     if (event.target === inputName) {
+      createButton.disabled = false;
+      createColor.disabled = false;
       store.inputName = inputName.value;
     }
     if (event.target === inputColor) {

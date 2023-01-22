@@ -13,6 +13,7 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, btnText,
   const inputColor = createInput(`color-${idValueInput}`, 'color', 'input-color');
   inputColor.setAttribute('value', COLORS.white);
   const createButton = createButtonElement({ class: 'btn btn-primary', id: btnText, type: 'submit' }, btnText);
+  createButton.setAttribute('disabled', 'true');
   form.append(input);
   form.append(inputColor);
   form.append(createButton);
