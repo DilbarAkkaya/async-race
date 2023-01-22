@@ -21,19 +21,20 @@ import { createNewElement } from '../../utils';
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next');
 const paginationContainer = createNewElement('div', { class: 'pagination-container' });
-console.log(paginationContainer)
 //const main = document.querySelector('main');
 
 //main.append(paginationContainer);
 
-export function renderPaginationButtons(main) {
+export function renderPaginationButtons(selector) {
+  const parentSelector = document.querySelector(selector)
   paginationContainer.append(prev);
   paginationContainer.append(next);
-  main.append(paginationContainer);
+  parentSelector.append(paginationContainer);
   return paginationContainer;
 }
 
 export async function renderCarsAndCount(parentSelector, page) {
+  ;
   // await setStoreCars(1);
   //await getCars(page);
   //await saveFetchCarsAndCountToStore(page);
@@ -46,6 +47,6 @@ export async function renderCarsAndCount(parentSelector, page) {
   const countCars = document.querySelector('.count');
   countCars.innerHTML = store.dataApi.count;
   
-renderPaginationButtons(document.querySelector('.main'));
+renderPaginationButtons('.main');
  updateStateGarage();
 }
