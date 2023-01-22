@@ -1,29 +1,25 @@
 import { createCar } from '../../api/api';
-import { incrementPage, decrementPage, updateStateGarage, inputName, cleanInputValue } from '../../state/updateStateGarage';
+import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
-import { updateGarageView } from '../../state/updateStateGarage';
 import { renderCarsAndCount } from './listOfCars';
-import { updatePageNumber } from '../../state/updateStateGarage';
-import { saveFetchCarsAndCountToStore }from '../../pages/garage/listOfCars';
-import { inputCreateListener } from '../../state/updateStateGarage';
 
 export function clickPaginationButtons() {
   const main = document.querySelector('.main');
   main.addEventListener('click', (e) => {
     if (e.target.closest('#next')) {
-    updateGarageView();
-    store.carsPage++;
-   renderCarsAndCount('.list-cars', store.carsPage);
-    updatePageNumber();
+      updateGarageView();
+      store.carsPage++;
+      renderCarsAndCount('.list-cars', store.carsPage);
+      updatePageNumber();
     }
     if (e.target.closest('#prev')) {
       updateGarageView();
-    store.carsPage--;
-   renderCarsAndCount('.list-cars', store.carsPage);
-    updatePageNumber();
+      store.carsPage--;
+      renderCarsAndCount('.list-cars', store.carsPage);
+      updatePageNumber();
     }
-    });
-    }
+  });
+}
 /* export function clickPrev() {
   const prev = document.getElementById('prev');
   prev.addEventListener('click', () => {
@@ -48,14 +44,13 @@ export function clickCreate() {
       name: store.inputName,
       color: store.inputColor,
     };
-    console.log('car0000000000000', car)
     await createCar(car);
-    updateGarageView()
-    //saveFetchCarsAndCountToStore(store.carsPage)
+    updateGarageView();
+    // saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
 
-    cleanInputValue()
-   // formCreateName();
-   // updateStateGarage();
-  })
+    cleanInputValue();
+    // formCreateName();
+    // updateStateGarage();
+  });
 }

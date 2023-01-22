@@ -21,12 +21,12 @@ import { createNewElement } from '../../utils';
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next');
 const paginationContainer = createNewElement('div', { class: 'pagination-container' });
-//const main = document.querySelector('main');
+// const main = document.querySelector('main');
 
-//main.append(paginationContainer);
+// main.append(paginationContainer);
 
 export function renderPaginationButtons(selector) {
-  const parentSelector = document.querySelector(selector)
+  const parentSelector = document.querySelector(selector);
   paginationContainer.append(prev);
   paginationContainer.append(next);
   parentSelector.append(paginationContainer);
@@ -34,19 +34,16 @@ export function renderPaginationButtons(selector) {
 }
 
 export async function renderCarsAndCount(parentSelector, page) {
-  ;
   // await setStoreCars(1);
-  //await getCars(page);
-  //await saveFetchCarsAndCountToStore(page);
+  // await getCars(page);
+  // await saveFetchCarsAndCountToStore(page);
   const res = await getCars(page);
-  console.log('this is savefetch', res)
   store.dataApi.items = res.items;
   store.dataApi.count = res.count;
- // console.log(store)
+  // console.log(store)
   store.dataApi.items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar());
   const countCars = document.querySelector('.count');
   countCars.innerHTML = store.dataApi.count;
-  
-renderPaginationButtons('.main');
- updateStateGarage();
+  renderPaginationButtons('.main');
+  updateStateGarage();
 }

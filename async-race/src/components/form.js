@@ -2,7 +2,6 @@ import { createNewElement } from '../utils';
 import { createInput } from './input';
 import { createButtonElement } from './button';
 import { COLORS } from '../constants';
-import { store } from '../state/store';
 
 export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfButton, classNameOfInput) {
   const parent = new DocumentFragment();
@@ -15,10 +14,10 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfBu
   form.append(inputColor);
   form.append(createButton);
   parent.append(form);
- // inputFunc(input);
+  // inputFunc(input);
   return form;
 }
-/* 
+/*
 export function inputName(input) {
   input.addEventListener('input', () => {
     store.inputName = input.value;

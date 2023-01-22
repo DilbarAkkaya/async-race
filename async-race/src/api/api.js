@@ -1,12 +1,11 @@
 import { url, LIMIT_CARS_ON_PAGE } from '../constants';
-import { store } from '../state/store';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
-    const result = {
-      items: [],
-      count: '',
-    };
-    const response = await fetch(`${url}?_page=${page}&_limit=${limit}`);
+  const result = {
+    items: [],
+    count: '',
+  };
+  const response = await fetch(`${url}?_page=${page}&_limit=${limit}`);
   if (response.ok) {
     result.items = await response.json();
     result.count = response.headers.get('X-Total-Count');
@@ -25,7 +24,7 @@ export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
 } */
 
 export async function createCar(body) {
- (await fetch(url, {
+  (await fetch(url, {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {

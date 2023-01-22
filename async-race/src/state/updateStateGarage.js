@@ -1,5 +1,4 @@
 import { store } from './store';
-import { renderCarsAndCount } from '../pages/garage/listOfCars';
 import { COLORS, LIMIT_CARS_ON_PAGE } from '../constants';
 
 export function updateGarageView() {
@@ -46,24 +45,17 @@ export function decrementPage() {
 } */
 
 export const updateStateGarage = () => {
-console.log(store);
-console.log(store.dataApi)
-console.log(store.dataApi.count)
   const next = document.getElementById('next');
   const prev = document.getElementById('prev');
 
   if (store.carsPage * LIMIT_CARS_ON_PAGE < store.dataApi.count) {
-    console.log(store, '111')
     next.disabled = false;
   } else {
     next.disabled = true;
-    console.log(store.dataApi)
   }
   if (store.carsPage > 1) {
     prev.disabled = false;
-    console.log(store)
   } else {
     prev.disabled = true;
-    console.log(store)
   }
 };

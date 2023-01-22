@@ -3,8 +3,7 @@ import { createNewElement } from '../../utils';
 import { renderForm } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
 import { store } from '../../state/store';
-import { inputName, updateGarageView, updateStateGarage } from '../../state/updateStateGarage';
-import { clickCreate, clickNext, clickPrev } from './uiGarage';
+import { updateGarageView } from '../../state/updateStateGarage';
 
 function createGarageMain() {
   const parent = new DocumentFragment();
@@ -16,7 +15,7 @@ function createGarageMain() {
 
 const main = createGarageMain();
 const listOfCars = createNewElement('ul', { class: 'list-cars' });
-//const paginationContainer = createNewElement('div', { class: 'pagination-container' });
+// const paginationContainer = createNewElement('div', { class: 'pagination-container' });
 const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
 const countCars = createNewElement('span', { class: 'count' });
 const pageGarage = createNewElement('h2', { class: 'subtitle' }, 'Page  ');
@@ -42,16 +41,15 @@ export function renderFormsButtons() {
   main.append(pageGarage);
   pageGarage.append(pageNumber);
   main.append(listOfCars);
- // main.append(paginationContainer);
+  // main.append(paginationContainer);
   return main;
 }
-
 
 export function renderGarageMain() {
   renderFormsButtons();
   updateGarageView();
   renderCarsAndCount('.list-cars', store.carsPage, document.querySelector('.main'));
-  //renderPaginationButtons();
- //updateStateGarage()
+  // renderPaginationButtons();
+  // updateStateGarage()
   return main;
 }
