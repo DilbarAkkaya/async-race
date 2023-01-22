@@ -7,12 +7,12 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfBu
   const parent = new DocumentFragment();
   const form = createNewElement('form', { class: attrValueForm, id: attrValueForm });
   const input = createInput(idValueInput, typeValueInput, classNameOfInput);
-  if (classNameOfInput === 'input-update') {
+  /*  if (idValueInput === 'name-update' || input.hasAttribute('color-name-update')) {
     input.setAttribute('disabled', true);
-  }
+  } */
   const inputColor = createInput(`color-${idValueInput}`, 'color', 'input-color');
   inputColor.setAttribute('value', COLORS.white);
-  const createButton = createButtonElement({ class: 'btn btn-primary submit', type: 'submit', disabled: 'true' }, textOfButton);
+  const createButton = createButtonElement({ class: 'btn btn-primary submit', type: 'submit' }, textOfButton);
   form.append(input);
   form.append(inputColor);
   form.append(createButton);

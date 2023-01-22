@@ -1,5 +1,5 @@
 import { createButtonElement } from '../../components/button';
-import { createNewElement } from '../../utils';
+import { createNewElement, setAttributeForFormUpdate } from '../../utils';
 import { renderForm } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
 import { store } from '../../state/store';
@@ -22,6 +22,8 @@ const pageGarage = createNewElement('h2', { class: 'subtitle' }, 'Page  ');
 const pageNumber = createNewElement('span', { class: 'page' }, store.carsPage);
 const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create', 'input-create');
 const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update', 'input-update');
+
+setAttributeForFormUpdate(carUpdateForm);
 const containerButtons = createNewElement('div', { class: 'btn-container' });
 const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'race');
 const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'reset');

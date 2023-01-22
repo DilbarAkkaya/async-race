@@ -20,6 +20,9 @@ export function createNewElement(el, attrs, text) {
   }
   return newElement;
 }
+export function setAttributeForFormUpdate(param) {
+  Array.from(param.elements).forEach((formElement) => formElement.setAttribute('disabled', 'true'));
+}
 
 export function getRandomAuto() {
   const model = MODELS[Math.floor(Math.random() * MODELS.length)];
