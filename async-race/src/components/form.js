@@ -7,6 +7,9 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfBu
   const parent = new DocumentFragment();
   const form = createNewElement('form', { class: attrValueForm, id: attrValueForm });
   const input = createInput(idValueInput, typeValueInput, classNameOfInput);
+  if (classNameOfInput === 'input-update') {
+    input.setAttribute('disabled', true);
+  }
   const inputColor = createInput('color', 'color', 'input-color');
   inputColor.setAttribute('value', COLORS.white);
   const createButton = createButtonElement({ class: 'btn btn-primary', type: 'submit' }, textOfButton);
