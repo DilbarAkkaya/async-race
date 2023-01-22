@@ -27,7 +27,7 @@ setAttributeForFormUpdate(carUpdateForm);
 const containerButtons = createNewElement('div', { class: 'btn-container' });
 const raceButton = createButtonElement({ class: 'btn btn-ptimary' }, 'race');
 const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'reset');
-const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary' }, 'generate cars');
+const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary', id: 'generate-btn' }, 'generate cars');
 /* const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next'); */
 
@@ -50,7 +50,7 @@ export function renderFormsButtons() {
 export function renderGarageMain() {
   renderFormsButtons();
   updateGarageView();
-  renderCarsAndCount('.list-cars', store.carsPage, document.querySelector('.main'));
+  renderCarsAndCount('.list-cars', store.carsPage);
   // renderPaginationButtons();
   // updateStateGarage()
   return main;
