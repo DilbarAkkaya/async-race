@@ -10,9 +10,9 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfBu
   if (classNameOfInput === 'input-update') {
     input.setAttribute('disabled', true);
   }
-  const inputColor = createInput('color', 'color', 'input-color');
+  const inputColor = createInput(`color-${idValueInput}`, 'color', 'input-color');
   inputColor.setAttribute('value', COLORS.white);
-  const createButton = createButtonElement({ class: 'btn btn-primary', type: 'submit' }, textOfButton);
+  const createButton = createButtonElement({ class: 'btn btn-primary submit', type: 'submit', disabled: 'true' }, textOfButton);
   form.append(input);
   form.append(inputColor);
   form.append(createButton);
