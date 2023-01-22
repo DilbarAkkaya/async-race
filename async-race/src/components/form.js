@@ -3,7 +3,7 @@ import { createInput } from './input';
 import { createButtonElement } from './button';
 import { COLORS } from '../constants';
 
-export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfButton, classNameOfInput) {
+export function renderForm(attrValueForm, idValueInput, typeValueInput, btnText, classNameOfInput) {
   const parent = new DocumentFragment();
   const form = createNewElement('form', { class: attrValueForm, id: attrValueForm });
   const input = createInput(idValueInput, typeValueInput, classNameOfInput);
@@ -12,7 +12,7 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, textOfBu
   } */
   const inputColor = createInput(`color-${idValueInput}`, 'color', 'input-color');
   inputColor.setAttribute('value', COLORS.white);
-  const createButton = createButtonElement({ class: 'btn btn-primary submit', type: 'submit' }, textOfButton);
+  const createButton = createButtonElement({ class: 'btn btn-primary', id: btnText, type: 'submit' }, btnText);
   form.append(input);
   form.append(inputColor);
   form.append(createButton);
