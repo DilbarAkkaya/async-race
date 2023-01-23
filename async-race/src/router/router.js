@@ -1,6 +1,6 @@
 import { renderGarageMain } from '../pages/garage/garageMain';
 import { createNewElement } from '../utils';
-import { createWinnersMain } from '../pages/winners/winnersMain';
+import { renderWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 import { store } from '../state/store';
 import { updateGarageView } from '../state/updateStateGarage';
@@ -16,7 +16,7 @@ function handleLocation() {
     mainPage.append(renderGarageMain());
   } else if (path === '/winners') {
     mainPage.innerHTML = '';
-    mainPage.append(createWinnersMain());
+    mainPage.append(renderWinnersMain());
   } else {
     mainPage.innerHTML = '';
     mainPage.append(createErrorMain());
