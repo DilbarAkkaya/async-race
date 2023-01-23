@@ -35,11 +35,11 @@ export function inputUpdateListener() {
   });
 }
 
-export function cleanInputValue() {
-  const inputName = document.querySelector('.input-create');
-  const inputColor = document.querySelector('.input-color');
+export function cleanInputValue(inputSelector1, inputCSelector2) {
+  const inputName = document.querySelector(inputSelector1);
+  const inputColor = document.querySelector(inputCSelector2);
   inputName.value = '';
-  inputColor.value = COLORS.black;
+  inputColor.value = COLORS.white;
 }
 
 export function updatePageNumber() {

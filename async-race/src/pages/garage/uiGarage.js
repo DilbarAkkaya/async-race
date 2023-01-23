@@ -77,7 +77,7 @@ export function clickCreate() {
     // saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
 
-    cleanInputValue();
+    cleanInputValue('.input-create', '#color-name-create');
     // formCreateName();
     // updateStateGarage();
   });
@@ -98,7 +98,7 @@ export function clickUpdate() {
     // saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
 
-   // cleanInputValue();
+  cleanInputValue('.input-update', '#color-name-update');
     // formCreateName();
     // updateStateGarage();
   });
