@@ -1,0 +1,13 @@
+$DarkColor: #000000;
+$PrimaryColor: #ffffff;
+$SecondaryColor: #b3abab;
+$SuccessColor: #adff2a;
+$lightColor: #c1c0c3;
+
+.table{
+  background: $SuccessColor;
+}
+.table th{
+  background-color: $SecondaryColor;
+  padding: 10px;
+}
