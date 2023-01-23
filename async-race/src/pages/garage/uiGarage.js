@@ -1,5 +1,7 @@
-import { createCar, getCar, deleteCar, updateCar } from '../../api/api';
-import { cleanInputValue, inputUpdateListener, updateGarageView, updatePageNumber, updateStateGarage } from '../../state/updateStateGarage';
+import {
+  createCar, getCar, deleteCar, updateCar,
+} from '../../api/api';
+import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
@@ -55,7 +57,7 @@ export function clickPaginationButtons() {
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count;
     }
-  })
+  });
 }
 /* export function clickPrev() {
   const prev = document.getElementById('prev');
@@ -103,14 +105,12 @@ export function clickUpdate() {
       color: store.inputColor,
     };
     await updateCar(store.id, car);
-    console.log(store)
-    console.log(car)
     updateGarageView();
     // saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
 
     cleanInputValue('.input-update', '#color-name-update');
-    setAttributeForFormUpdate(formUpdate)
+    setAttributeForFormUpdate(formUpdate);
     // formCreateName();
     // updateStateGarage();
   });

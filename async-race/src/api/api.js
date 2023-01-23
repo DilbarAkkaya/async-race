@@ -36,7 +36,6 @@ export async function createCar(body) {
 export async function getCar(id) {
   let result = 0;
   const response = await fetch(`${url}/${id}`);
-  console.log(response)
   if (response.ok) {
     result = await response.json();
     return result;
@@ -56,9 +55,9 @@ export async function updateCar(id, body) {
   if (response.ok) {
     result = response.json();
     return result;
-  
   }
-};
+  throw new Error(`Could not fetch ${url}, status: ${response.status}`);
+}
 export async function deleteCar(id) {
-  (await fetch(`${url}/${id}`, {method: 'DELETE'})).json();
+  (await fetch(`${url}/${id}`, { method: 'DELETE' })).json();
 }
