@@ -5,6 +5,7 @@ export const store = {
   carsPerPage: 7,
   inputName: '',
   inputColor: COLORS.white,
+  id: 0,
   dataApi: {
     items: [],
     count: '4',

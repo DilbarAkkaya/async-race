@@ -43,3 +43,19 @@ export async function getCar(id) {
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
+
+export async function updateCar(id, body) {
+  let result;
+  const response = await fetch(`${url}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (response.ok) {
+    result = response.json();
+    return result;
+  
+  }
+};

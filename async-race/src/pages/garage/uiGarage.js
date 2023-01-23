@@ -1,4 +1,4 @@
-import { createCar, getCar, getCars } from '../../api/api';
+import { createCar, getCar, getCars, updateCar } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
@@ -40,8 +40,11 @@ export function clickPaginationButtons() {
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('select-')[1];
       const selectCar = await getCar(id);
-      formUpdate.children[0].value = selectCar.name;
-      formUpdate.children[1].value = selectCar.color;
+      store.inputName = selectCar.name;
+      store.inputColor = selectCar.color;
+      store.id = selectCar.id;
+      formUpdate.children[0].value = store.inputName;
+      formUpdate.children[1].value = store.inputColor;
     }
   });
 }
@@ -70,6 +73,29 @@ export function clickCreate() {
       color: store.inputColor,
     };
     await createCar(car);
+    updateGarageView();
+    // saveFetchCarsAndCountToStore(store.carsPage)
+    renderCarsAndCount('.list-cars', store.carsPage);
+
+    cleanInputValue();
+    // formCreateName();
+    // updateStateGarage();
+  });
+}
+
+export function clickUpdate() {
+  const formUpdate = document.getElementById('form-update');
+  formUpdate.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    store.inputName = formUpdate.children[0].value;
+    store.inputColor = formUpdate.children[1].value;
+    const car = {
+      name: store.inputName,
+      color: store.inputColor,
+    };
+    console.log(store)
+ updateCar(store.id, car);
+
     updateGarageView();
     // saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
