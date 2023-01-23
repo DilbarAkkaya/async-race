@@ -59,3 +59,6 @@ export async function updateCar(id, body) {
   
   }
 };
+export async function deleteCar(id) {
+  (await fetch(`${url}/${id}`, {method: 'DELETE'})).json();
+}

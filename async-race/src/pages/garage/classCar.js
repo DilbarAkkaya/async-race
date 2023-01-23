@@ -13,7 +13,7 @@ export class Car {
   renderCar() {
     const carInstance = createNewElement('li', { class: 'car-item' });
     const selectButton = createButtonElement({ class: 'btn btn-primary select-btn', id: `select-${this.id}` }, 'select');
-    const removeButton = createButtonElement({ class: 'btn btn-primary', id: `remove-${this.id}` }, 'remove');
+    const removeButton = createButtonElement({ class: 'btn btn-primary remove-btn', id: `remove-${this.id}` }, 'remove');
     const buttonsContainer = createNewElement('div', { class: 'car-btn' });
     const carName = createNewElement('span', { class: 'car-name' }, `${this.name}`);
     const roadContainer = createNewElement('div', { class: 'road-container row' });
