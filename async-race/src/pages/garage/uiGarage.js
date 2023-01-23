@@ -73,6 +73,8 @@ export function clickCreate() {
       color: store.inputColor,
     };
     await createCar(car);
+    formCreateName.children[1].disabled = true;
+    formCreateName.children[2].disabled = true;
     updateGarageView();
     // saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
@@ -99,6 +101,7 @@ export function clickUpdate() {
     renderCarsAndCount('.list-cars', store.carsPage);
 
   cleanInputValue('.input-update', '#color-name-update');
+  setAttributeForFormUpdate(formUpdate)
     // formCreateName();
     // updateStateGarage();
   });
