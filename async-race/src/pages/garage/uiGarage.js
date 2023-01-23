@@ -1,4 +1,4 @@
-import { createCar, getCars } from '../../api/api';
+import { createCar, getCar, getCars } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
@@ -31,6 +31,13 @@ export function clickPaginationButtons() {
       const countCars = document.querySelector('.count');
       countCars.innerHTML = store.dataApi.count; */
       e.target.disabled = false;
+    }
+    if (e.target.classList.contains('select-btn')) {
+      const idValue = e.target.getAttribute('id');
+      const id = idValue.split('select-')[1];
+
+      console.log(id)
+      await getCar(id);
     }
   });
 }
