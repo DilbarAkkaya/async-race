@@ -3,12 +3,13 @@ import { renderCommonView } from './pages/commonViewPage';
 import {
   clickCreate, clickPaginationButtons, clickUpdate,
 } from './pages/garage/uiGarage';
-import { inputCreateListener } from './state/updateStateGarage';
+import { inputCreateListener, inputUpdateListener } from './state/updateStateGarage';
 
 document.addEventListener('DOMContentLoaded', async () => {
   renderCommonView();
   clickCreate();
   clickPaginationButtons();
+  inputUpdateListener();
   clickUpdate();
 // clickPrev();
 // await updateStateGarage()

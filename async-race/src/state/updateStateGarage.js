@@ -22,6 +22,19 @@ export function inputCreateListener() {
     }
   });
 }
+export function inputUpdateListener() {
+  const inputName = document.querySelector('.input-update');
+  const inputColor = document.querySelector('#color-name-update');
+  document.addEventListener('input', (event) => {
+    if (event.target === inputName) {
+      store.inputName = inputName.value;
+    }
+    if (event.target === inputColor) {
+      store.inputColor = inputColor.value;
+    }
+  });
+}
+
 export function cleanInputValue() {
   const inputName = document.querySelector('.input-create');
   const inputColor = document.querySelector('.input-color');

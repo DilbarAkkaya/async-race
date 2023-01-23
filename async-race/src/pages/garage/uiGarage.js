@@ -1,5 +1,5 @@
 import { createCar, getCar, getCars, updateCar } from '../../api/api';
-import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
+import { cleanInputValue, inputUpdateListener, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
@@ -87,20 +87,18 @@ export function clickUpdate() {
   const formUpdate = document.getElementById('form-update');
   formUpdate.addEventListener('submit', async (event) => {
     event.preventDefault();
-    store.inputName = formUpdate.children[0].value;
-    store.inputColor = formUpdate.children[1].value;
     const car = {
       name: store.inputName,
       color: store.inputColor,
     };
-    console.log(store)
- updateCar(store.id, car);
-
+ await updateCar(store.id, car);
+ console.log(store)
+ console.log(car)
     updateGarageView();
     // saveFetchCarsAndCountToStore(store.carsPage)
     renderCarsAndCount('.list-cars', store.carsPage);
 
-    cleanInputValue();
+   // cleanInputValue();
     // formCreateName();
     // updateStateGarage();
   });
