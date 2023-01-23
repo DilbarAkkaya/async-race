@@ -7,7 +7,7 @@ import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 
 export function clickPaginationButtons() {
- // const main = document.querySelector('.main');
+  // const main = document.querySelector('.main');
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next')) {
       updateGarageView();
@@ -76,46 +76,46 @@ export function clickPaginationButtons() {
 } */
 
 export function clickCreate() {
-  //const formCreateName = document.getElementById('form-create');
+  // const formCreateName = document.getElementById('form-create');
   document.addEventListener('submit', async (event) => {
     if (event.target.closest('#form-create')) {
-    event.preventDefault();
-    const car = {
-      name: store.inputName,
-      color: store.inputColor,
-    };
-    await createCar(car);
-    event.target.children[1].disabled = true;
-    event.target.children[2].disabled = true;
-    updateGarageView();
-    // saveFetchCarsAndCountToStore(store.carsPage)
-    renderCarsAndCount('.list-cars', store.carsPage);
+      event.preventDefault();
+      const car = {
+        name: store.inputName,
+        color: store.inputColor,
+      };
+      await createCar(car);
+      event.target.children[1].disabled = true;
+      event.target.children[2].disabled = true;
+      updateGarageView();
+      // saveFetchCarsAndCountToStore(store.carsPage)
+      renderCarsAndCount('.list-cars', store.carsPage);
 
-    cleanInputValue('.input-create', '#color-name-create');
+      cleanInputValue('.input-create', '#color-name-create');
     // formCreateName();
     // updateStateGarage();
-  }
-})
+    }
+  });
 }
 
 export function clickUpdate() {
 // const formUpdate = document.getElementById('form-update');
   document.addEventListener('submit', async (event) => {
     if (event.target.closest('#form-update')) {
-    event.preventDefault();
-    const car = {
-      name: store.inputName,
-      color: store.inputColor,
-    };
-    await updateCar(store.id, car);
-    updateGarageView();
-    // saveFetchCarsAndCountToStore(store.carsPage)
-    renderCarsAndCount('.list-cars', store.carsPage);
+      event.preventDefault();
+      const car = {
+        name: store.inputName,
+        color: store.inputColor,
+      };
+      await updateCar(store.id, car);
+      updateGarageView();
+      // saveFetchCarsAndCountToStore(store.carsPage)
+      renderCarsAndCount('.list-cars', store.carsPage);
 
-    cleanInputValue('.input-update', '#color-name-update');
-    setAttributeForFormUpdate(event.target.closest('#form-update'));
+      cleanInputValue('.input-update', '#color-name-update');
+      setAttributeForFormUpdate(event.target.closest('#form-update'));
     // formCreateName();
     // updateStateGarage();
-  }
+    }
   });
 }

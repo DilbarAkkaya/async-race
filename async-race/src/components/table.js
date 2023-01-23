@@ -1,4 +1,4 @@
-import { createNewElement } from "../utils";
+import { createNewElement } from '../utils';
 
 export function createTable() {
   const table = createNewElement('table', { class: 'table', cellspacing: '0', cellpadding: '0' });
@@ -18,6 +18,6 @@ export function createTable() {
     <td></td>
     <td></td>
   </tr>
-</tbody>`
+</tbody>`;
   return table;
 }

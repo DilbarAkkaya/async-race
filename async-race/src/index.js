@@ -7,7 +7,6 @@ import { inputCreateListener, inputUpdateListener } from './state/updateStateGar
 
 document.addEventListener('DOMContentLoaded', async () => {
   renderCommonView();
-
   clickPaginationButtons();
   inputCreateListener();
   inputUpdateListener();
@@ -16,4 +15,3 @@ document.addEventListener('DOMContentLoaded', async () => {
 // clickPrev();
 // await updateStateGarage()
 });
-
