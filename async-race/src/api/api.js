@@ -38,7 +38,7 @@ export async function getCar(id) {
   const response = await fetch(`${url}/${id}`);
   console.log(response)
   if (response.ok) {
-    result = response;
+    result = await response.json();
     return result;
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);

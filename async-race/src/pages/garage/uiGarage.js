@@ -2,7 +2,7 @@ import { createCar, getCar, getCars } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
-import { generateRandomCars } from '../../utils';
+import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 
 export function clickPaginationButtons() {
   const main = document.querySelector('.main');
@@ -33,11 +33,15 @@ export function clickPaginationButtons() {
       e.target.disabled = false;
     }
     if (e.target.classList.contains('select-btn')) {
+      const formUpdate = document.getElementById('form-update');
+      Array.from(formUpdate.children).forEach((element) => {
+        element.disabled = false;
+      });
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('select-')[1];
-
-      console.log(id)
-      await getCar(id);
+      const selectCar = await getCar(id);
+      formUpdate.children[0].value = selectCar.name;
+      formUpdate.children[1].value = selectCar.color;
     }
   });
 }
