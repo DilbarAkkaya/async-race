@@ -1,4 +1,4 @@
-import { url, LIMIT_CARS_ON_PAGE } from '../constants';
+import { url, LIMIT_CARS_ON_PAGE, urlEngine } from '../constants';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   const result = {
@@ -60,4 +60,14 @@ export async function updateCar(id, body) {
 }
 export async function deleteCar(id) {
   (await fetch(`${url}/${id}`, { method: 'DELETE' })).json();
+}
+
+export async function startCar(id) {
+  let result = {};
+  const response = await fetch(`${urlEngine}?id=${id}&status=started`, { method: 'PATCH' });
+  console.log(response);
+  if (response.ok) {
+    result = await response.json();
+  }
+  return result;
 }

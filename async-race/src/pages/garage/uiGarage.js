@@ -1,5 +1,5 @@
 import {
-  createCar, getCar, deleteCar, updateCar,
+  createCar, getCar, deleteCar, updateCar, startCar,
 } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
@@ -56,6 +56,16 @@ export function clickPaginationButtons() {
       updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count;
+    }
+    if (e.target.classList.contains('btn-start')) {
+      //const startCarBtn = document.querySelector('.btn-start');
+      const idValue = e.target.getAttribute('id');
+      const id = idValue.split('start-')[1];
+      const res = await startCar(id);
+      console.log(res);
+ /*      updateGarageView();
+      renderCarsAndCount('.list-cars', store.carsPage);
+      countCars.innerHTML = store.dataApi.count; */
     }
   });
 }
