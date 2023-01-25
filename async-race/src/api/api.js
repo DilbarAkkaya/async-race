@@ -72,13 +72,7 @@ export async function startCar(id) {
 }
 
 export async function stopCar(id) {
-  let result = {};
-  const response = await fetch(`${urlEngine}?id=${id}&status=stopped`, { method: 'PATCH' });
-  console.log(response);
-  if (response.ok) {
-    result = await response.json();
-  }
-  return result;
+  (await fetch(`${urlEngine}?id=${id}&status=stopped`)).json();
 }
 
 export async function driveCar(id) {

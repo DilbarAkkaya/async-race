@@ -1,5 +1,5 @@
 import {
-  createCar, getCar, deleteCar, updateCar, startCar, driveCar,
+  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar,
 } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
@@ -93,27 +93,44 @@ export function clickPaginationButtons() {
       countCars.innerHTML = store.dataApi.count;
     }
     if (e.target.classList.contains('btn-start')) {
+      e.target.setAttribute('disabled', 'true');
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('start-')[1];
+      const stopBtn = document.querySelector(`#stop-${id}`);
+      stopBtn.removeAttribute('disabled');
       const car = document.querySelector(`#image-${id}`);
       const flag = document.querySelector(`#flag-${id}`);
       const res = await startCar(id);
       const time = res.distance / res.velocity;
-     // const timeMS = timeS;
-      //console.log(timeMS);
       const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(car, flag)) + 35
-      console.log(distanceBetweenCarFlag)
-      store.animation.id = animation(car, distanceBetweenCarFlag, time)
-      console.log(store.animation)
-      driveCar(id)
- /*      updateGarageView();
-      renderCarsAndCount('.list-cars', store.carsPage);
-      countCars.innerHTML = store.dataApi.count; */
+      console.log(distanceBetweenCarFlag);
+      const animationId = animation(car, distanceBetweenCarFlag, time);
+      store.animation.animationId = animationId;
+      const { success } = await driveCar(id);
+      store.animation.success = success;
+      if (success === false) {
+        window.cancelAnimationFrame(store.animation.animationId.id)
+        console.log(store)
+      }
+      console.log(store)
+      return { success, animationId, time }
+    }
+    if (e.target.classList.contains('btn-stop')) {
+      const idValue = e.target.getAttribute('id');
+      const id = idValue.split('stop-')[1];
+      const startBtn = document.querySelector(`#start-${id}`);
+  
+      await stopCar(id);
+      const car = document.querySelector(`#image-${id}`);
+      car.style.transform = 'translateX(0)';
+      startBtn.removeAttribute('disabled');
+      if (store.animation.animationId) {
+        window.cancelAnimationFrame(store.animation.animationId.id)
+      }
+      e.target.setAttribute('disabled', true);
     }
   });
 }
-
-
 
 /* export function clickPrev() {
   const prev = document.getElementById('prev');
