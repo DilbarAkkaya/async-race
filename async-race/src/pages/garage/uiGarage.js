@@ -9,8 +9,7 @@ import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 function animation(car, distance, animationTime) {
   let start = null;
   const state = {};
-  console.log(start, state, '12 string')
-
+  console.log(start, state, '12 string');
   function step(timestamp) {
     if (!start) start = timestamp;
     const time = timestamp - start;
@@ -26,6 +25,22 @@ function animation(car, distance, animationTime) {
   state.id = window.requestAnimationFrame(step);
   return state;
 }
+
+function getPositionAtCenter(el) {
+  const domRect = el.getBoundingClientRect();
+  const coordinates = {};
+  coordinates.x = domRect.left + domRect.width / 2;
+  coordinates.y = domRect.top + domRect.height / 2;
+  console.log(coordinates);
+  return coordinates;
+}
+
+function getDistanceBetweenElements(el1, el2) {
+  const el1position = getPositionAtCenter(el1);
+  const el2position = getPositionAtCenter(el2);
+  return Math.hypot(el1position.x - el2position.x, el1position.y - el2position.y)
+}
+
 export function clickPaginationButtons() {
   // const main = document.querySelector('.main');
   document.addEventListener('click', async (e) => {
@@ -78,17 +93,18 @@ export function clickPaginationButtons() {
       countCars.innerHTML = store.dataApi.count;
     }
     if (e.target.classList.contains('btn-start')) {
-
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('start-')[1];
       const car = document.querySelector(`#image-${id}`);
-      console.log(car)
+      const flag = document.querySelector(`#flag-${id}`);
       const res = await startCar(id);
-      console.log('11111', res);
-      const timeS = res.distance / res.velocity;
-      const timeMS = timeS * 1000;
-      console.log(timeMS);
-      animation(car, res.distance, timeMS)
+      const time = res.distance / res.velocity;
+     // const timeMS = timeS;
+      //console.log(timeMS);
+      const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(car, flag)) + 35
+      console.log(distanceBetweenCarFlag)
+      animation(car, distanceBetweenCarFlag, time)
+      
  /*      updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count; */
