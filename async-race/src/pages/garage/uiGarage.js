@@ -6,6 +6,26 @@ import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 
+function animation(car, distance, animationTime) {
+  let start = null;
+  const state = {};
+  console.log(start, state, '12 string')
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    const time = timestamp - start;
+    console.log('16string', time)
+    const passed = Math.round(time * (distance / animationTime));
+    car.style.transform = `translateX(${Math.min(passed, distance)}px)`;
+    if (passed < distance) {
+      state.id = window.requestAnimationFrame(step);
+      console.log(state.id)
+    }
+
+  }
+  state.id = window.requestAnimationFrame(step);
+  return state;
+}
 export function clickPaginationButtons() {
   // const main = document.querySelector('.main');
   document.addEventListener('click', async (e) => {
@@ -58,21 +78,26 @@ export function clickPaginationButtons() {
       countCars.innerHTML = store.dataApi.count;
     }
     if (e.target.classList.contains('btn-start')) {
-      //const startCarBtn = document.querySelector('.btn-start');
+
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('start-')[1];
+      const car = document.querySelector(`#image-${id}`);
+      console.log(car)
       const res = await startCar(id);
       console.log('11111', res);
       const timeS = res.distance / res.velocity;
-      const timeMS = timeS / 1000;
+      const timeMS = timeS * 1000;
       console.log(timeMS);
-      
+      animation(car, res.distance, timeMS)
  /*      updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count; */
     }
   });
 }
+
+
+
 /* export function clickPrev() {
   const prev = document.getElementById('prev');
   prev.addEventListener('click', () => {

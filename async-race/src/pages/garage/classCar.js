@@ -23,7 +23,7 @@ export class Car {
     const flagContainer = createNewElement('div', { class: 'flag', id: `flag-${this.id}` }, '🚩');
     carEngineContainer.append(startButton);
     carEngineContainer.append(stopButton);
-    carEngineContainer.append(renderCarImage(this.color));
+    carEngineContainer.append(renderCarImage(this.color, this.id));
     roadContainer.append(carEngineContainer);
     roadContainer.append(flagContainer);
     carInstance.append(buttonsContainer);
