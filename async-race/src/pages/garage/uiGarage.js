@@ -62,7 +62,11 @@ export function clickPaginationButtons() {
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('start-')[1];
       const res = await startCar(id);
-      console.log(res);
+      console.log('11111', res);
+      const timeS = res.distance / res.velocity;
+      const timeMS = timeS / 1000;
+      console.log(timeMS);
+      
  /*      updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count; */
