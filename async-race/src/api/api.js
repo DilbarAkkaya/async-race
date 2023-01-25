@@ -65,9 +65,32 @@ export async function deleteCar(id) {
 export async function startCar(id) {
   let result = {};
   const response = await fetch(`${urlEngine}?id=${id}&status=started`, { method: 'PATCH' });
+  if (response.ok) {
+    result = await response.json();
+  }
+  return result;
+}
+
+export async function stopCar(id) {
+  let result = {};
+  const response = await fetch(`${urlEngine}?id=${id}&status=stopped`, { method: 'PATCH' });
   console.log(response);
   if (response.ok) {
     result = await response.json();
+  }
+  return result;
+}
+
+export async function driveCar(id) {
+  let result = {};
+  const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
+  if (response.status === 200) {
+    result = await response.json();
+    console.log(result)
+  }
+  if (response.status === 500) {
+    result.success = false;
+    console.log(result)
   }
   return result;
 }

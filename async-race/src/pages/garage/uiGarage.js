@@ -1,5 +1,5 @@
 import {
-  createCar, getCar, deleteCar, updateCar, startCar,
+  createCar, getCar, deleteCar, updateCar, startCar, driveCar,
 } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
@@ -103,8 +103,9 @@ export function clickPaginationButtons() {
       //console.log(timeMS);
       const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(car, flag)) + 35
       console.log(distanceBetweenCarFlag)
-      animation(car, distanceBetweenCarFlag, time)
-      
+      store.animation.id = animation(car, distanceBetweenCarFlag, time)
+      console.log(store.animation)
+      driveCar(id)
  /*      updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count; */
