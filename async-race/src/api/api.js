@@ -1,4 +1,6 @@
-import { url, LIMIT_CARS_ON_PAGE, urlEngine, urlWinners, LIMIT_WINNERS_ON_PAGE } from '../constants';
+import {
+  url, LIMIT_CARS_ON_PAGE, urlEngine, urlWinners, LIMIT_WINNERS_ON_PAGE,
+} from '../constants';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   const result = {
@@ -92,7 +94,7 @@ export function getSortOrderWinners(sort, order) {
   return '';
 }
 
-export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON_PAGE,) {
+export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON_PAGE) {
   const result = {
     items: [],
     count: '',
@@ -101,7 +103,7 @@ export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON
   if (response.ok) {
     const winnersItems = await response.json();
     result.items = await Promise.all(
-      winnersItems.map(async (winner) => ({ ...winner, car: await getCar(winner.id) }))
+      winnersItems.map(async (winner) => ({ ...winner, car: await getCar(winner.id) })),
     );
     result.count = response.headers.get('X-Total-Count');
     return result;

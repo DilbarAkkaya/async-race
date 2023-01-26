@@ -14,14 +14,13 @@ function animation(car, distance, animationTime) {
   function step(timestamp) {
     if (!start) start = timestamp;
     const time = timestamp - start;
-    console.log('16string', time)
+    console.log('16string', time);
     const passed = Math.round(time * (distance / animationTime));
     car.style.transform = `translateX(${Math.min(passed, distance)}px)`;
     if (passed < distance) {
       state.id = window.requestAnimationFrame(step);
-      console.log(state.id)
+      console.log(state.id);
     }
-
   }
   state.id = window.requestAnimationFrame(step);
   return state;
@@ -39,7 +38,7 @@ function getPositionAtCenter(el) {
 function getDistanceBetweenElements(el1, el2) {
   const el1position = getPositionAtCenter(el1);
   const el2position = getPositionAtCenter(el2);
-  return Math.hypot(el1position.x - el2position.x, el1position.y - el2position.y)
+  return Math.hypot(el1position.x - el2position.x, el1position.y - el2position.y);
 }
 
 export function clickPaginationButtons() {
@@ -103,7 +102,7 @@ export function clickPaginationButtons() {
       const flag = document.querySelector(`#flag-${id}`);
       const res = await startCar(id);
       const time = res.distance / res.velocity;
-      const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(car, flag)) + 35
+      const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(car, flag)) + 35;
       const animationId = animation(car, distanceBetweenCarFlag, time);
       store.animation.id = animationId;
       const { success } = await driveCar(id);
@@ -128,14 +127,14 @@ export function clickPaginationButtons() {
     }
     if (e.target.closest('#race')) {
       const moveButtons = document.querySelectorAll('.move');
-      moveButtons.forEach((item)=>{item.disabled = 'true'});
+      moveButtons.forEach((item) => { item.disabled = 'true'; });
       const cars = store.dataApi.items;
       cars.forEach(async (item) => {
         const carImage = document.querySelector(`#image-${item.id}`);
         const flag = document.querySelector(`#flag-${item.id}`);
         const res = await startCar(item.id);
         const time = res.distance / res.velocity;
-        const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35
+        const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35;
         const animationId = animation(carImage, distanceBetweenCarFlag, time);
         store.animation.id = animationId;
         const { success } = await driveCar(item.id);
@@ -143,8 +142,8 @@ export function clickPaginationButtons() {
         if (success === false) {
           window.cancelAnimationFrame(store.animation.id.id);
         }
-        createWinnerPopap(item.name, time)
-        console.log({ success, item, time })
+        createWinnerPopap(item.name, time);
+        console.log({ success, item, time });
         return { success, item, time };
       });
     }

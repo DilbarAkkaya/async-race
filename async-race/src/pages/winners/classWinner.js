@@ -12,13 +12,13 @@ export class Winner {
     this.parent = document.querySelector(parent);
   }
 
-  renderCar() {
+  renderWinner() {
     const winnerInstance = createNewElement('tr', { class: 'winner-item' });
     const tdNum = createNewElement('td', { class: 'td-num' }, this.i);
     const tdImg = createNewElement('td', { class: 'td-img' });
     const tdName = createNewElement('td', { class: 'td-name' }, this.name);
     const tdWins = createNewElement('td', { class: 'td-wins' }, this.wins);
-    const tdTime = createNewElement('td', { class: 'td-time' }, this.bestTime);
+    const tdTime = createNewElement('td', { class: 'td-time' }, `${this.bestTime}`);
     winnerInstance.append(tdNum);
     tdImg.append(renderCarImage(this.color, this.id));
     winnerInstance.append(tdImg);
@@ -26,5 +26,5 @@ export class Winner {
     winnerInstance.append(tdWins);
     winnerInstance.append(tdTime);
     this.parent.append(winnerInstance);
-}
+  }
 }
