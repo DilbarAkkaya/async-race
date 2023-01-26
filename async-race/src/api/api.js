@@ -1,4 +1,4 @@
-import { url, LIMIT_CARS_ON_PAGE, urlEngine } from '../constants';
+import { url, LIMIT_CARS_ON_PAGE, urlEngine, urlWinners, LIMIT_WINNERS_ON_PAGE } from '../constants';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   const result = {
@@ -80,11 +80,29 @@ export async function driveCar(id) {
   const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
   if (response.status === 200) {
     result = await response.json();
-    console.log(result)
   }
   if (response.status === 500) {
     result.success = false;
-    console.log(result)
   }
   return result;
 }
+
+export async function getWinners(page = 1, limit = LIMIT_WINNERS_ON_PAGE) {
+  const result = {
+    items: [],
+    count: '',
+  };
+  const response = await fetch(`${urlWinners}?_page=${page}&_limit=${limit}`);
+  if (response.ok) {
+    result.items = await response.json();
+    result.count = response.headers.get('X-Total-Count');
+    console.log(result)
+    return result;
+  }
+  throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
+}
+
+/* export async function saveWinner({id, time}) {
+  getWinnersStatus()
+
+} */

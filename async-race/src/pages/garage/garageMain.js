@@ -4,6 +4,7 @@ import { renderForm } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
 import { store } from '../../state/store';
 import { updateGarageView } from '../../state/updateStateGarage';
+import { createWinnerPopap } from '../winners/winnersPopap';
 
 function createGarageMain() {
   const parent = new DocumentFragment();

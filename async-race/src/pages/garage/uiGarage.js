@@ -5,6 +5,7 @@ import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
+import { createWinnerPopap } from '../winners/winnersPopap';
 
 function animation(car, distance, animationTime) {
   let start = null;
@@ -142,6 +143,7 @@ export function clickPaginationButtons() {
         if (success === false) {
           window.cancelAnimationFrame(store.animation.id.id);
         }
+        createWinnerPopap(item.name, time)
         console.log({ success, item, time })
         return { success, item, time };
       });
