@@ -103,32 +103,53 @@ export function clickPaginationButtons() {
       const res = await startCar(id);
       const time = res.distance / res.velocity;
       const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(car, flag)) + 35
-      console.log(distanceBetweenCarFlag);
       const animationId = animation(car, distanceBetweenCarFlag, time);
-      store.animation.animationId = animationId;
+      store.animation.id = animationId;
       const { success } = await driveCar(id);
       store.animation.success = success;
       if (success === false) {
-        window.cancelAnimationFrame(store.animation.animationId.id)
-        console.log(store)
+        window.cancelAnimationFrame(store.animation.id.id);
       }
-      console.log(store)
-      return { success, animationId, time }
+      return { success, id, time };
     }
     if (e.target.classList.contains('btn-stop')) {
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('stop-')[1];
       const startBtn = document.querySelector(`#start-${id}`);
-  
-      await stopCar(id);
       const car = document.querySelector(`#image-${id}`);
-      car.style.transform = 'translateX(0)';
       startBtn.removeAttribute('disabled');
-      if (store.animation.animationId) {
-        window.cancelAnimationFrame(store.animation.animationId.id)
+      if (store.animation.id) {
+        window.cancelAnimationFrame(store.animation.id.id);
       }
       e.target.setAttribute('disabled', true);
+      await stopCar(id);
+      car.style.transform = 'translateX(0)';
     }
+    if (e.target.closest('#race')) {
+      const cars = store.dataApi.items;
+      cars.forEach(async (item) => {
+        const carImage = document.querySelector(`#image-${item.id}`);
+        const flag = document.querySelector(`#flag-${item.id}`);
+        const res = await startCar(item.id);
+        const time = res.distance / res.velocity;
+        const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35
+        const animationId = animation(carImage, distanceBetweenCarFlag, time);
+        store.animation.id = animationId;
+        const { success } = await driveCar(item.id);
+        store.animation.success = success;
+        if (success === false) {
+          window.cancelAnimationFrame(store.animation.id.id);
+        }
+        return { success, item, time };
+      });
+    }
+    //  startBtn.removeAttribute('disabled');
+    //  car.style.transform = 'translateX(0)';
+    /* if (store.animation.animationId) {
+      window.cancelAnimationFrame(store.animation.animationId.id)
+    }
+    e.target.setAttribute('disabled', true);
+  } */
   });
 }
 
@@ -165,14 +186,14 @@ export function clickCreate() {
       renderCarsAndCount('.list-cars', store.carsPage);
 
       cleanInputValue('.input-create', '#color-name-create');
-    // formCreateName();
-    // updateStateGarage();
+      // formCreateName();
+      // updateStateGarage();
     }
   });
 }
 
 export function clickUpdate() {
-// const formUpdate = document.getElementById('form-update');
+  // const formUpdate = document.getElementById('form-update');
   document.addEventListener('submit', async (event) => {
     if (event.target.closest('#form-update')) {
       event.preventDefault();
@@ -187,8 +208,8 @@ export function clickUpdate() {
 
       cleanInputValue('.input-update', '#color-name-update');
       setAttributeForFormUpdate(event.target.closest('#form-update'));
-    // formCreateName();
-    // updateStateGarage();
+      // formCreateName();
+      // updateStateGarage();
     }
   });
 }
