@@ -11,6 +11,7 @@ export const store = {
     count: '4',
   },
   winnersPage: 1,
+  winnerId: 0,
   animation: {},
   dataWinners: {
     items: [],

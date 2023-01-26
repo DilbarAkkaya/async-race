@@ -6,8 +6,14 @@ $lightColor: #c1c0c3;
 
 .table{
   background: $SuccessColor;
+  font-size: 30px;
+  width: 70%;
 }
 .table th{
   background-color: $SecondaryColor;
   padding: 10px;
+}
+
+.winner-tbody {
+  text-align: center;
 }
