@@ -14,7 +14,7 @@ export function createWinnersMain() {
 
 const main = createWinnersMain();
 const titleWinners = createNewElement('h1', { class: 'title' }, 'Winners  ');
-const countWinners = createNewElement('span', { class: 'count-win' });
+const countWinners = createNewElement('span', { class: 'count-win' }, store.dataWinners.count);
 const pageWinners = createNewElement('h2', { class: 'subtitle' }, 'Page  ');
 const pageNumber = createNewElement('span', { class: 'page-win' }, store.winnersPage);
 const table = createTable();

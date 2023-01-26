@@ -15,7 +15,7 @@ export const store = {
   animation: {},
   dataWinners: {
     items: [],
-    count: '4',
+    count: '0',
   },
   sort: null,
   order: null,
