@@ -17,4 +17,6 @@ export const store = {
     items: [],
     count: '4',
   },
+  sort: null,
+  order: null,
 };

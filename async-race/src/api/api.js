@@ -87,22 +87,24 @@ export async function driveCar(id) {
   return result;
 }
 
-export async function getWinners(page = 1, limit = LIMIT_WINNERS_ON_PAGE) {
+export function getSortOrderWinners(sort, order) {
+  if (sort && order) return `&_sort=${sort}&_order=${order}`;
+  return '';
+}
+
+export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON_PAGE,) {
   const result = {
     items: [],
     count: '',
   };
-  const response = await fetch(`${urlWinners}?_page=${page}&_limit=${limit}`);
+  const response = await fetch(`${urlWinners}?_page=${page}&_limit=${limit}${getSortOrderWinners(sort, order)}`);
   if (response.ok) {
-    result.items = await response.json();
+    const winnersItems = await response.json();
+    result.items = await Promise.all(
+      winnersItems.map(async (winner) => ({ ...winner, car: await getCar(winner.id) }))
+    );
     result.count = response.headers.get('X-Total-Count');
-    console.log(result)
     return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
 }
-
-/* export async function saveWinner({id, time}) {
-  getWinnersStatus()
-
-} */

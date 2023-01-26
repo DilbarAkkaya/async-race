@@ -18,15 +18,17 @@ export function renderPaginationButtons(selector) {
 }
 
 export async function renderWinnersAndCount(parent, page) {
-  const res = await getWinners(page);
+  const res = await getWinners(store.sort, store.order, page);
+  console.log(res)
   store.dataWinners.items = res.items;
   store.dataWinners.count = res.count;
-  //const car = await getCar(store.dataWinners.items.id)
-  console.log(store)
+/*   //const car = await getCar(store.dataWinners.items);
+ const cars = store.dataApi.items;
+  console.log(cars)
   const { items } = store.dataWinners;
   items.forEach((item, i) => new Winner((i + 1), item.carImg, item.carName, item.wins, item.bestTime, parent).renderCar());
   const countWinners = document.querySelector('.count-win');
   countWinners.innerHTML = store.dataWinners.count;
-  renderPaginationButtons('.main');
+  renderPaginationButtons('.main'); */
  // updateStateGarage('next', 'prev');
 }
