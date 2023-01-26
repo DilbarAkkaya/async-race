@@ -126,6 +126,8 @@ export function clickPaginationButtons() {
       car.style.transform = 'translateX(0)';
     }
     if (e.target.closest('#race')) {
+      const moveButtons = document.querySelectorAll('.move');
+      moveButtons.forEach((item)=>{item.disabled = 'true'});
       const cars = store.dataApi.items;
       cars.forEach(async (item) => {
         const carImage = document.querySelector(`#image-${item.id}`);
@@ -140,6 +142,7 @@ export function clickPaginationButtons() {
         if (success === false) {
           window.cancelAnimationFrame(store.animation.id.id);
         }
+        console.log({ success, item, time })
         return { success, item, time };
       });
     }

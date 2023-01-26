@@ -25,9 +25,9 @@ const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update',
 
 setAttributeForFormUpdate(carUpdateForm);
 const containerButtons = createNewElement('div', { class: 'btn-container' });
-const raceButton = createButtonElement({ class: 'btn btn-ptimary', id: 'race'}, 'race');
-const resetButton = createButtonElement({ class: 'btn btn-ptimary' }, 'reset');
-const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary', id: 'generate-btn' }, 'generate cars');
+const raceButton = createButtonElement({ class: 'btn btn-ptimary move', id: 'race' }, 'race');
+const resetButton = createButtonElement({ class: 'btn btn-ptimary move', id: 'reset' }, 'reset');
+const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary move', id: 'generate-btn' }, 'generate cars');
 /* const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next'); */
 
