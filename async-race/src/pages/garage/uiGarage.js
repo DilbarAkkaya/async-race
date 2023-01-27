@@ -118,11 +118,12 @@ export function clickPaginationButtons() {
       const startBtn = document.querySelector(`#start-${id}`);
       const car = document.querySelector(`#image-${id}`);
       startBtn.removeAttribute('disabled');
+      await stopCar(id);
       if (store.animation.id) {
         window.cancelAnimationFrame(store.animation.id.id);
       }
       e.target.setAttribute('disabled', true);
-      await stopCar(id);
+     
       car.style.transform = 'translateX(0)';
     }
     if (e.target.closest('#race')) {
