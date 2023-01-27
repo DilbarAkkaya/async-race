@@ -10,7 +10,6 @@ export function createTable() {
   <th class="table-button table-wins " id="sort-by-wins">Wins</th>
   <th class="table-button table-time " id="sort-by-time">Best time (seconds)</th>
 </tr></thead>
-<tbody class="winner-tbody">
-</tbody>`;
+`;
   return table;
 }

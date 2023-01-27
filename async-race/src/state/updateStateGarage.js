@@ -1,5 +1,5 @@
 import { store } from './store';
-import { COLORS, LIMIT_CARS_ON_PAGE } from '../constants';
+import { COLORS, LIMIT_CARS_ON_PAGE, LIMIT_WINNERS_ON_PAGE } from '../constants';
 
 export function updateGarageView() {
   const carItems = document.querySelectorAll('.car-item');
@@ -76,3 +76,27 @@ export const updateStateGarage = (idNextButton, idPrevButton) => {
     prev.disabled = true;
   }
 };
+/* 
+export const updateStateWinners = (idNextButton, idPrevButton) => {
+  const next = document.getElementById(idNextButton);
+  const prev = document.getElementById(idPrevButton);
+
+  if (store.winnersPage * LIMIT_WINNERS_ON_PAGE < store.dataWinners.count) {
+    next.disabled = false;
+  } else {
+    next.disabled = true;
+  }
+  if (store.winnersPage > 1) {
+    prev.disabled = false;
+  } else {
+    prev.disabled = true;
+  }
+}; */
+export function updateWinnerView() {
+  const winnerItems = document.querySelectorAll('.winner-item');
+  winnerItems.forEach((item) => item.remove())
+  }
+  //const main = document.getElementsByTagName('main');
+
+ // console.log(main)
+//winnerItems.forEach((item) => item.remove()); 

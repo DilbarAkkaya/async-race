@@ -19,7 +19,6 @@ export function renderPaginationButtons(selector) {
 
 export async function renderWinnersAndCount(parent, page) {
   const res = await getWinners(store.sort, store.order, page);
-  console.log(res);
   store.dataWinners.items = res.items;
   store.dataWinners.count = res.count;
   const { items } = store.dataWinners;
@@ -28,6 +27,6 @@ export async function renderWinnersAndCount(parent, page) {
   });
   const countWinners = document.querySelector('.count-win');
   countWinners.innerHTML = store.dataWinners.count;
-  renderPaginationButtons('.main');
+  //renderPaginationButtons('.main');
   // updateStateGarage('next', 'prev');
 }
