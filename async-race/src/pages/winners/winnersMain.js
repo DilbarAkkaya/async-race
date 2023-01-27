@@ -8,6 +8,7 @@ import { updateStateWinners, updateWinnerView } from '../../state/updateStateGar
 function createWinnersMain() {
   const parent = new DocumentFragment();
   const main = document.createElement('main');
+  main.className = 'main';
   parent.append(main);
   return main;
 }

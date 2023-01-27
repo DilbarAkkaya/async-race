@@ -17,3 +17,7 @@ $lightColor: #c1c0c3;
 .winner-tbody {
   text-align: center;
 }
+#prev-win:disabled, #next-win:disabled {
+  opacity: 0.6;
+  cursor: auto;
+ }

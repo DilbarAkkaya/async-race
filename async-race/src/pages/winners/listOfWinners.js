@@ -7,7 +7,7 @@ import { Winner } from './classWinner';
 
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev-win', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next-win', disabled: true }, 'next');
-const paginationContainer = createNewElement('div', { class: 'pagination-container' });
+const paginationContainer = createNewElement('div', { class: 'pagination-win row' });
 
 export function renderPaginationButtons(selector) {
   const parentSelector = document.querySelector(selector);
@@ -27,6 +27,6 @@ export async function renderWinnersAndCount(parent, page) {
   });
   const countWinners = document.querySelector('.count-win');
   countWinners.innerHTML = store.dataWinners.count;
-  //renderPaginationButtons('.main');
+  renderPaginationButtons('.main');
   // updateStateGarage('next', 'prev');
 }
