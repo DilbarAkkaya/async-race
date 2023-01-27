@@ -76,7 +76,7 @@ export const updateStateGarage = (idNextButton, idPrevButton) => {
     prev.disabled = true;
   }
 };
-/* 
+
 export const updateStateWinners = (idNextButton, idPrevButton) => {
   const next = document.getElementById(idNextButton);
   const prev = document.getElementById(idPrevButton);
@@ -91,7 +91,7 @@ export const updateStateWinners = (idNextButton, idPrevButton) => {
   } else {
     prev.disabled = true;
   }
-}; */
+}; 
 export function updateWinnerView() {
   const winnerItems = document.querySelectorAll('.winner-item');
   winnerItems.forEach((item) => item.remove())

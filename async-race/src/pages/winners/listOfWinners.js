@@ -28,5 +28,5 @@ export async function renderWinnersAndCount(parent, page) {
   const countWinners = document.querySelector('.count-win');
   countWinners.innerHTML = store.dataWinners.count;
   renderPaginationButtons('.main');
-  // updateStateGarage('next', 'prev');
+  updateStateGarage('next-win', 'prev-win');
 }
