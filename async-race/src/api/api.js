@@ -83,6 +83,7 @@ export async function driveCar(id) {
   const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
   if (response.status === 200) {
     result = await response.json();
+    console.log(result)
   }
   if (response.status === 500) {
     result.success = false;
@@ -118,22 +119,21 @@ export async function getWinner(id) {
   if (response.ok) {
     result = await response.json();
     console.log(result)
+    /*{
+    "id": 1,
+    "wins": 1,
+    "time": 10
+}*/
     return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
 }
 
 export async function getWinnerStatus(id) {
-  let result = 0;
-  const response = await fetch(`${urlWinners}/${id}`);
-  if (response.ok) {
-    result = response.status;;
-    console.log(result)
-    return result;
+  const response = (await fetch(`${urlWinners}/${id}`)).status;
+    return response;
   }
-  throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
-}
-
+  /*if id is in server, status.ok*/
 export async function deleteWinner(id) {
   let result = 0;
   const response = await fetch(`${urlWinners}/${id}`, { method: 'DELETE' });

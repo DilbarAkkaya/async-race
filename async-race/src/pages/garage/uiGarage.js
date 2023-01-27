@@ -1,5 +1,5 @@
 import {
-  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, getWinnerStatus,
+  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, getWinnerStatus, saveWinner,
 } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
@@ -10,16 +10,13 @@ import { createWinnerPopap } from '../winners/winnersPopap';
 function animation(car, distance, animationTime) {
   let start = null;
   const state = {};
-  console.log(start, state, '12 string');
   function step(timestamp) {
     if (!start) start = timestamp;
     const time = timestamp - start;
-    console.log('16string', time);
     const passed = Math.round(time * (distance / animationTime));
     car.style.transform = `translateX(${Math.min(passed, distance)}px)`;
     if (passed < distance) {
       state.id = window.requestAnimationFrame(step);
-      console.log(state.id);
     }
   }
   state.id = window.requestAnimationFrame(step);
@@ -31,7 +28,6 @@ function getPositionAtCenter(el) {
   const coordinates = {};
   coordinates.x = domRect.left + domRect.width / 2;
   coordinates.y = domRect.top + domRect.height / 2;
-  console.log(coordinates);
   return coordinates;
 }
 
@@ -42,7 +38,6 @@ function getDistanceBetweenElements(el1, el2) {
 }
 
 export function clickPaginationButtons() {
-  // const main = document.querySelector('.main');
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next')) {
       updateGarageView();
@@ -62,11 +57,6 @@ export function clickPaginationButtons() {
       await Promise.all(cars.map((car) => createCar(car)));
       updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
-      /*       const res = await getCars(store.carsPage).count;
-            console.log(store)
-            store.dataApi.count = res.count;
-            const countCars = document.querySelector('.count');
-            countCars.innerHTML = store.dataApi.count; */
       e.target.disabled = false;
     }
     if (e.target.classList.contains('select-btn')) {
@@ -123,11 +113,9 @@ export function clickPaginationButtons() {
         window.cancelAnimationFrame(store.animation.id.id);
       }
       e.target.setAttribute('disabled', true);
-     
       car.style.transform = 'translateX(0)';
     }
     if (e.target.closest('#race')) {
-   
       const moveButtons = document.querySelectorAll('.move');
       moveButtons.forEach((item) => { item.disabled = 'true'; });
       const cars = store.dataApi.items;
@@ -135,50 +123,24 @@ export function clickPaginationButtons() {
         const carImage = document.querySelector(`#image-${item.id}`);
         const flag = document.querySelector(`#flag-${item.id}`);
         const res = await startCar(item.id);
-        console.log('startrace', res)
         const time = res.distance / res.velocity;
         const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35;
         const animationId = animation(carImage, distanceBetweenCarFlag, time);
         store.animation.id = animationId;
         const { success } = await driveCar(item.id);
-        console.log(await driveCar(item.id));
         store.animation.success = success;
         if (success === false) {
           window.cancelAnimationFrame(store.animation.id.id);
         }
-        createWinnerPopap(item.name, time);
+     //  createWinnerPopap(item.name, time);
         console.log({ success, item, time });
-        return { success, item, time };
+        //return { success, item, time };
       });
     }
-    //  startBtn.removeAttribute('disabled');
-    //  car.style.transform = 'translateX(0)';
-    /* if (store.animation.animationId) {
-      window.cancelAnimationFrame(store.animation.animationId.id)
-    }
-    e.target.setAttribute('disabled', true);
-  } */
   });
 }
 
-/* export function clickPrev() {
-  const prev = document.getElementById('prev');
-  prev.addEventListener('click', () => {
-    updateGarageView();
-    store.carsPage--;
-   // saveFetchCarsAndCountToStore(store.carsPage)
-    console.log('posle saveef', store.carsPage)
-   // updateGarageView();
-   renderCarsAndCount('.list-cars', store.carsPage);
-    //renderCarsAndCount('.list-cars', store.carsPage)
-    console.log(store.carsPage, 'thid is posle click')
-    //await updateStateGarage();
-    updatePageNumber()
-  });
-} */
-
 export function clickCreate() {
-  // const formCreateName = document.getElementById('form-create');
   document.addEventListener('submit', async (event) => {
     if (event.target.closest('#form-create')) {
       event.preventDefault();
@@ -190,18 +152,13 @@ export function clickCreate() {
       event.target.children[1].disabled = true;
       event.target.children[2].disabled = true;
       updateGarageView();
-      // saveFetchCarsAndCountToStore(store.carsPage)
       renderCarsAndCount('.list-cars', store.carsPage);
-
       cleanInputValue('.input-create', '#color-name-create');
-      // formCreateName();
-      // updateStateGarage();
     }
   });
 }
 
 export function clickUpdate() {
-  // const formUpdate = document.getElementById('form-update');
   document.addEventListener('submit', async (event) => {
     if (event.target.closest('#form-update')) {
       event.preventDefault();
@@ -211,13 +168,9 @@ export function clickUpdate() {
       };
       await updateCar(store.id, car);
       updateGarageView();
-      // saveFetchCarsAndCountToStore(store.carsPage)
       renderCarsAndCount('.list-cars', store.carsPage);
-
       cleanInputValue('.input-update', '#color-name-update');
       setAttributeForFormUpdate(event.target.closest('#form-update'));
-      // formCreateName();
-      // updateStateGarage();
     }
   });
 }
