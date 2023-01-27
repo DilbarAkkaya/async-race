@@ -1,5 +1,5 @@
 import {
-  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar,
+  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, getWinnerStatus,
 } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
@@ -127,6 +127,7 @@ export function clickPaginationButtons() {
       car.style.transform = 'translateX(0)';
     }
     if (e.target.closest('#race')) {
+   
       const moveButtons = document.querySelectorAll('.move');
       moveButtons.forEach((item) => { item.disabled = 'true'; });
       const cars = store.dataApi.items;
@@ -134,11 +135,13 @@ export function clickPaginationButtons() {
         const carImage = document.querySelector(`#image-${item.id}`);
         const flag = document.querySelector(`#flag-${item.id}`);
         const res = await startCar(item.id);
+        console.log('startrace', res)
         const time = res.distance / res.velocity;
         const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35;
         const animationId = animation(carImage, distanceBetweenCarFlag, time);
         store.animation.id = animationId;
         const { success } = await driveCar(item.id);
+        console.log(await driveCar(item.id));
         store.animation.success = success;
         if (success === false) {
           window.cancelAnimationFrame(store.animation.id.id);

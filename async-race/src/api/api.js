@@ -1,6 +1,7 @@
 import {
   url, LIMIT_CARS_ON_PAGE, urlEngine, urlWinners, LIMIT_WINNERS_ON_PAGE,
 } from '../constants';
+import { updateWinnerView } from '../state/updateStateGarage';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   const result = {
@@ -109,4 +110,57 @@ export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON
     return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
+}
+
+export async function getWinner(id) {
+  let result = 0;
+  const response = await fetch(`${urlWinners}/${id}`);
+  if (response.ok) {
+    result = await response.json();
+    console.log(result)
+    return result;
+  }
+  throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
+}
+
+export async function getWinnerStatus(id) {
+  let result = 0;
+  const response = await fetch(`${urlWinners}/${id}`);
+  if (response.ok) {
+    result = response.status;;
+    console.log(result)
+    return result;
+  }
+  throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
+}
+
+export async function deleteWinner(id) {
+  let result = 0;
+  const response = await fetch(`${urlWinners}/${id}`, { method: 'DELETE' });
+  if (response.ok) {
+    result = await response.json();
+    console.log(result)
+    return result;
+  }
+  throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
+}
+
+export async function createWinner(body) {
+  (await fetch(urlWinners, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })).json();
+}
+
+export async function saveWinner({ id, time }) {
+  const winnerStatus = await getWinnerStatus(id);
+  if (winnerStatus === 404) {
+    await createWinner({ id, wins: 1, time });
+  } else {
+    const winner = await getWinner(id);
+    await updateWinnerView(id, { id, wins: winner.wins + 1, time: time < winner.time ? time : winner.time });
+  }
 }
