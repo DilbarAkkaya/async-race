@@ -16,6 +16,7 @@ function handleLocation() {
     mainPage.innerHTML = '';
     mainPage.append(renderGarageMain());
   } else if (path === '/winners') {
+    updateWinnerView();
     mainPage.innerHTML = '';
     mainPage.append(renderWinnersMain());
   } else {
