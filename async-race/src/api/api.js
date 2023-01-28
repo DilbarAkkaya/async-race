@@ -83,7 +83,8 @@ export async function driveCar(id) {
   const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
   if (response.status === 200) {
     result = await response.json();
-    console.log(result)
+    result.success = true;
+  //  console.log(result)
   }
   if (response.status === 500) {
     result.success = false;
@@ -91,6 +92,18 @@ export async function driveCar(id) {
   return result;
 }
 
+/* export async function driveCar(id) {
+  return new Promise((resolve, reject) => {
+    try {
+      const response = fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' })
+     //if (response.status !== 200) resolve(false)
+      if (response.status === 500) reject()
+      resolve(response.json())
+    } catch (err) {
+      resolve(false)
+    }
+  })
+} */ 
 export function getSortOrderWinners(sort, order) {
   if (sort && order) return `&_sort=${sort}&_order=${order}`;
   return '';
