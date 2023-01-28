@@ -86,7 +86,7 @@ export async function driveCar(id) {
     result.success = true;
   //  console.log(result)
   }
-  if (response.status === 500) {
+  if (response.status === 500 || response.result === 429 || response.result === 404 || response.result === 400) {
     result.success = false;
   }
   return result;
