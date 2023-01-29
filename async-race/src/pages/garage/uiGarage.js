@@ -23,7 +23,6 @@ function animation(car, distance, animationTime) {
   return animationStore;
 }
 
-
 function getPositionAtCenter(el) {
   const domRect = el.getBoundingClientRect();
   const coordinates = {};
@@ -50,15 +49,12 @@ async function startMoveCar(id) {
     promiseStart.then((result) => {
       const time = Math.round(result.distance / result.velocity);
       const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35;
-      //  const distanceBetweenCarFlag = window.innerWidth-190;
       store.animation[id] = animation(carImage, distanceBetweenCarFlag, time);
-      console.log(store.animation)
       store.animation[id].time = time;
     })
     const promiseDrive = driveCar(id);
     promiseDrive.then((result) => {
       if (!result.success) {
-        console.log(store.animation[id])
         window.cancelAnimationFrame(store.animation[id].id);
         reject(new Error('The engine stopped'));
       } else {
@@ -69,14 +65,6 @@ async function startMoveCar(id) {
     });
   });
 }
-//const { success } = await driveCar(id);
-// store.animation.success = success;
-//console.log(store.animation.success)
-//store.animation.success = success;
-/*   if (success === false) {
-    window.cancelAnimationFrame(store.animation.id.id);
-  } */
-//console.log('11111', {success, item, time})
 
 export function clickPaginationButtons() {
   document.addEventListener('click', async (e) => {
@@ -129,20 +117,7 @@ export function clickPaginationButtons() {
       const id = idValue.split('start-')[1];
       const stopBtn = document.querySelector(`#stop-${id}`);
       stopBtn.removeAttribute('disabled');
-      await startMoveCar(id)
-      /*       const car = document.querySelector(`#image-${id}`);
-            const flag = document.querySelector(`#flag-${id}`);
-            const res = await startCar(id);
-            const time = res.distance / res.velocity;
-            const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(car, flag)) + 35;
-            const animationId = animation(car, distanceBetweenCarFlag, time);
-            store.animation.id = animationId;
-            const { success } = await driveCar(id);
-            store.animation.success = success;
-            if (success === false) {
-              window.cancelAnimationFrame(store.animation.id.id);
-            }
-            return { success, id, time }; */
+      await startMoveCar(id);
     }
     if (e.target.classList.contains('btn-stop')) {
       const idValue = e.target.getAttribute('id');
@@ -150,11 +125,8 @@ export function clickPaginationButtons() {
       const startBtn = document.querySelector(`#start-${id}`);
       const car = document.querySelector(`#image-${id}`);
       startBtn.removeAttribute('disabled');
-
       await stopCar(id);
-      console.log('2222222222222')
       if (store.animation.id) {
-
         window.cancelAnimationFrame(store.animation.id.id);
       }
       e.target.setAttribute('disabled', true);
@@ -169,18 +141,11 @@ export function clickPaginationButtons() {
         .then((value) => {
           store.winnerName = value.name;
           store.winnerTime = value.time;
-          //setTimeout (createWinnerPopap(store.winnerName, store.winnerTime))
-          ;
-          return value
+          return value;
         })
-        //.then(  await createWinnerPopap(store.winnerName, store.winnerTime))
         .catch(new Error('Something цуте wrong'));
-      createWinnerPopap(store.winnerName, store.winnerTime)
-      /*        setTimeout(()=> {
-              createWinnerPopap(store.winnerName, store.winnerTime)
-             }, store.winnerTime+1000) */
+      createWinnerPopap(store.winnerName, store.winnerTime);
     }
-
   });
 }
 
