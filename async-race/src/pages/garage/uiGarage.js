@@ -50,16 +50,16 @@ async function startMoveCar(id) {
     promiseStart.then((result) => {
       const time = Math.round(result.distance / result.velocity);
       const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35;
-    //  const distanceBetweenCarFlag = window.innerWidth-190;
+      //  const distanceBetweenCarFlag = window.innerWidth-190;
       store.animation[id] = animation(carImage, distanceBetweenCarFlag, time);
+      console.log(store.animation)
       store.animation[id].time = time;
     })
     const promiseDrive = driveCar(id);
     promiseDrive.then((result) => {
-      if (result.success === false) {
+      if (!result.success) {
         console.log(store.animation[id])
         window.cancelAnimationFrame(store.animation[id].id);
-   
         reject(new Error('The engine stopped'));
       } else {
         const carObj = store.dataApi.items.find((car) => car.id === id);
@@ -150,8 +150,11 @@ export function clickPaginationButtons() {
       const startBtn = document.querySelector(`#start-${id}`);
       const car = document.querySelector(`#image-${id}`);
       startBtn.removeAttribute('disabled');
+
       await stopCar(id);
+      console.log('2222222222222')
       if (store.animation.id) {
+
         window.cancelAnimationFrame(store.animation.id.id);
       }
       e.target.setAttribute('disabled', true);
@@ -162,22 +165,22 @@ export function clickPaginationButtons() {
       const cars = store.dataApi.items;
       const promises = cars.map((item) => startMoveCar(item.id));
       console.log(promises)
-    await Promise.any(promises)
-        .then((value) => { 
+      await Promise.any(promises)
+        .then((value) => {
           store.winnerName = value.name;
           store.winnerTime = value.time;
-         //setTimeout (createWinnerPopap(store.winnerName, store.winnerTime))
-         ;
+          //setTimeout (createWinnerPopap(store.winnerName, store.winnerTime))
+          ;
           return value
         })
         //.then(  await createWinnerPopap(store.winnerName, store.winnerTime))
         .catch(new Error('Something цуте wrong'));
-
-/*        setTimeout(()=> {
-        createWinnerPopap(store.winnerName, store.winnerTime)
-       }, store.winnerTime+1000) */
+      createWinnerPopap(store.winnerName, store.winnerTime)
+      /*        setTimeout(()=> {
+              createWinnerPopap(store.winnerName, store.winnerTime)
+             }, store.winnerTime+1000) */
     }
-    createWinnerPopap(store.winnerName, store.winnerTime)
+
   });
 }
 
