@@ -21,3 +21,13 @@ $lightColor: #c1c0c3;
   opacity: 0.6;
   cursor: auto;
  }
+ .modal {
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px; 
+  padding: 10px; 
+  margin: auto; 
+  background: $SuccessColor;
+ }

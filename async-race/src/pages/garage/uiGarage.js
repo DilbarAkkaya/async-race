@@ -23,6 +23,7 @@ function animation(car, distance, animationTime) {
   return animationStore;
 }
 
+
 function getPositionAtCenter(el) {
   const domRect = el.getBoundingClientRect();
   const coordinates = {};
@@ -47,7 +48,7 @@ async function startMoveCar(id) {
   return new Promise((resolve, reject) => {
     const promiseStart = startCar(id);
     promiseStart.then((result) => {
-      const time = result.distance / result.velocity;
+      const time = Math.round(result.distance / result.velocity);
       const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35;
     //  const distanceBetweenCarFlag = window.innerWidth-190;
       store.animation[id] = animation(carImage, distanceBetweenCarFlag, time);
@@ -162,10 +163,21 @@ export function clickPaginationButtons() {
       const promises = cars.map((item) => startMoveCar(item.id));
       console.log(promises)
     await Promise.any(promises)
-        .then((value) => { console.log(value)
-        return value })
-        .catch()
+        .then((value) => { 
+          store.winnerName = value.name;
+          store.winnerTime = value.time;
+         //setTimeout (createWinnerPopap(store.winnerName, store.winnerTime))
+         ;
+          return value
+        })
+        //.then(  await createWinnerPopap(store.winnerName, store.winnerTime))
+        .catch(new Error('Something цуте wrong'));
+
+/*        setTimeout(()=> {
+        createWinnerPopap(store.winnerName, store.winnerTime)
+       }, store.winnerTime+1000) */
     }
+    createWinnerPopap(store.winnerName, store.winnerTime)
   });
 }
 

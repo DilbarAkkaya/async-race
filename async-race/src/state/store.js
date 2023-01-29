@@ -19,4 +19,6 @@ export const store = {
   },
   sort: null,
   order: null,
+  winnerName: '',
+  winnerTime: 0,
 };

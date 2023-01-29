@@ -12,6 +12,7 @@ body {
   color: $PrimaryColor;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 main, header {
