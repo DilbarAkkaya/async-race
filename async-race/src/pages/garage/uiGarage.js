@@ -174,7 +174,6 @@ export function clickPaginationButtons() {
       startBtn.removeAttribute('disabled');
       await stopCar(id);
       if (store.animation[id]) {
-        console.log(id)
         cancelAnimationFrame(store.animation[id].id);
       }
       e.target.setAttribute('disabled', true);
@@ -184,17 +183,37 @@ export function clickPaginationButtons() {
       disableButtons();
       const cars = store.dataApi.items;
       const promises = cars.map((item) => startMoveCar(item.id));
-      console.log(promises)
       await Promise.any(promises)
         .then((value) => {
           store.winnerName = value.name;
           store.winnerTime = value.time;
-          console.log(value)
           return value;
         })
         .catch(new Error('Something went wrong'));
       createWinnerPopap(store.winnerName, store.winnerTime);
+      const resetBtn = document.querySelector('#reset');
+      resetBtn.removeAttribute('disabled');
     }
+    if (e.target.closest('#reset')) {
+      const cars = store.dataApi.items;
+      await Promise.all(cars.map((car) => {
+        stopCar(car.id);
+        console.log(store.animation[car.id])
+        if (store.animation[car.id]) {
+        cancelAnimationFrame(store.animation[car.id].id);
+      }
+/*         store.animation.forEach((item) => {
+          if (store.animation.id) {
+          console.log(store)
+          cancelAnimationFrame(store.animation.id.car.id);
+        }
+      }) */
+        const carImage = document.querySelector(`#image-${car.id}`);
+        carImage.style.transform = 'translateX(0)';
+        return car;
+      }));
+    }
+
   });
 }
 
