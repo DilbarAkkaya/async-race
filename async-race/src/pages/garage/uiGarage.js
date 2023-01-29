@@ -6,7 +6,7 @@ import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
-
+/* 
 function animation(car, distance, animationTime) {
   let start = 0;
   const animationStore = {};
@@ -21,9 +21,9 @@ function animation(car, distance, animationTime) {
   }
   animationStore.id = window.requestAnimationFrame(step);
   return animationStore;
-}
+} */
 
-function getPositionAtCenter(el) {
+/* function getPositionAtCenter(el) {
   const domRect = el.getBoundingClientRect();
   const coordinates = {};
   coordinates.x = domRect.left + domRect.width / 2;
@@ -35,6 +35,22 @@ function getDistanceBetweenElements(el1, el2) {
   const el1position = getPositionAtCenter(el1);
   const el2position = getPositionAtCenter(el2);
   return Math.hypot(el1position.x - el2position.x, el1position.y - el2position.y);
+} */
+
+function animation(car, distance, animationTime) {
+  let start = 0;
+  const animationStore = {};
+  function step(timestamp) {
+    if (start === 0) start = timestamp;
+    const time = timestamp - start;
+    const progress = Math.round(time * (distance / animationTime));
+    car.style.transform = `translateX(${Math.min(progress, distance)}px)`;
+    if (progress < distance) {
+      animationStore.id = requestAnimationFrame(step);
+    }
+  }
+  animationStore.id = requestAnimationFrame(step);
+  return animationStore;
 }
 
 function disableButtons() {
@@ -43,19 +59,22 @@ function disableButtons() {
 }
 async function startMoveCar(id) {
   const carImage = document.querySelector(`#image-${id}`);
-  const flag = document.querySelector(`#flag-${id}`);
+  //const flag = document.querySelector(`#flag-${id}`);
+
   return new Promise((resolve, reject) => {
-    const promiseStart = startCar(id);
-    promiseStart.then((result) => {
+    //const promiseStart = startCar(id);
+    startCar(id).then((result) => {
+      console.log(result)
       const time = Math.round(result.distance / result.velocity);
-      const distanceBetweenCarFlag = Math.floor(getDistanceBetweenElements(carImage, flag)) + 35;
-      store.animation[id] = animation(carImage, distanceBetweenCarFlag, time);
+      const distanceBetweenCarFlag = window.innerWidth - 190;
+      const animationId = animation(carImage, distanceBetweenCarFlag, time);
+      store.animation[id] = animationId;
+      console.log(store.animation)
       store.animation[id].time = time;
-    })
-    const promiseDrive = driveCar(id);
-    promiseDrive.then((result) => {
-      if (!result.success) {
-        window.cancelAnimationFrame(store.animation[id].id);
+   // const promiseDrive = driveCar(id);
+    driveCar(id).then((result) => {
+      if (result.success === false) {
+        cancelAnimationFrame(store.animation[id].id);
         reject(new Error('The engine stopped'));
       } else {
         const carObj = store.dataApi.items.find((car) => car.id === id);
@@ -64,7 +83,35 @@ async function startMoveCar(id) {
       }
     });
   });
+})
 }
+/* async function startMoveCar(id) {
+  const carImage = document.querySelector(`#image-${id}`);
+  //const flag = document.querySelector(`#flag-${id}`);
+  return new Promise((resolve, reject) => {
+    //const promiseStart = startCar(id);
+    startCar(id).then((result) => {
+      console.log(result)
+      const time = Math.round(result.distance / result.velocity);
+      const distanceBetweenCarFlag = window.innerWidth - 190;
+      const animationId = animation(carImage, distanceBetweenCarFlag, time);
+      store.animation[id] = animationId;
+      console.log(store.animation)
+      store.animation[id].time = time;
+    })
+   // const promiseDrive = driveCar(id);
+    driveCar(id).then((result) => {
+      if (result.success === false) {
+        cancelAnimationFrame(store.animation[id].id);
+        reject(new Error('The engine stopped'));
+      } else {
+        const carObj = store.dataApi.items.find((car) => car.id === id);
+        const timeInSec = +(store.animation[id].time / 1000).toFixed(2);
+        resolve({ ...carObj, time: timeInSec });
+      }
+    });
+  });
+} */
 
 export function clickPaginationButtons() {
   document.addEventListener('click', async (e) => {
@@ -126,8 +173,9 @@ export function clickPaginationButtons() {
       const car = document.querySelector(`#image-${id}`);
       startBtn.removeAttribute('disabled');
       await stopCar(id);
-      if (store.animation.id) {
-        window.cancelAnimationFrame(store.animation.id.id);
+      if (store.animation[id]) {
+        console.log(id)
+        cancelAnimationFrame(store.animation[id].id);
       }
       e.target.setAttribute('disabled', true);
       car.style.transform = 'translateX(0)';
@@ -141,9 +189,10 @@ export function clickPaginationButtons() {
         .then((value) => {
           store.winnerName = value.name;
           store.winnerTime = value.time;
+          console.log(value)
           return value;
         })
-        .catch(new Error('Something цуте wrong'));
+        .catch(new Error('Something went wrong'));
       createWinnerPopap(store.winnerName, store.winnerTime);
     }
   });

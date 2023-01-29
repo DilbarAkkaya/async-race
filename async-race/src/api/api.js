@@ -76,25 +76,27 @@ export async function startCar(id) {
 
 export async function stopCar(id) {
   let result = {};
-    const response = await fetch(`${urlEngine}?id=${id}&status=stopped`);
-    if (response.ok) {
-      console.log(response)
-      result = response.json()
-    } 
-    return result
+  const response = await fetch(`${urlEngine}?id=${id}&status=stopped`);
+  if (response.ok) {
+    result = await response.json();
+    console.log(result)
   }
+  return result
+}
+
 export async function driveCar(id) {
-  let result = {};
+  //let result = {};
   const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
-  if (response.status === 200) {
+  return response.status !== 200 ? { success: false } : { success: true };
+/*   if (response.status === 200) {
     result = await response.json();
     result.success = true;
   //  console.log(result)
   }
   if (response.status === 500 || response.result === 429 || response.result === 404 || response.result === 400) {
     result.success = false;
-  }
-  return result;
+  } */
+/*   return result; */
 }
 
 /* export async function driveCar(id) {
