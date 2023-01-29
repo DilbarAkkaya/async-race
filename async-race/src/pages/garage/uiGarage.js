@@ -202,12 +202,8 @@ export function clickPaginationButtons() {
         if (store.animation[car.id]) {
         cancelAnimationFrame(store.animation[car.id].id);
       }
-/*         store.animation.forEach((item) => {
-          if (store.animation.id) {
-          console.log(store)
-          cancelAnimationFrame(store.animation.id.car.id);
-        }
-      }) */
+      const enabledBtns = document.querySelectorAll('.enabled');
+     enabledBtns.forEach((btn) => btn.removeAttribute('disabled'))
         const carImage = document.querySelector(`#image-${car.id}`);
         carImage.style.transform = 'translateX(0)';
         return car;

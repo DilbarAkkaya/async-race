@@ -6,6 +6,6 @@ export function createWinnerPopap(carName, carTime) {
   <h3>The winner is ${carName}, time ${carTime}`;
   parent.append(modal);
   setTimeout(()=> {
-    modal.remove()}, 3000)
+    modal.remove()}, 2000)
   return modal;
 }
