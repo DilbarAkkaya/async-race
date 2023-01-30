@@ -13,7 +13,7 @@ bodyElement.append(mainPage);
 mainPage.append(mainGarage)
 mainPage.append(mainWinner)
 mainGarage.append(renderGarageMain());
-mainWinner.append(renderWinnersMain());
+//mainWinner.append(renderWinnersMain());
 function handleLocation() {
   const path = window.location.pathname;
   if (path === '/') {
@@ -40,7 +40,7 @@ export function route(event) {
   const e = event || window.event;
   e.preventDefault();
   window.history.pushState(store, '', e.target.href);
- // updateGarageView();
+  updateWinnerView();
   handleLocation();
 }
 

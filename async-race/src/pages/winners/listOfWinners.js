@@ -27,6 +27,6 @@ export async function renderWinnersAndCount(parent, page) {
   });
   const countWinners = document.querySelector('.count-win');
   countWinners.innerHTML = store.dataWinners.count;
-  renderPaginationButtons('.main');
-  updateStateWinners('next-win', 'prev-win')
+  renderPaginationButtons('.main-winner');
+  updateStateWinners('next-win', 'prev-win');
 }
