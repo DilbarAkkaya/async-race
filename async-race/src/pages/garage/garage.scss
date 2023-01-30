@@ -4,6 +4,10 @@ $SecondaryColor: #b3abab;
 $SuccessColor: #adff2a;
 $lightColor: #c1c0c3;
 
+.title-wrapper {
+  align-items: center;
+  justify-content: space-between;
+}
 .list-cars {
   padding: 0;
 }
@@ -45,4 +49,13 @@ $lightColor: #c1c0c3;
 #prev:disabled, #next:disabled, #generate-btn:disabled, #create:disabled, #update:disabled, #race:disabled, #reset:disabled {
  opacity: 0.6;
  cursor: auto;
+}
+
+form {
+  margin-bottom: 10px;
+}
+
+input {
+  border-radius: 10px;
+  padding: 2px 7px 2px 7px;
 }

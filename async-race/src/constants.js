@@ -1,6 +1,7 @@
 export const COLORS = {
   white: '#FFFFFF',
   black: '#000000',
+  green: '#ADFF2A',
 };
 
 const requestAdress = 'http://127.0.0.1:3000';

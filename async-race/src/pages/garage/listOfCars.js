@@ -44,6 +44,6 @@ export async function renderCarsAndCount(parentSelector, page) {
   store.dataApi.items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar());
   const countCars = document.querySelector('.count');
   countCars.innerHTML = store.dataApi.count;
-  renderPaginationButtons('.main');
+  renderPaginationButtons('.title-wrapper');
   updateStateGarage('next', 'prev');
 }
