@@ -1,6 +1,7 @@
 import {
   url, LIMIT_CARS_ON_PAGE, urlEngine, urlWinners, LIMIT_WINNERS_ON_PAGE,
 } from '../constants';
+import { store } from '../state/store';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   const result = {
@@ -110,17 +111,19 @@ export async function driveCar(id) {
     }
   })
 } */ 
-export function getSortOrderWinners(sort, order) {
+/* export function getSortOrderWinners(sort, order) {
   if (sort && order) return `&_sort=${sort}&_order=${order}`;
   return '';
-}
+} */
 
 export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON_PAGE) {
   const result = {
     items: [],
     count: '',
   };
-  const response = await fetch(`${urlWinners}?_page=${page}&_limit=${limit}${getSortOrderWinners(sort, order)}`);
+ 
+  const response = await fetch(`${urlWinners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`);
+  console.log(`${urlWinners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order})}`)
   if (response.ok) {
     const winnersItems = await response.json();
     result.items = await Promise.all(
