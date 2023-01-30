@@ -1,5 +1,5 @@
 import {
-  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, getWinnerStatus, saveWinner,
+  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, createWinner, getWinnerStatus, saveWinner, updateWinner,
 } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
@@ -112,6 +112,30 @@ async function startMoveCar(id) {
     });
   });
 } */
+function createNewWinner(value) {
+  const newWinner = {
+    id: value.id,
+    wins: 1,
+    time: value.time,
+  };
+  getWinnerStatus(value.id)
+    .then((result) => {
+      if (result === 404) {
+      createWinner(newWinner)
+      console.log(newWinner)
+      } else {
+        getWinner(value.id).then((result) => {
+          console.log(result)
+          updateWinner(value.id, newWinner = {
+            id: result.id,
+            wins: result.wins + 1,
+            time: value.time > result.time ? result.time : value.time,
+          }).then((result) => console.log(result))
+        })
+
+      }
+    })
+  }
 
 export function clickPaginationButtons() {
   document.addEventListener('click', async (e) => {
@@ -187,6 +211,7 @@ export function clickPaginationButtons() {
         .then((value) => {
           store.winnerName = value.name;
           store.winnerTime = value.time;
+          createNewWinner(value)
           return value;
         })
         .catch(new Error('Something went wrong'));
@@ -212,6 +237,8 @@ export function clickPaginationButtons() {
 
   });
 }
+
+
 
 export function clickCreate() {
   document.addEventListener('submit', async (event) => {

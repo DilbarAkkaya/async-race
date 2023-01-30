@@ -1,7 +1,6 @@
 import {
   url, LIMIT_CARS_ON_PAGE, urlEngine, urlWinners, LIMIT_WINNERS_ON_PAGE,
 } from '../constants';
-import { updateWinnerView } from '../state/updateStateGarage';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   const result = {
@@ -175,12 +174,18 @@ export async function createWinner(body) {
   })).json();
 }
 
-export async function saveWinner({ id, time }) {
-  const winnerStatus = await getWinnerStatus(id);
-  if (winnerStatus === 404) {
-    await createWinner({ id, wins: 1, time });
-  } else {
-    const winner = await getWinner(id);
-    await updateWinnerView(id, { id, wins: winner.wins + 1, time: time < winner.time ? time : winner.time });
+export async function updateWinner(id, body) {
+  let result;
+  const response = await fetch(`${urlWinners}/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (response.ok) {
+    result = response.json();
+    return result;
   }
+  throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
