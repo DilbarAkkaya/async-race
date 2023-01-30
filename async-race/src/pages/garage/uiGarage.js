@@ -143,13 +143,13 @@ export function clickPaginationButtons() {
       updateGarageView();
       store.carsPage++;
       renderCarsAndCount('.list-cars', store.carsPage);
-      updatePageNumber();
+      updatePageNumber('.page', store.carsPage);
     }
     if (e.target.closest('#prev')) {
       updateGarageView();
       store.carsPage--;
       renderCarsAndCount('.list-cars', store.carsPage);
-      updatePageNumber();
+      updatePageNumber('.page', store.carsPage);
     }
     if (e.target.closest('#generate-btn')) {
       e.target.disabled = true;

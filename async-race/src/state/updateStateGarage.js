@@ -42,9 +42,9 @@ export function cleanInputValue(inputSelector1, inputCSelector2) {
   inputColor.value = COLORS.white;
 }
 
-export function updatePageNumber() {
-  const pageNumber = document.querySelector('.page');
-  pageNumber.innerText = store.carsPage;
+export function updatePageNumber(pageSelector, storePage) {
+  const pageNumber = document.querySelector(pageSelector);
+  pageNumber.innerText = storePage;
 }
 
 export function incrementPage() {
