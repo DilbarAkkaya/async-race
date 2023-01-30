@@ -28,6 +28,7 @@ export function clickWinnersPaginationButtons() {
  document.addEventListener('click', (e) => {
   console.log(store.order)
   if (e.target.closest('.table-wins')) {
+    store.sort = 'wins';
    if (store.order === 'asc') {
     store.order = 'desc';
     console.log(store.order)
@@ -37,6 +38,17 @@ export function clickWinnersPaginationButtons() {
    updateWinnerView();
    renderWinnersAndCount('.winner-tbody', store.winnersPage)
   }
+  if (e.target.closest('.table-time')) {
+    store.sort = 'time';
+    if (store.order === 'asc') {
+     store.order = 'desc';
+     console.log(store.order)
+    }else {
+     store.order = 'asc'
+    }
+    updateWinnerView();
+    renderWinnersAndCount('.winner-tbody', store.winnersPage)
+   }
  })
 /* 
 const sortByWins = async (e) => {
