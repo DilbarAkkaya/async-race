@@ -21,4 +21,5 @@ export const store = {
   order: null,
   winnerName: '',
   winnerTime: 0,
+  isAnimated: false,
 };

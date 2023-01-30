@@ -18,3 +18,7 @@ export function clickWinnersPaginationButtons() {
     }
   });
 }
+
+/* function sortingByOrder(sortBy){
+  store.order = store.order
+} */

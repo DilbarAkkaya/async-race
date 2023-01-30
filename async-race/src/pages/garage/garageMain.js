@@ -49,10 +49,12 @@ export function renderFormsButtons() {
 }
 
 export function renderGarageMain() {
-  renderFormsButtons();
-  updateGarageView();
-  renderCarsAndCount('.list-cars', store.carsPage);
-  // renderPaginationButtons();
-  // updateStateGarage()
+  if (store.isAnimated === false) {
+    renderFormsButtons();
+    updateGarageView();
+    renderCarsAndCount('.list-cars', store.carsPage);
+    // renderPaginationButtons();
+    // updateStateGarage()
+  }
   return main;
 }

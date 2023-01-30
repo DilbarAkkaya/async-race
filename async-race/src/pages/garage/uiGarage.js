@@ -85,6 +85,9 @@ async function startMoveCar(id) {
   });
 })
 }
+
+
+
 /* async function startMoveCar(id) {
   const carImage = document.querySelector(`#image-${id}`);
   //const flag = document.querySelector(`#flag-${id}`);
@@ -204,6 +207,7 @@ export function clickPaginationButtons() {
       car.style.transform = 'translateX(0)';
     }
     if (e.target.closest('#race')) {
+      store.isAnimated = true;
       disableButtons();
       const cars = store.dataApi.items;
       const promises = cars.map((item) => startMoveCar(item.id));

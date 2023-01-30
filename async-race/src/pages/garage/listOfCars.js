@@ -20,7 +20,7 @@ import { createNewElement } from '../../utils';
 } */
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next');
-const paginationContainer = createNewElement('div', { class: 'pagination-container' });
+const paginationContainer = createNewElement('div', { class: 'pagination-container row' });
 // const main = document.querySelector('main');
 
 // main.append(paginationContainer);
