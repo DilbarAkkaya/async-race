@@ -1,6 +1,6 @@
 import { getWinners, getCar } from '../../api/api';
 import { store } from '../../state/store';
-import { updateStateGarage } from '../../state/updateStateGarage';
+import { updateStateWinners } from '../../state/updateStateGarage';
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../utils';
 import { Winner } from './classWinner';
@@ -28,5 +28,5 @@ export async function renderWinnersAndCount(parent, page) {
   const countWinners = document.querySelector('.count-win');
   countWinners.innerHTML = store.dataWinners.count;
   renderPaginationButtons('.main');
-  updateStateGarage('next-win', 'prev-win');
+  updateStateWinners('next-win', 'prev-win')
 }

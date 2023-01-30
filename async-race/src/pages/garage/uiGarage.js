@@ -113,7 +113,7 @@ async function startMoveCar(id) {
   });
 } */
 function createNewWinner(value) {
-  const newWinner = {
+  let newWinner = {
     id: value.id,
     wins: 1,
     time: value.time,
@@ -122,7 +122,7 @@ function createNewWinner(value) {
     .then((result) => {
       if (result === 404) {
       createWinner(newWinner)
-      console.log(newWinner)
+      console.log(store, '11111')
       } else {
         getWinner(value.id).then((result) => {
           console.log(result)
@@ -130,7 +130,7 @@ function createNewWinner(value) {
             id: result.id,
             wins: result.wins + 1,
             time: value.time > result.time ? result.time : value.time,
-          }).then((result) => console.log(result))
+          }).then((result) => console.log(store))
         })
 
       }

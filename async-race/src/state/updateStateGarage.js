@@ -94,7 +94,7 @@ export const updateStateWinners = (idNextButton, idPrevButton) => {
 }; 
 export function updateWinnerView() {
   const winnerItems = document.querySelectorAll('.winner-item');
-  winnerItems.forEach((item) => item.remove())
+  winnerItems.forEach((item) => item.remove());
   }
   //const main = document.getElementsByTagName('main');
 
