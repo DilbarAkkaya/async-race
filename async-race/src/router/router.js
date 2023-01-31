@@ -10,6 +10,7 @@ const bodyElement = document.body;
 const mainGarage = createNewElement('div', { class: 'main-garage', id: 'main-garage' });
 const mainWinner = createNewElement('div', { class: 'main-winner', id: 'main-winner' });
 const mainError = createErrorMain();
+const modal = document.querySelector('.modal');
 bodyElement.append(mainPage);
 mainPage.append(mainGarage);
 mainPage.append(mainWinner);
@@ -28,6 +29,9 @@ function handleLocation() {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'block';
     mainError.style.display = 'none';
+    if (modal) {
+      modal.style.display = 'none';
+    }
     updateWinnerView();
     //  mainWinner.innerHTML = '';
     mainWinner.append(renderWinnersMain());

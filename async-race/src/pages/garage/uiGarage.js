@@ -212,7 +212,7 @@ export function clickPaginationButtons() {
           return value;
         })
         .catch(new Error('Something went wrong'));
-      createWinnerPopap(store.winnerName, store.winnerTime);
+      createWinnerPopap(store.winnerName, store.winnerTime, '.list-cars');
       const resetBtn = document.querySelector('#reset');
       resetBtn.removeAttribute('disabled');
     }

@@ -1,10 +1,10 @@
-export function createWinnerPopap(carName, carTime) {
-  const parent = document.body;
+export function createWinnerPopap(carName, carTime, parentSelector) {
+  const parent = document.querySelector(parentSelector);
   const modal = document.createElement('div');
   modal.className = 'modal';
   modal.innerHTML = `
   <h3>The winner is ${carName}, time ${carTime}`;
-  parent.append(modal);
+  parent.prepend(modal);
   setTimeout(() => {
     modal.remove();
   }, 2000);
