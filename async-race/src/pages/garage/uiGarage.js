@@ -4,25 +4,9 @@ import {
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
-import { generateRandomCars, setAttributeForFormUpdate } from '../../common/utils';
+import { generateRandomCars, setAttributeForFormUpdate, animation } from '../../common/utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
 import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../common/constants';
-
-function animation(car, distance, animationTime) {
-  let start = 0;
-  const animationStore = {};
-  function step(timestamp) {
-    if (start === 0) start = timestamp;
-    const time = timestamp - start;
-    const progress = Math.round(time * (distance / animationTime));
-    car.style.transform = `translateX(${Math.min(progress, distance)}px)`;
-    if (progress < distance) {
-      animationStore.id = requestAnimationFrame(step);
-    }
-  }
-  animationStore.id = requestAnimationFrame(step);
-  return animationStore;
-}
 
 function disableButtons() {
   const moveButtons = document.querySelectorAll('.move');

@@ -47,3 +47,19 @@ export function generateRandomCars(count = 100) {
       { name: getRandomAuto(), color: getRandomColor() }));
   return randomCars;
 }
+
+export function animation(car, distance, animationTime) {
+  let start = 0;
+  const animationStore = {};
+  function step(timestamp) {
+    if (start === 0) start = timestamp;
+    const time = timestamp - start;
+    const progress = Math.round(time * (distance / animationTime));
+    car.style.transform = `translateX(${Math.min(progress, distance)}px)`;
+    if (progress < distance) {
+      animationStore.id = requestAnimationFrame(step);
+    }
+  }
+  animationStore.id = requestAnimationFrame(step);
+  return animationStore;
+}
