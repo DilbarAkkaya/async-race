@@ -39,7 +39,6 @@ export async function getCar(id) {
   let result = 0;
 
   const response = await fetch(`${url}/${id}`);
-  console.log(response)
   if (response.ok) {
     result = await response.json();
     return result;

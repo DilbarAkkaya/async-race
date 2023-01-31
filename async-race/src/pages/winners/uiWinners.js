@@ -8,7 +8,7 @@ export function clickWinnersPaginationButtons() {
       updateWinnerView();
       store.winnersPage++;
       renderWinnersAndCount('.winner-tbody', store.winnersPage);
-      
+
       updatePageNumber('.page-win', store.winnersPage);
     }
     if (e.target.closest('#prev-win')) {
@@ -34,7 +34,7 @@ document.addEventListener('click', (e) => {
       store.order = 'desc';
     } else {
       store.order = 'asc';
-      e.target.innerText = 'Wins ↑'
+      e.target.innerText = 'Wins ↑';
     }
     updateWinnerView();
     renderWinnersAndCount('.winner-tbody', store.winnersPage);

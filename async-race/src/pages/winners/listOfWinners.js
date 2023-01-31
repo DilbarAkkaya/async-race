@@ -1,4 +1,4 @@
-import { getWinners, getCar } from '../../api/api';
+import { getWinners } from '../../api/api';
 import { store } from '../../state/store';
 import { updateStateWinners } from '../../state/updateStateGarage';
 import { createButtonElement } from '../../components/button';
@@ -20,11 +20,8 @@ export function renderPaginationButtons(selector) {
 export async function renderWinnersAndCount(parent, page) {
   // console.log(store.order)
   const res = await getWinners(store.sort, store.order, page);
-  console.log(store);
-  console.log(store.order);
   store.dataWinners.items = res.items;
   store.dataWinners.count = res.count;
-  console.log(res);
   const { items } = store.dataWinners;
   items.forEach((item, i) => {
     new Winner((i + 1), item.car.color, item.car.name, item.wins, item.time, item.id, parent).renderWinner();
