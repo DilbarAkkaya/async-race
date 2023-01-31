@@ -1,5 +1,5 @@
 import { store } from './store';
-import { COLORS, LIMIT_CARS_ON_PAGE, LIMIT_WINNERS_ON_PAGE } from '../common/constants';
+import { COLORS } from '../common/constants';
 
 export function updateGarageView() {
   const carItems = document.querySelectorAll('.car-item');
@@ -47,40 +47,16 @@ export function updatePageNumber(pageSelector, storePage) {
   pageNumber.innerText = storePage;
 }
 
-export function incrementPage() {
-  store.carsPage++;
-}
-
-export function decrementPage() {
-  store.carsPage--;
-}
-
-export const updateStateGarage = (idNextButton, idPrevButton) => {
+export const updateState = (idNextButton, idPrevButton, page, limit, data) => {
   const next = document.getElementById(idNextButton);
   const prev = document.getElementById(idPrevButton);
 
-  if (store.carsPage * LIMIT_CARS_ON_PAGE < store.dataApi.count) {
+  if (page * limit < data) {
     next.disabled = false;
   } else {
     next.disabled = true;
   }
-  if (store.carsPage > 1) {
-    prev.disabled = false;
-  } else {
-    prev.disabled = true;
-  }
-};
-
-export const updateStateWinners = (idNextButton, idPrevButton) => {
-  const next = document.getElementById(idNextButton);
-  const prev = document.getElementById(idPrevButton);
-
-  if (store.winnersPage * LIMIT_WINNERS_ON_PAGE < store.dataWinners.count) {
-    next.disabled = false;
-  } else {
-    next.disabled = true;
-  }
-  if (store.winnersPage > 1) {
+  if (page > 1) {
     prev.disabled = false;
   } else {
     prev.disabled = true;

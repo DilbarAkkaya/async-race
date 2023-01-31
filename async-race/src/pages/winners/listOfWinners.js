@@ -1,9 +1,10 @@
 import { getWinners } from '../../api/api';
 import { store } from '../../state/store';
-import { updateStateWinners } from '../../state/updateStateGarage';
+import { updateState } from '../../state/updateStateGarage';
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../common/utils';
 import { Winner } from './classWinner';
+import { LIMIT_WINNERS_ON_PAGE } from '../../common/constants';
 
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev-win', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next-win', disabled: true }, 'next');
@@ -28,5 +29,5 @@ export async function renderWinnersAndCount(parent, page) {
   const countWinners = document.querySelector('.count-win');
   countWinners.innerHTML = store.dataWinners.count;
   renderPaginationButtons('.title-win');
-  updateStateWinners('next-win', 'prev-win');
+  updateState('next-win', 'prev-win', store.winnersPage, LIMIT_WINNERS_ON_PAGE, store.dataWinners.count);
 }

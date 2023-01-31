@@ -1,9 +1,10 @@
 import { getCars } from '../../api/api';
 import { Car } from './classCar';
 import { store } from '../../state/store';
-import { updateStateGarage } from '../../state/updateStateGarage';
+import { updateState } from '../../state/updateStateGarage';
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../common/utils';
+import { LIMIT_CARS_ON_PAGE } from '../../common/constants';
 
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next');
@@ -25,5 +26,5 @@ export async function renderCarsAndCount(parentSelector, page) {
   const countCars = document.querySelector('.count');
   countCars.innerHTML = store.dataApi.count;
   renderPaginationButtons('.title-wrapper');
-  updateStateGarage('next', 'prev');
+  updateState('next', 'prev', store.carsPage, LIMIT_CARS_ON_PAGE, store.dataApi.count);
 }
