@@ -1,9 +1,7 @@
-import { getWinners } from '../../api/api';
 import { createTable } from './table';
 import { store } from '../../state/store';
 import { createNewElement } from '../../utils';
 import { renderWinnersAndCount } from './listOfWinners';
-import { updateStateWinners, updateWinnerView } from '../../state/updateStateGarage';
 
 function createWinnersMain() {
   const parent = new DocumentFragment();
@@ -35,7 +33,7 @@ function createMainElement() {
 
 export function renderWinnersMain() {
   createMainElement();
-//  updateWinnerView();
+  //  updateWinnerView();
   renderWinnersAndCount('.winner-tbody', store.winnersPage);
   return main;
 }

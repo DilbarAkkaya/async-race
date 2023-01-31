@@ -91,12 +91,12 @@ export const updateStateWinners = (idNextButton, idPrevButton) => {
   } else {
     prev.disabled = true;
   }
-}; 
+};
 export function updateWinnerView() {
   const winnerItems = document.querySelectorAll('.winner-item');
   winnerItems.forEach((item) => item.remove());
-  }
-  //const main = document.getElementsByTagName('main');
+}
+// const main = document.getElementsByTagName('main');
 
- // console.log(main)
-//winnerItems.forEach((item) => item.remove()); 
+// console.log(main)
+// winnerItems.forEach((item) => item.remove());

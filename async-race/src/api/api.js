@@ -1,7 +1,6 @@
 import {
   url, LIMIT_CARS_ON_PAGE, urlEngine, urlWinners, LIMIT_WINNERS_ON_PAGE,
 } from '../constants';
-import { store } from '../state/store';
 
 export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   const result = {
@@ -38,7 +37,9 @@ export async function createCar(body) {
 
 export async function getCar(id) {
   let result = 0;
+
   const response = await fetch(`${url}/${id}`);
+  console.log(response)
   if (response.ok) {
     result = await response.json();
     return result;
@@ -79,13 +80,12 @@ export async function stopCar(id) {
   const response = await fetch(`${urlEngine}?id=${id}&status=stopped`);
   if (response.ok) {
     result = await response.json();
-    console.log(result)
   }
-  return result
+  return result;
 }
 
 export async function driveCar(id) {
-  //let result = {};
+  // let result = {};
   const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
   return response.status !== 200 ? { success: false } : { success: true };
 /*   if (response.status === 200) {
@@ -110,7 +110,7 @@ export async function driveCar(id) {
       resolve(false)
     }
   })
-} */ 
+} */
 /* export function getSortOrderWinners(sort, order) {
   if (sort && order) return `&_sort=${sort}&_order=${order}`;
   return '';
@@ -121,9 +121,8 @@ export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON
     items: [],
     count: '',
   };
- 
+
   const response = await fetch(`${urlWinners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`);
-  console.log(`${urlWinners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order})}`)
   if (response.ok) {
     const winnersItems = await response.json();
     result.items = await Promise.all(
@@ -140,12 +139,11 @@ export async function getWinner(id) {
   const response = await fetch(`${urlWinners}/${id}`);
   if (response.ok) {
     result = await response.json();
-    console.log(result)
-    /*{
+    /* {
     "id": 1,
     "wins": 1,
     "time": 10
-}*/
+} */
     return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
@@ -153,15 +151,14 @@ export async function getWinner(id) {
 
 export async function getWinnerStatus(id) {
   const response = (await fetch(`${urlWinners}/${id}`)).status;
-    return response;
-  }
-  /*if id is in server, status.ok*/
+  return response;
+}
+/* if id is in server, status.ok */
 export async function deleteWinner(id) {
   let result = 0;
   const response = await fetch(`${urlWinners}/${id}`, { method: 'DELETE' });
   if (response.ok) {
     result = await response.json();
-    console.log(result)
     return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);

@@ -7,32 +7,29 @@ import { updateGarageView, updateWinnerView } from '../state/updateStateGarage';
 
 const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' });
 const bodyElement = document.body;
-const mainGarage = createNewElement('div', { class: 'main-garage', id: 'main-garage' } );
-const mainWinner = createNewElement('div', { class: 'main-winner', id: 'main-winner' } );
+const mainGarage = createNewElement('div', { class: 'main-garage', id: 'main-garage' });
+const mainWinner = createNewElement('div', { class: 'main-winner', id: 'main-winner' });
 bodyElement.append(mainPage);
-mainPage.append(mainGarage)
-mainPage.append(mainWinner)
+mainPage.append(mainGarage);
+mainPage.append(mainWinner);
 mainGarage.append(renderGarageMain());
-//mainWinner.append(renderWinnersMain());
+// mainWinner.append(renderWinnersMain());
 function handleLocation() {
   const path = window.location.pathname;
   if (path === '/') {
     mainWinner.style.display = 'none';
     mainGarage.style.display = 'block';
-   // updateWinnerView();
-   // mainPage.innerHTML = '';
-
-
+    // updateWinnerView();
+    // mainPage.innerHTML = '';
   } else if (path === '/winners') {
     mainGarage.style.display = 'none';
-    mainWinner.style.display = 'block'
+    mainWinner.style.display = 'block';
     updateWinnerView();
-    console.log(store, '555555')
-  //  mainWinner.innerHTML = '';
-  mainWinner.append(renderWinnersMain());
-  
+    console.log(store, '555555');
+    //  mainWinner.innerHTML = '';
+    mainWinner.append(renderWinnersMain());
   } else {
-/*     mainPage.innerHTML = '';
+    /*     mainPage.innerHTML = '';
     mainPage.append(createErrorMain()); */
   }
 }
@@ -46,6 +43,6 @@ export function route(event) {
 
 window.addEventListener('popstate', handleLocation);
 window.route = route;
-//updateGarageView();
+// updateGarageView();
 updateWinnerView();
 handleLocation();

@@ -1,12 +1,12 @@
 import {
-  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, createWinner, getWinnerStatus, saveWinner, updateWinner,
+  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, createWinner, getWinnerStatus, updateWinner,
 } from '../../api/api';
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
-/* 
+/*
 function animation(car, distance, animationTime) {
   let start = 0;
   const animationStore = {};
@@ -59,34 +59,30 @@ function disableButtons() {
 }
 async function startMoveCar(id) {
   const carImage = document.querySelector(`#image-${id}`);
-  //const flag = document.querySelector(`#flag-${id}`);
+  // const flag = document.querySelector(`#flag-${id}`);
 
   return new Promise((resolve, reject) => {
-    //const promiseStart = startCar(id);
+    // const promiseStart = startCar(id);
     startCar(id).then((result) => {
-      console.log(result)
       const time = Math.round(result.distance / result.velocity);
       const distanceBetweenCarFlag = window.innerWidth - 190;
       const animationId = animation(carImage, distanceBetweenCarFlag, time);
       store.animation[id] = animationId;
-      console.log(store.animation)
       store.animation[id].time = time;
-   // const promiseDrive = driveCar(id);
-    driveCar(id).then((result) => {
-      if (result.success === false) {
-        cancelAnimationFrame(store.animation[id].id);
-        reject(new Error('The engine stopped'));
-      } else {
-        const carObj = store.dataApi.items.find((car) => car.id === id);
-        const timeInSec = +(store.animation[id].time / 1000).toFixed(2);
-        resolve({ ...carObj, time: timeInSec });
-      }
+      // const promiseDrive = driveCar(id);
+      driveCar(id).then((result) => {
+        if (result.success === false) {
+          cancelAnimationFrame(store.animation[id].id);
+          reject(new Error('The engine stopped'));
+        } else {
+          const carObj = store.dataApi.items.find((car) => car.id === id);
+          const timeInSec = +(store.animation[id].time / 1000).toFixed(2);
+          resolve({ ...carObj, time: timeInSec });
+        }
+      });
     });
   });
-})
 }
-
-
 
 /* async function startMoveCar(id) {
   const carImage = document.querySelector(`#image-${id}`);
@@ -124,21 +120,18 @@ function createNewWinner(value) {
   getWinnerStatus(value.id)
     .then((result) => {
       if (result === 404) {
-      createWinner(newWinner)
-      console.log(store, '11111')
+        createWinner(newWinner);
       } else {
         getWinner(value.id).then((result) => {
-          console.log(result)
           updateWinner(value.id, newWinner = {
             id: result.id,
             wins: result.wins + 1,
             time: value.time > result.time ? result.time : value.time,
-          }).then((result) => console.log(store))
-        })
-
+          });
+        });
       }
-    })
-  }
+    });
+}
 
 export function clickPaginationButtons() {
   document.addEventListener('click', async (e) => {
@@ -215,7 +208,7 @@ export function clickPaginationButtons() {
         .then((value) => {
           store.winnerName = value.name;
           store.winnerTime = value.time;
-          createNewWinner(value)
+          createNewWinner(value);
           return value;
         })
         .catch(new Error('Something went wrong'));
@@ -227,22 +220,18 @@ export function clickPaginationButtons() {
       const cars = store.dataApi.items;
       await Promise.all(cars.map((car) => {
         stopCar(car.id);
-        console.log(store.animation[car.id])
         if (store.animation[car.id]) {
-        cancelAnimationFrame(store.animation[car.id].id);
-      }
-      const enabledBtns = document.querySelectorAll('.enabled');
-     enabledBtns.forEach((btn) => btn.removeAttribute('disabled'))
+          cancelAnimationFrame(store.animation[car.id].id);
+        }
+        const enabledBtns = document.querySelectorAll('.enabled');
+        enabledBtns.forEach((btn) => btn.removeAttribute('disabled'));
         const carImage = document.querySelector(`#image-${car.id}`);
         carImage.style.transform = 'translateX(0)';
         return car;
       }));
     }
-
   });
 }
-
-
 
 export function clickCreate() {
   document.addEventListener('submit', async (event) => {

@@ -8,6 +8,7 @@ export function clickWinnersPaginationButtons() {
       updateWinnerView();
       store.winnersPage++;
       renderWinnersAndCount('.winner-tbody', store.winnersPage);
+      
       updatePageNumber('.page-win', store.winnersPage);
     }
     if (e.target.closest('#prev-win')) {
@@ -25,32 +26,29 @@ export function clickWinnersPaginationButtons() {
   updateWinnerView();
 
 } */
- document.addEventListener('click', (e) => {
-  console.log(store.order)
+document.addEventListener('click', (e) => {
   if (e.target.closest('.table-wins')) {
     store.sort = 'wins';
-   if (store.order === 'asc') {
-    store.order = 'desc';
-    console.log(store.order)
-   }else {
-    store.order = 'asc'
-   }
-   updateWinnerView();
-   renderWinnersAndCount('.winner-tbody', store.winnersPage)
+    if (store.order === 'asc') {
+      store.order = 'desc';
+    } else {
+      store.order = 'asc';
+    }
+    updateWinnerView();
+    renderWinnersAndCount('.winner-tbody', store.winnersPage);
   }
   if (e.target.closest('.table-time')) {
     store.sort = 'time';
     if (store.order === 'asc') {
-     store.order = 'desc';
-     console.log(store.order)
-    }else {
-     store.order = 'asc'
+      store.order = 'desc';
+    } else {
+      store.order = 'asc';
     }
     updateWinnerView();
-    renderWinnersAndCount('.winner-tbody', store.winnersPage)
-   }
- })
-/* 
+    renderWinnersAndCount('.winner-tbody', store.winnersPage);
+  }
+});
+/*
 const sortByWins = async (e) => {
   const winsTableCol = e.target.closest('.table-wins');
   const bestTimeTableCol = document.querySelector('.table-time');
