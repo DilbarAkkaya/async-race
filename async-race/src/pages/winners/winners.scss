@@ -7,7 +7,7 @@ $lightColor: #c1c0c3;
 .table{
   background: $SuccessColor;
   font-size: 30px;
-  width: 70%;
+  width: 100%;
 }
 .table th{
   background-color: $SecondaryColor;
@@ -30,4 +30,12 @@ $lightColor: #c1c0c3;
   padding: 10px; 
   margin: auto; 
   background: $SuccessColor;
+ }
+
+ .title-win {
+   justify-content: space-between;
+   margin-bottom: 5px;
+ }
+ .subtitle {
+  margin: 0;
  }
