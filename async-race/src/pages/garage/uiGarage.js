@@ -13,6 +13,28 @@ function disableButtons() {
   moveButtons.forEach((item) => { item.disabled = 'true'; });
 }
 
+function createNewWinner(value) {
+  let newWinner = {
+    id: value.id,
+    wins: 1,
+    time: value.time,
+  };
+  getWinnerStatus(value.id)
+    .then((result) => {
+      if (result === 404) {
+        createWinner(newWinner);
+      } else {
+        getWinner(value.id).then((result) => {
+          updateWinner(value.id, newWinner = {
+            id: result.id,
+            wins: result.wins + 1,
+            time: value.time > result.time ? result.time : value.time,
+          });
+        });
+      }
+    });
+}
+
 async function startMoveCar(id) {
   const carImage = document.querySelector(`#image-${id}`);
   return new Promise((resolve, reject) => {
@@ -36,29 +58,7 @@ async function startMoveCar(id) {
   });
 }
 
-function createNewWinner(value) {
-  let newWinner = {
-    id: value.id,
-    wins: 1,
-    time: value.time,
-  };
-  getWinnerStatus(value.id)
-    .then((result) => {
-      if (result === 404) {
-        createWinner(newWinner);
-      } else {
-        getWinner(value.id).then((result) => {
-          updateWinner(value.id, newWinner = {
-            id: result.id,
-            wins: result.wins + 1,
-            time: value.time > result.time ? result.time : value.time,
-          });
-        });
-      }
-    });
-}
-
-export function clickPaginationButtons() {
+export function clickGaragePagination() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next')) {
       updateGarageView();
@@ -72,6 +72,11 @@ export function clickPaginationButtons() {
       renderCarsAndCount('.list-cars', store.carsPage);
       updatePageNumber('.page', store.carsPage);
     }
+  });
+}
+
+export function clickGenerateCars() {
+  document.addEventListener('click', async (e) => {
     if (e.target.closest('#generate-btn')) {
       e.target.disabled = true;
       const cars = generateRandomCars();
@@ -80,6 +85,11 @@ export function clickPaginationButtons() {
       renderCarsAndCount('.list-cars', store.carsPage);
       e.target.disabled = false;
     }
+  });
+}
+
+export function clickSelectCar() {
+  document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('select-btn')) {
       const formUpdate = document.getElementById('form-update');
       Array.from(formUpdate.children).forEach((element) => {
@@ -94,6 +104,11 @@ export function clickPaginationButtons() {
       formUpdate.children[0].value = store.inputName;
       formUpdate.children[1].value = store.inputColor;
     }
+  });
+}
+
+export function clickRemoveCar() {
+  document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('remove-btn')) {
       const countCars = document.querySelector('.count');
       const idValue = e.target.getAttribute('id');
@@ -103,6 +118,11 @@ export function clickPaginationButtons() {
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count;
     }
+  });
+}
+
+export function clickStartCar() {
+  document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-start')) {
       e.target.setAttribute('disabled', 'true');
       const idValue = e.target.getAttribute('id');
@@ -111,6 +131,10 @@ export function clickPaginationButtons() {
       stopBtn.removeAttribute('disabled');
       await startMoveCar(id);
     }
+  });
+}
+export function clickStopCar() {
+  document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-stop')) {
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('stop-')[1];
@@ -124,6 +148,11 @@ export function clickPaginationButtons() {
       e.target.setAttribute('disabled', true);
       car.style.transform = 'translateX(0)';
     }
+  });
+}
+
+export function clickRace() {
+  document.addEventListener('click', async (e) => {
     if (e.target.closest('#race')) {
       store.isAnimated = true;
       disableButtons();
@@ -141,6 +170,11 @@ export function clickPaginationButtons() {
       const resetBtn = document.querySelector('#reset');
       resetBtn.removeAttribute('disabled');
     }
+  });
+}
+
+export function clickReset() {
+  document.addEventListener('click', async (e) => {
     if (e.target.closest('#reset')) {
       const cars = store.dataApi.items;
       await Promise.all(cars.map((car) => {
@@ -159,16 +193,16 @@ export function clickPaginationButtons() {
 }
 
 export function clickCreate() {
-  document.addEventListener('submit', async (event) => {
-    if (event.target.closest('#form-create')) {
-      event.preventDefault();
+  document.addEventListener('submit', async (e) => {
+    if (e.target.closest('#form-create')) {
+      e.preventDefault();
       const car = {
         name: store.inputName,
         color: store.inputColor,
       };
       await createCar(car);
-      event.target.children[1].disabled = true;
-      event.target.children[2].disabled = true;
+      e.target.children[1].disabled = true;
+      e.target.children[2].disabled = true;
       updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       cleanInputValue('.input-create', '#color-name-create');
@@ -177,9 +211,9 @@ export function clickCreate() {
 }
 
 export function clickUpdate() {
-  document.addEventListener('submit', async (event) => {
-    if (event.target.closest('#form-update')) {
-      event.preventDefault();
+  document.addEventListener('submit', async (e) => {
+    if (e.target.closest('#form-update')) {
+      e.preventDefault();
       const car = {
         name: store.inputName,
         color: store.inputColor,
@@ -188,7 +222,7 @@ export function clickUpdate() {
       updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       cleanInputValue('.input-update', '#color-name-update');
-      setAttributeForFormUpdate(event.target.closest('#form-update'));
+      setAttributeForFormUpdate(e.target.closest('#form-update'));
     }
   });
 }

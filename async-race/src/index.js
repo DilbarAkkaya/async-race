@@ -1,14 +1,23 @@
 import './style.scss';
 import { renderCommonView } from './pages/commonViewPage';
 import {
-  clickCreate, clickPaginationButtons, clickUpdate,
+  clickCreate, clickGaragePagination, clickStartCar, clickUpdate,
+  clickGenerateCars, clickRemoveCar, clickSelectCar, clickStopCar,
+  clickRace, clickReset,
 } from './pages/garage/uiGarage';
 import { inputCreateListener, inputUpdateListener } from './state/updateStateGarage';
 import { clickWinnersPaginationButtons } from './pages/winners/uiWinners';
 
 document.addEventListener('DOMContentLoaded', async () => {
   renderCommonView();
-  clickPaginationButtons();
+  clickGaragePagination();
+  clickGenerateCars();
+  clickSelectCar();
+  clickRemoveCar();
+  clickStartCar();
+  clickStopCar();
+  clickRace();
+  clickReset();
   clickWinnersPaginationButtons();
   inputCreateListener();
   inputUpdateListener();
