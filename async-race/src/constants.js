@@ -16,3 +16,6 @@ export const NAMES = ['Model S', 'Vesta', '7', 'Camry', 'Mondeo', 'Nexia', 'Cors
 export const NUMBERS_HEX_CODE = '0123456789ABCDEF';
 export const HASH_SYMBOL = '#';
 export const THREE_PARES_HEX_DIGIT = 6;
+export const MILLISECONDS_IN_MINUTE = 1000;
+export const POSITION_RIGTH_FLAG = 190;
+export const DIGIT_AFTER_DECIMAL = 2;

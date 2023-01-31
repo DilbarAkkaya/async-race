@@ -6,6 +6,7 @@ import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
+import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../constants';
 
 function animation(car, distance, animationTime) {
   let start = 0;
@@ -33,7 +34,7 @@ async function startMoveCar(id) {
   return new Promise((resolve, reject) => {
     startCar(id).then((result) => {
       const time = Math.round(result.distance / result.velocity);
-      const distanceBetweenCarFlag = window.innerWidth - 190;
+      const distanceBetweenCarFlag = window.innerWidth - POSITION_RIGTH_FLAG;
       const animationId = animation(carImage, distanceBetweenCarFlag, time);
       store.animation[id] = animationId;
       store.animation[id].time = time;
@@ -43,7 +44,7 @@ async function startMoveCar(id) {
           reject(new Error('The engine stopped'));
         } else {
           const carObj = store.dataApi.items.find((car) => car.id === id);
-          const timeInSec = +(store.animation[id].time / 1000).toFixed(2);
+          const timeInSec = +(store.animation[id].time / MILLISECONDS_IN_MINUTE).toFixed(DIGIT_AFTER_DECIMAL);
           resolve({ ...carObj, time: timeInSec });
         }
       });
