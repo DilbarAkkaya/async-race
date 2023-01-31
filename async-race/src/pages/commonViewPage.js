@@ -1,7 +1,7 @@
 import { createLinkElement } from '../components/link';
 import { createHeader } from '../components/header';
 import { route } from '../router/router';
-import { createNewElement } from '../utils';
+import { createNewElement } from '../common/utils';
 
 const garageButton = createLinkElement({ class: 'btn btn-primary', href: '/' }, 'To Garage');
 const winnerButton = createLinkElement({ class: 'btn btn-primary', href: '/winners' }, 'To Winners');

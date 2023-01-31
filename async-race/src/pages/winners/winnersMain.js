@@ -1,6 +1,6 @@
 import { createTable } from './table';
 import { store } from '../../state/store';
-import { createNewElement } from '../../utils';
+import { createNewElement } from '../../common/utils';
 import { renderWinnersAndCount } from './listOfWinners';
 
 function createWinnersMain() {

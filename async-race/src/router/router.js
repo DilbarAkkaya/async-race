@@ -1,5 +1,5 @@
 import { renderGarageMain } from '../pages/garage/garageMain';
-import { createNewElement } from '../utils';
+import { createNewElement } from '../common/utils';
 import { renderWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 import { store } from '../state/store';

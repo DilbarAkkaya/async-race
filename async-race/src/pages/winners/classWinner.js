@@ -1,4 +1,4 @@
-import { createNewElement } from '../../utils';
+import { createNewElement } from '../../common/utils';
 import { renderCarImage } from '../garage/carImage';
 
 export class Winner {

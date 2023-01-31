@@ -1,4 +1,4 @@
-import { createNewElement } from '../utils';
+import { createNewElement } from '../common/utils';
 
 export function createInput(idOfInput, typeOfInput, classNameOfInput) {
   const parent = new DocumentFragment();

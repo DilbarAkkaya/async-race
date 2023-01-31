@@ -1,4 +1,4 @@
-import { createNewElement } from '../utils';
+import { createNewElement } from '../common/utils';
 import { createInput } from './input';
 import { createButtonElement } from './button';
 import { COLORS } from '../common/constants';

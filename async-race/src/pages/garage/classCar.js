@@ -1,5 +1,5 @@
 import { createButtonElement } from '../../components/button';
-import { createNewElement } from '../../utils';
+import { createNewElement } from '../../common/utils';
 import { renderCarImage } from './carImage';
 
 export class Car {

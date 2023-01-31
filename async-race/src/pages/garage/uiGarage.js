@@ -4,7 +4,7 @@ import {
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
-import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
+import { generateRandomCars, setAttributeForFormUpdate } from '../../common/utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
 import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../common/constants';
 

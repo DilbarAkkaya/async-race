@@ -2,7 +2,7 @@ import { getWinners } from '../../api/api';
 import { store } from '../../state/store';
 import { updateStateWinners } from '../../state/updateStateGarage';
 import { createButtonElement } from '../../components/button';
-import { createNewElement } from '../../utils';
+import { createNewElement } from '../../common/utils';
 import { Winner } from './classWinner';
 
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev-win', disabled: true }, 'prev');

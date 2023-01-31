@@ -3,7 +3,7 @@ import { Car } from './classCar';
 import { store } from '../../state/store';
 import { updateStateGarage } from '../../state/updateStateGarage';
 import { createButtonElement } from '../../components/button';
-import { createNewElement } from '../../utils';
+import { createNewElement } from '../../common/utils';
 
 const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
 const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next');
