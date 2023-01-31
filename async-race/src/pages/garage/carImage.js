@@ -5,7 +5,7 @@ export function renderCarImage(color, id) {
   div.innerHTML = `
 <svg fill-rule="nonzero" fill=${color} height="70px" stroke="black" stroke-width="10" width="70px" transform="translate(0 0)"
 version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-viewBox="0 0 460.384 245.384" xml:space="preserve">
+viewBox="0 0 460.384 266.384" xml:space="preserve">
 <g>
 <path d="M 409.227 196.421 l -66.917 -7.645 l -35.714 -58.056
 c -10.905 -17.728 -30.61 -28.741 -51.424 -28.741 H 133
