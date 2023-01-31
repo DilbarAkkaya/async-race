@@ -14,6 +14,4 @@ document.addEventListener('DOMContentLoaded', async () => {
   inputUpdateListener();
   clickCreate();
   clickUpdate();
-// clickPrev();
-// await updateStateGarage()
 });

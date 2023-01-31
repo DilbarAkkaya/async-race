@@ -55,12 +55,6 @@ export function decrementPage() {
   store.carsPage--;
 }
 
-/* export async function updateStateGarage() {
-  updateGarageView();
-  renderCarsAndCount('.list-cars', store.carsPage);
-  updatePageNumber();
-} */
-
 export const updateStateGarage = (idNextButton, idPrevButton) => {
   const next = document.getElementById(idNextButton);
   const prev = document.getElementById(idPrevButton);
@@ -92,11 +86,8 @@ export const updateStateWinners = (idNextButton, idPrevButton) => {
     prev.disabled = true;
   }
 };
+
 export function updateWinnerView() {
   const winnerItems = document.querySelectorAll('.winner-item');
   winnerItems.forEach((item) => item.remove());
 }
-// const main = document.getElementsByTagName('main');
-
-// console.log(main)
-// winnerItems.forEach((item) => item.remove());

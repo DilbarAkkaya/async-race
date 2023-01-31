@@ -33,7 +33,6 @@ function createMainElement() {
 
 export function renderWinnersMain() {
   createMainElement();
-  //  updateWinnerView();
   renderWinnersAndCount('.winner-tbody', store.winnersPage);
   return main;
 }

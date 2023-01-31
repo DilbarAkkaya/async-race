@@ -15,7 +15,6 @@ function createGarageMain() {
 
 const main = createGarageMain();
 const listOfCars = createNewElement('ul', { class: 'list-cars' });
-// const paginationContainer = createNewElement('div', { class: 'pagination-container' });
 const titleGarage = createNewElement('h1', { class: 'title' }, 'GARAGE  ');
 const countCars = createNewElement('span', { class: 'count' });
 const pageGarage = createNewElement('h2', { class: 'subtitle' }, 'Page  ');
@@ -23,14 +22,11 @@ const pageNumber = createNewElement('span', { class: 'page' }, store.carsPage);
 const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create', 'input-create');
 const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update', 'input-update');
 const subtitleWrapper = createNewElement('div', { class: 'title-wrapper row' });
-
 setAttributeForFormUpdate(carUpdateForm);
 const containerButtons = createNewElement('div', { class: 'btn-container' });
 const raceButton = createButtonElement({ class: 'btn btn-ptimary move enabled', id: 'race' }, 'race');
 const resetButton = createButtonElement({ class: 'btn btn-ptimary move', id: 'reset' }, 'reset');
 const generateCarsButton = createButtonElement({ class: 'btn btn-ptimary move enabled', id: 'generate-btn' }, 'generate cars');
-/* const prev = createButtonElement({ class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
-const next = createButtonElement({ class: 'btn btn-primary', id: 'next', disabled: true }, 'next'); */
 
 export function renderFormsButtons() {
   main.prepend(carCreateForm);
@@ -45,7 +41,6 @@ export function renderFormsButtons() {
   pageGarage.append(pageNumber);
   main.append(subtitleWrapper);
   main.append(listOfCars);
-  // main.append(paginationContainer);
   return main;
 }
 
@@ -54,8 +49,6 @@ export function renderGarageMain() {
     renderFormsButtons();
     updateGarageView();
     renderCarsAndCount('.list-cars', store.carsPage);
-    // renderPaginationButtons();
-    // updateStateGarage()
   }
   return main;
 }

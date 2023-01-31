@@ -8,28 +8,35 @@ $lightColor: #c1c0c3;
   align-items: center;
   justify-content: space-between;
 }
+
 .list-cars {
   padding: 0;
 }
+
 .road-container {
- justify-content: space-between;
- border-bottom: 4px dashed $PrimaryColor;
+  justify-content: space-between;
+  border-bottom: 4px dashed $PrimaryColor;
 }
+
 .car-name {
   font-size: 26px;
   align-self: end;
 }
+
 .flag {
   font-size: 36px;
   align-self: end;
   margin-right: 50px;
 }
+
 .car-item {
   margin-bottom: 10px;
 }
+
 .car-engine-container {
   margin-top: 10px;
 }
+
 .icon {
   background: none;
   border: 3px solid;
@@ -41,14 +48,21 @@ $lightColor: #c1c0c3;
   height: 40px;
   cursor: pointer;
 }
+
 .icon:disabled {
   color: $SecondaryColor;
   cursor: auto;
 }
 
-#prev:disabled, #next:disabled, #generate-btn:disabled, #create:disabled, #update:disabled, #race:disabled, #reset:disabled {
- opacity: 0.6;
- cursor: auto;
+#prev:disabled,
+#next:disabled,
+#generate-btn:disabled,
+#create:disabled,
+#update:disabled,
+#race:disabled,
+#reset:disabled {
+  opacity: 0.6;
+  cursor: auto;
 }
 
 form {

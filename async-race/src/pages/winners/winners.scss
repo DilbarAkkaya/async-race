@@ -4,12 +4,13 @@ $SecondaryColor: #b3abab;
 $SuccessColor: #adff2a;
 $lightColor: #c1c0c3;
 
-.table{
+.table {
   background: $SuccessColor;
   font-size: 24px;
   width: 100%;
 }
-.table th{
+
+.table th {
   background-color: $SecondaryColor;
   padding: 10px;
 }
@@ -17,28 +18,33 @@ $lightColor: #c1c0c3;
 .winner-tbody {
   text-align: center;
 }
-#prev-win:disabled, #next-win:disabled {
+
+#prev-win:disabled,
+#next-win:disabled {
   opacity: 0.6;
   cursor: auto;
- }
- .modal {
+}
+
+.modal {
   z-index: 10;
   position: absolute;
   top: 40%;
   left: 50%;
-  width: 200px; 
-  padding: 10px; 
-  margin: auto; 
+  width: 200px;
+  padding: 10px;
+  margin: auto;
   background: $SuccessColor;
- }
+}
 
- .title-win {
-   justify-content: space-between;
-   margin-bottom: 5px;
- }
- .title {
+.title-win {
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.title {
   margin: 5px 0 3px 0;
- }
- .subtitle {
+}
+
+.subtitle {
   margin: 0;
- }
+}

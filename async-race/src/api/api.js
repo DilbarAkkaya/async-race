@@ -16,15 +16,6 @@ export async function getCars(page = 1, limit = LIMIT_CARS_ON_PAGE) {
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
 
-/*   const response = await fetch(`${url}?_page=${page}&_limit=${limit}`);
-  if (response.ok) {
-    store.dataApi.items = await response.json();
-    store.dataApi.count = response.headers.get('X-Total-Count');
-    return store.dataApi;
-  }
-  throw new Error(`Could not fetch ${url}, status: ${response.status}`);
-} */
-
 export async function createCar(body) {
   (await fetch(url, {
     method: 'POST',
@@ -84,36 +75,9 @@ export async function stopCar(id) {
 }
 
 export async function driveCar(id) {
-  // let result = {};
   const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
   return response.status !== 200 ? { success: false } : { success: true };
-/*   if (response.status === 200) {
-    result = await response.json();
-    result.success = true;
-  //  console.log(result)
-  }
-  if (response.status === 500 || response.result === 429 || response.result === 404 || response.result === 400) {
-    result.success = false;
-  } */
-/*   return result; */
 }
-
-/* export async function driveCar(id) {
-  return new Promise((resolve, reject) => {
-    try {
-      const response = fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' })
-     //if (response.status !== 200) resolve(false)
-      if (response.status === 500) reject()
-      resolve(response.json())
-    } catch (err) {
-      resolve(false)
-    }
-  })
-} */
-/* export function getSortOrderWinners(sort, order) {
-  if (sort && order) return `&_sort=${sort}&_order=${order}`;
-  return '';
-} */
 
 export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON_PAGE) {
   const result = {
@@ -138,11 +102,6 @@ export async function getWinner(id) {
   const response = await fetch(`${urlWinners}/${id}`);
   if (response.ok) {
     result = await response.json();
-    /* {
-    "id": 1,
-    "wins": 1,
-    "time": 10
-} */
     return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
@@ -152,7 +111,7 @@ export async function getWinnerStatus(id) {
   const response = (await fetch(`${urlWinners}/${id}`)).status;
   return response;
 }
-/* if id is in server, status.ok */
+
 export async function deleteWinner(id) {
   let result = 0;
   const response = await fetch(`${urlWinners}/${id}`, { method: 'DELETE' });

@@ -15,21 +15,25 @@ body {
   position: relative;
 }
 
-main, header {
+main,
+header {
   padding: 20px;
 }
 
 header {
   justify-content: space-between;
 }
+
 a {
   display: block;
   text-decoration: none;
 }
+
 .column {
   display: flex;
   flex-direction: column;
 }
+
 .row {
   display: flex;
   flex-direction: row;
@@ -53,6 +57,7 @@ li {
   padding: 5px 0;
   margin-right: 10px;
 }
+
 .title-app {
   font-size: 26px;
   font-weight: 700;

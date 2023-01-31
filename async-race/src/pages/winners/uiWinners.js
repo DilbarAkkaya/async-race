@@ -20,12 +20,6 @@ export function clickWinnersPaginationButtons() {
   });
 }
 
-/*  function sortingByOrder(sortBy) {
-  store.order = store.order === 'asc' ? 'desc' : 'asc';
-  store.sort = sortBy;
-  updateWinnerView();
-
-} */
 document.addEventListener('click', (e) => {
   if (e.target.closest('.table-wins')) {
     store.sort = 'wins';
@@ -52,23 +46,3 @@ document.addEventListener('click', (e) => {
     renderWinnersAndCount('.winner-tbody', store.winnersPage);
   }
 });
-/*
-const sortByWins = async (e) => {
-  const winsTableCol = e.target.closest('.table-wins');
-  const bestTimeTableCol = document.querySelector('.table-time');
-
-  if (winsTableCol) {
-    bestTimeTableCol.classList.remove('winners-tablebest-time--sort-asc', 'winners-tablebest-time--sort-desc');
-    store.winnersSortType = 'wins';
-    if (winsTableCol.classList.contains('winners-tablewins--sort-asc')) {
-      winsTableCol.classList.add('winners-tablewins--sort-desc');
-      winsTableCol.classList.remove('winners-tablewins--sort-asc');
-      store.winnersOrder = 'desc';
-    } else {
-      winsTableCol.classList.add('winners-tablewins--sort-asc');
-      winsTableCol.classList.remove('winners-tablewins--sort-desc');
-      store.winnersOrder = 'asc';
-    }
-    await updateWinnresTablePage();
-  }
-} */

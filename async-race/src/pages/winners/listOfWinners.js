@@ -18,7 +18,6 @@ export function renderPaginationButtons(selector) {
 }
 
 export async function renderWinnersAndCount(parent, page) {
-  // console.log(store.order)
   const res = await getWinners(store.sort, store.order, page);
   store.dataWinners.items = res.items;
   store.dataWinners.count = res.count;

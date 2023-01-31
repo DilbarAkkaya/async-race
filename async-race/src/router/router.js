@@ -16,15 +16,13 @@ mainPage.append(mainGarage);
 mainPage.append(mainWinner);
 mainPage.append(mainError);
 mainGarage.append(renderGarageMain());
-// mainWinner.append(renderWinnersMain());
+
 function handleLocation() {
   const path = window.location.pathname;
   if (path === '/') {
     mainWinner.style.display = 'none';
     mainGarage.style.display = 'block';
     mainError.style.display = 'none';
-    // updateWinnerView();
-    // mainPage.innerHTML = '';
   } else if (path === '/winners') {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'block';
@@ -33,12 +31,10 @@ function handleLocation() {
       modal.style.display = 'none';
     }
     updateWinnerView();
-    //  mainWinner.innerHTML = '';
     mainWinner.append(renderWinnersMain());
   } else {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'none';
-    // mainPage.innerHTML = '';
   }
 }
 export function route(event) {
@@ -51,6 +47,5 @@ export function route(event) {
 
 window.addEventListener('popstate', handleLocation);
 window.route = route;
-// updateGarageView();
 updateWinnerView();
 handleLocation();
