@@ -35,7 +35,6 @@ function handleLocation() {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'none';
     // mainPage.innerHTML = '';
-
   }
 }
 export function route(event) {
