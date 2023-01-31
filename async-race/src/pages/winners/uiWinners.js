@@ -30,9 +30,11 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('.table-wins')) {
     store.sort = 'wins';
     if (store.order === 'asc') {
+      e.target.innerText = 'Wins ↓';
       store.order = 'desc';
     } else {
       store.order = 'asc';
+      e.target.innerText = 'Wins ↑'
     }
     updateWinnerView();
     renderWinnersAndCount('.winner-tbody', store.winnersPage);
@@ -40,8 +42,10 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('.table-time')) {
     store.sort = 'time';
     if (store.order === 'asc') {
+      e.target.innerText = 'Best time (sec) ↑';
       store.order = 'desc';
     } else {
+      e.target.innerText = 'Best time (sec) ↓';
       store.order = 'asc';
     }
     updateWinnerView();
