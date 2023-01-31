@@ -18,12 +18,11 @@ mainPage.append(mainError);
 mainGarage.append(renderGarageMain());
 
 function handleLocation() {
-  const path = window.location.pathname;
-  if (path === '/') {
+  if (window.location.hash === '#/garage') {
     mainWinner.style.display = 'none';
     mainGarage.style.display = 'block';
     mainError.style.display = 'none';
-  } else if (path === '/winners') {
+  } else if (window.location.hash === '#/winners') {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'block';
     mainError.style.display = 'none';
