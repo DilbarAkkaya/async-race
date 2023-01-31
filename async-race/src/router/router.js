@@ -28,8 +28,10 @@ function handleLocation() {
     //  mainWinner.innerHTML = '';
     mainWinner.append(renderWinnersMain());
   } else {
-    /*     mainPage.innerHTML = '';
-    mainPage.append(createErrorMain()); */
+    mainGarage.style.display = 'none';
+    mainWinner.style.display = 'none';
+    // mainPage.innerHTML = '';
+    mainPage.append(createErrorMain());
   }
 }
 export function route(event) {
