@@ -1,4 +1,4 @@
-import { COLORS } from '../constants';
+import { COLORS } from '../common/constants';
 
 export const store = {
   carsPage: 1,

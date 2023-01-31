@@ -1,6 +1,6 @@
 import {
   MODELS, NAMES, NUMBERS_HEX_CODE, THREE_PARES_HEX_DIGIT, HASH_SYMBOL,
-} from './constants';
+} from './common/constants';
 
 export function createNewElement(el, attrs, text) {
   const newElement = document.createElement(el);

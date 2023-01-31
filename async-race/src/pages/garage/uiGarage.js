@@ -6,7 +6,7 @@ import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
 import { generateRandomCars, setAttributeForFormUpdate } from '../../utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
-import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../constants';
+import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../common/constants';
 
 function animation(car, distance, animationTime) {
   let start = 0;

@@ -1,7 +1,7 @@
 import { createNewElement } from '../utils';
 import { createInput } from './input';
 import { createButtonElement } from './button';
-import { COLORS } from '../constants';
+import { COLORS } from '../common/constants';
 
 export function renderForm(attrValueForm, idValueInput, typeValueInput, btnText, classNameOfInput) {
   const parent = new DocumentFragment();
