@@ -48,7 +48,7 @@ export async function updateCar(id, body) {
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
 export async function deleteCar(id) {
-  (await fetch(`${url}/${id}`, { method: 'DELETE' })).json();
+  (await fetch(`${url}/${id}`, { method: 'DELETE' }));
 }
 
 export async function startCar(id) {
