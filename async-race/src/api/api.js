@@ -101,8 +101,7 @@ export async function getWinner(id) {
 }
 
 export async function getWinnerStatus(id) {
-  const response = (await fetch(`${urlWinners}/${id}`)).status;
-  return response;
+  return (await fetch(`${urlWinners}/${id}`)).status;
 }
 
 export async function deleteWinner(id) {
