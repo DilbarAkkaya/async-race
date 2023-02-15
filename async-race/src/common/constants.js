@@ -4,10 +4,10 @@ export const COLORS = {
   green: '#ADFF2A',
 };
 
-const requestAdress = 'http://127.0.0.1:3000';
-export const url = `${requestAdress}/garage`;
-export const urlEngine = `${requestAdress}/engine`;
-export const urlWinners = `${requestAdress}/winners`;
+const REQUEST_ADDRESS = 'http://127.0.0.1:3000';
+export const url = `${REQUEST_ADDRESS}/garage`;
+export const urlEngine = `${REQUEST_ADDRESS}/engine`;
+export const urlWinners = `${REQUEST_ADDRESS}/winners`;
 export const LIMIT_CARS_ON_PAGE = 7;
 export const LIMIT_WINNERS_ON_PAGE = 10;
 
