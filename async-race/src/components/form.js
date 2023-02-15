@@ -1,6 +1,6 @@
 import { createNewElement } from '../common/utils';
 import { createInput } from './input';
-import { createButtonElement } from './button';
+// import { createButtonElement } from './button';
 import { COLORS } from '../common/constants';
 
 export function renderForm(attrValueForm, idValueInput, typeValueInput, btnText, classNameOfInput) {
@@ -9,7 +9,7 @@ export function renderForm(attrValueForm, idValueInput, typeValueInput, btnText,
   const input = createInput(idValueInput, typeValueInput, classNameOfInput);
   const inputColor = createInput(`color-${idValueInput}`, 'color', 'input-color');
   inputColor.setAttribute('value', COLORS.green);
-  const createButton = createButtonElement({ class: 'btn btn-primary', id: btnText, type: 'submit' }, btnText);
+  const createButton = createNewElement('button', { class: 'btn btn-primary', id: btnText, type: 'submit' }, btnText);
   createButton.setAttribute('disabled', 'true');
   form.append(input);
   form.append(inputColor);

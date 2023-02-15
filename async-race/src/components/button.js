@@ -1,4 +1,4 @@
-export function createButtonElement(attrs, text) {
+/* export function createButtonElement(attrs, text) {
   const parent = new DocumentFragment();
   const newElement = document.createElement('button');
   if (attrs) {
@@ -17,4 +17,4 @@ export function createButtonElement(attrs, text) {
   }
   parent.append(newElement);
   return newElement;
-}
+} */
