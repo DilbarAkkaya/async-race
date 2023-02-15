@@ -60,12 +60,8 @@ export async function startCar(id) {
 }
 
 export async function stopCar(id) {
-  let result = {};
   const response = await fetch(`${urlEngine}?id=${id}&status=stopped`);
-  if (response.ok) {
-    result = await response.json();
-  }
-  return result;
+  return response.json();
 }
 
 export async function driveCar(id) {
@@ -92,11 +88,9 @@ export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON
 }
 
 export async function getWinner(id) {
-  let result = 0;
   const response = await fetch(`${urlWinners}/${id}`);
   if (response.ok) {
-    result = await response.json();
-    return result;
+    return response.json();
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
 }
@@ -107,11 +101,9 @@ export async function getWinnerStatus(id) {
 }
 
 export async function deleteWinner(id) {
-  let result = 0;
   const response = await fetch(`${urlWinners}/${id}`, { method: 'DELETE' });
   if (response.ok) {
-    result = await response.json();
-    return result;
+    return response.json();
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
 }
