@@ -52,12 +52,11 @@ export async function deleteCar(id) {
 }
 
 export async function startCar(id) {
-  let result = {};
   const response = await fetch(`${urlEngine}?id=${id}&status=started`, { method: 'PATCH' });
   if (response.ok) {
-    result = await response.json();
+    return response.json();
   }
-  return result;
+  throw new Error(`Could not fetch ${urlEngine}, status: ${response.status}`);
 }
 
 export async function stopCar(id) {
