@@ -1,20 +1,8 @@
-/* export function createButtonElement(attrs, text) {
+import { createNewElement } from '../common/utils';
+
+export function createButtonElement(classSelector, idName, text) {
   const parent = new DocumentFragment();
-  const newElement = document.createElement('button');
-  if (attrs) {
-    Object.keys(attrs).forEach((key) => {
-      if (key === 'class') {
-        newElement.className = attrs[key];
-      } else if (key === 'id') {
-        newElement.id = attrs[key];
-      } else {
-        newElement.setAttribute(key, attrs[key]);
-      }
-    });
-  }
-  if (text) {
-    newElement.innerHTML = text;
-  }
+  const newElement = createNewElement('button', { class: classSelector, id: idName }, text);
   parent.append(newElement);
   return newElement;
-} */
+}

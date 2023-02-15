@@ -1,7 +1,8 @@
+import { createNewElement } from '../common/utils';
+
 export function createHeader() {
   const fragment = new DocumentFragment();
-  const header = document.createElement('header');
-  header.className = 'header row';
+  const header = createNewElement('header', { class: 'header row' });
   fragment.append(header);
   return header;
 }

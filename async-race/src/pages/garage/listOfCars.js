@@ -2,12 +2,14 @@ import { getCars } from '../../api/api';
 import { Car } from './classCar';
 import { store } from '../../state/store';
 import { updateState } from '../../state/updateStateGarage';
-// import { createButtonElement } from '../../components/button';
+import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../common/utils';
 import { LIMIT_CARS_ON_PAGE } from '../../common/constants';
 
-const prev = createNewElement('button', { class: 'btn btn-primary', id: 'prev', disabled: true }, 'prev');
-const next = createNewElement('button', { class: 'btn btn-primary', id: 'next', disabled: true }, 'next');
+const prev = createButtonElement('btn btn-ptimary', 'prev', 'prev');
+prev.setAttribute('disabled', 'true');
+const next = createButtonElement('btn btn-ptimary', 'next', 'next');
+next.setAttribute('disabled', 'true');
 const paginationContainer = createNewElement('div', { class: 'pagination-container row' });
 
 export function renderPaginationButtons(selector) {

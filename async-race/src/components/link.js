@@ -1,20 +1,8 @@
-export function createLinkElement(attrs, text) {
+import { createNewElement } from '../common/utils';
+
+export function createLinkElement(hrefLink, text) {
+  const link = createNewElement('a', { class: 'btn btn-primary', href: hrefLink }, text);
   const parent = new DocumentFragment();
-  const newElement = document.createElement('a');
-  if (attrs) {
-    Object.keys(attrs).forEach((key) => {
-      if (key === 'class') {
-        newElement.className = attrs[key];
-      } else if (key === 'id') {
-        newElement.id = attrs[key];
-      } else {
-        newElement.setAttribute(key, attrs[key]);
-      }
-    });
-  }
-  if (text) {
-    newElement.innerHTML = text;
-  }
-  parent.append(newElement);
-  return newElement;
+  parent.append(link);
+  return link;
 }

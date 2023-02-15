@@ -1,13 +1,15 @@
 import { getWinners } from '../../api/api';
 import { store } from '../../state/store';
 import { updateState } from '../../state/updateStateGarage';
-// import { createButtonElement } from '../../components/button';
+import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../common/utils';
 import { Winner } from './classWinner';
 import { LIMIT_WINNERS_ON_PAGE } from '../../common/constants';
 
-const prev = createNewElement('button', { class: 'btn btn-primary', id: 'prev-win', disabled: true }, 'prev');
-const next = createNewElement('button', { class: 'btn btn-primary', id: 'next-win', disabled: true }, 'next');
+const prev = createButtonElement('btn btn-primary', 'prev-win', 'prev');
+prev.setAttribute('disabled', 'true');
+const next = createButtonElement('btn btn-primary', 'next-win', 'next');
+prev.setAttribute('disabled', 'true');
 const paginationContainer = createNewElement('div', { class: 'pagination-win row' });
 
 export function renderPaginationButtons(selector) {

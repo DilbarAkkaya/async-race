@@ -3,8 +3,8 @@ import { createHeader } from '../components/header';
 import { route } from '../router/router';
 import { createNewElement } from '../common/utils';
 
-const garageButton = createLinkElement({ class: 'btn btn-primary', href: '/' }, 'To Garage');
-const winnerButton = createLinkElement({ class: 'btn btn-primary', href: '/winners' }, 'To Winners');
+const garageButton = createLinkElement('/', 'To Garage');
+const winnerButton = createLinkElement('/winners', 'To Winners');
 const titleApp = createNewElement('span', { class: 'title-app' }, 'ASYNC RACE');
 const btnWrapper = createNewElement('div', { class: 'row' });
 

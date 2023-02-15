@@ -1,4 +1,4 @@
-// import { createButtonElement } from '../../components/button';
+import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../common/utils';
 import { renderCarImage } from './carImage';
 
@@ -12,14 +12,15 @@ export class Car {
 
   renderCar() {
     const carInstance = createNewElement('li', { class: 'car-item' });
-    const selectButton = createNewElement('button', { class: 'btn btn-primary select-btn', id: `select-${this.id}` }, 'select');
-    const removeButton = createNewElement('button', { class: 'btn btn-primary remove-btn', id: `remove-${this.id}` }, 'remove');
+    const selectButton = createButtonElement('btn btn-ptimary select-btn', `select-${this.id}`, 'select');
+    const removeButton = createButtonElement('btn btn-ptimary remove-btn', `remove-${this.id}`, 'remove');
     const buttonsContainer = createNewElement('div', { class: 'car-btn' });
     const carName = createNewElement('span', { class: 'car-name' }, `${this.name}`);
     const roadContainer = createNewElement('div', { class: 'road-container row' });
     const carEngineContainer = createNewElement('div', { class: 'car-engine-container row' });
-    const startButton = createNewElement('button', { class: 'icon btn-start', id: `start-${this.id}` }, 'A');
-    const stopButton = createNewElement('button', { class: 'icon btn-stop', id: `stop-${this.id}`, disabled: 'true' }, 'B');
+    const startButton = createButtonElement('icon btn-start', `start-${this.id}`, 'A');
+    const stopButton = createButtonElement('icon btn-stop', `stop-${this.id}`, 'B');
+    stopButton.setAttribute('disabled', 'true')
     const flagContainer = createNewElement('div', { class: 'flag', id: `flag-${this.id}` }, '🚩');
     carEngineContainer.append(startButton);
     carEngineContainer.append(stopButton);

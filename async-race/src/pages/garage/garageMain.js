@@ -1,4 +1,4 @@
-// import { createButtonElement } from '../../components/button';
+import { createButtonElement } from '../../components/button';
 import { createNewElement, disableFormElements } from '../../common/utils';
 import { renderForm } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
@@ -24,9 +24,9 @@ const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update',
 const subtitleWrapper = createNewElement('div', { class: 'title-wrapper row' });
 disableFormElements(carUpdateForm);
 const containerButtons = createNewElement('div', { class: 'btn-container' });
-const raceButton = createNewElement('button', { class: 'btn btn-ptimary move enabled', id: 'race' }, 'race');
-const resetButton = createNewElement('button', { class: 'btn btn-ptimary move', id: 'reset' }, 'reset');
-const generateBn = createNewElement('button', { class: 'btn btn-ptimary move enabled', id: 'generate-btn' }, 'generate cars');
+const raceButton = createButtonElement('btn btn-ptimary move enabled', 'race', 'race');
+const resetButton = createButtonElement('btn btn-ptimary move', 'reset', 'reset');
+const generateBn = createButtonElement('btn btn-ptimary move enabled', 'generate-btn', 'generate cars');
 
 export function renderFormsButtons() {
   main.prepend(carCreateForm);
