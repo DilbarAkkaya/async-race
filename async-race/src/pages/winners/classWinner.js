@@ -2,8 +2,8 @@ import { createNewElement } from '../../common/utils';
 import { renderCarImage } from '../garage/carImage';
 
 export class Winner {
-  constructor(i, color, name, wins, bestTime, id, parent) {
-    this.i = i;
+  constructor(orderNum, color, name, wins, bestTime, id, parent) {
+    this.orderNum = orderNum;
     this.color = color;
     this.name = name;
     this.wins = wins;
@@ -14,7 +14,7 @@ export class Winner {
 
   renderWinner() {
     const winnerInstance = createNewElement('tr', { class: 'winner-item' });
-    const tdNum = createNewElement('td', { class: 'td-num' }, this.i);
+    const tdNum = createNewElement('td', { class: 'td-num' }, this.orderNum);
     const tdImg = createNewElement('td', { class: 'td-img' });
     const tdName = createNewElement('td', { class: 'td-name' }, this.name);
     const tdWins = createNewElement('td', { class: 'td-wins' }, this.wins);
