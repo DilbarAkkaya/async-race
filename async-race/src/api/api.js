@@ -23,7 +23,7 @@ export async function createCar(body) {
     headers: {
       'Content-Type': 'application/json',
     },
-  })).json();
+  }));
 }
 
 export async function getCar(id) {
