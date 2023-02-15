@@ -4,7 +4,7 @@ import {
 import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount } from './listOfCars';
-import { generateRandomCars, setAttributeForFormUpdate, animation } from '../../common/utils';
+import { generateRandomCars, disableFormElements, animation } from '../../common/utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
 import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../common/constants';
 
@@ -222,7 +222,7 @@ export function clickUpdate() {
       updateGarageView();
       renderCarsAndCount('.list-cars', store.carsPage);
       cleanInputValue('.input-update', '#color-name-update');
-      setAttributeForFormUpdate(e.target.closest('#form-update'));
+      disableFormElements(e.target.closest('#form-update'));
     }
   });
 }

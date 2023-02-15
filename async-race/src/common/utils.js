@@ -28,7 +28,7 @@ export function createNewElement(el, attrs, text) {
   }
   return newElement;
 }
-export function setAttributeForFormUpdate(param) {
+export function disableFormElements(param) {
   Array.from(param.elements).forEach((formElement) => formElement.setAttribute('disabled', 'true'));
 }
 
