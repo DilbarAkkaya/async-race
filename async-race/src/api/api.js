@@ -38,7 +38,6 @@ export async function getCar(id) {
 }
 
 export async function updateCar(id, body) {
-  let result;
   const response = await fetch(`${url}/${id}`, {
     method: 'PUT',
     body: JSON.stringify(body),
@@ -47,8 +46,7 @@ export async function updateCar(id, body) {
     },
   });
   if (response.ok) {
-    result = response.json();
-    return result;
+    return response.json();
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
