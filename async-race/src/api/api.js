@@ -27,12 +27,9 @@ export async function createCar(body) {
 }
 
 export async function getCar(id) {
-  let result = 0;
-
   const response = await fetch(`${url}/${id}`);
   if (response.ok) {
-    result = response.json();
-    return result;
+    return response.json();
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
@@ -131,7 +128,6 @@ export async function createWinner(body) {
 }
 
 export async function updateWinner(id, body) {
-  let result;
   const response = await fetch(`${urlWinners}/${id}`, {
     method: 'PUT',
     body: JSON.stringify(body),
@@ -140,8 +136,7 @@ export async function updateWinner(id, body) {
     },
   });
   if (response.ok) {
-    result = response.json();
-    return result;
+    return response.json();
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
