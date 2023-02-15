@@ -65,8 +65,13 @@ export async function stopCar(id) {
 }
 
 export async function driveCar(id) {
-  const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' }).catch();
-  return response.status !== 200 ? { success: false } : { success: true };
+  try {
+    const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' });
+    return response.status !== 200 ? { success: false } : { success: true };
+  }
+  catch (err) {
+    return err;
+  };
 }
 
 export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON_PAGE) {
