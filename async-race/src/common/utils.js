@@ -35,8 +35,7 @@ export function disableFormElements(param) {
 export function getRandomAuto() {
   const model = MODELS[Math.floor(Math.random() * MODELS.length)];
   const name = NAMES[Math.floor(Math.random() * NAMES.length)];
-  const randomAuto = `${model} ${name}`;
-  return randomAuto;
+  return `${model} ${name}`;
 }
 
 export function getRandomColor() {

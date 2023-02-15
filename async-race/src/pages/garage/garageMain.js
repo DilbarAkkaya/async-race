@@ -1,5 +1,5 @@
 import { createButtonElement } from '../../components/button';
-import { createNewElement, setAttributeForFormUpdate } from '../../common/utils';
+import { createNewElement, disableFormElements } from '../../common/utils';
 import { renderForm } from '../../components/form';
 import { renderCarsAndCount } from './listOfCars';
 import { store } from '../../state/store';
@@ -22,7 +22,7 @@ const pageNumber = createNewElement('span', { class: 'page' }, store.carsPage);
 const carCreateForm = renderForm('form-create', 'name-create', 'text', 'create', 'input-create');
 const carUpdateForm = renderForm('form-update', 'name-update', 'text', 'update', 'input-update');
 const subtitleWrapper = createNewElement('div', { class: 'title-wrapper row' });
-setAttributeForFormUpdate(carUpdateForm);
+disableFormElements(carUpdateForm);
 const containerButtons = createNewElement('div', { class: 'btn-container' });
 const raceButton = createButtonElement({ class: 'btn btn-ptimary move enabled', id: 'race' }, 'race');
 const resetButton = createButtonElement({ class: 'btn btn-ptimary move', id: 'reset' }, 'reset');
