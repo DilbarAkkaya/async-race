@@ -1,18 +1,18 @@
-import { updateWinnerView, updatePageNumber } from '../../state/updateStateGarage';
+import { updatePageNumber, removeWinners } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderWinnersAndCount } from './listOfWinners';
 
 export function clickWinnersPaginationButtons() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next-win')) {
-      updateWinnerView();
+      removeWinners();
       store.winnersPage++;
       renderWinnersAndCount('.winner-tbody', store.winnersPage);
 
       updatePageNumber('.page-win', store.winnersPage);
     }
     if (e.target.closest('#prev-win')) {
-      updateWinnerView();
+      removeWinners();
       store.winnersPage--;
       renderWinnersAndCount('.winner-tbody', store.winnersPage);
       updatePageNumber('.page-win', store.winnersPage);
@@ -30,7 +30,7 @@ document.addEventListener('click', (e) => {
       store.order = 'asc';
       e.target.innerText = 'Wins ↑';
     }
-    updateWinnerView();
+    removeWinners();
     renderWinnersAndCount('.winner-tbody', store.winnersPage);
   }
   if (e.target.closest('.table-time')) {
@@ -42,7 +42,7 @@ document.addEventListener('click', (e) => {
       e.target.innerText = 'Best time (sec) ↓';
       store.order = 'asc';
     }
-    updateWinnerView();
+    removeWinners();
     renderWinnersAndCount('.winner-tbody', store.winnersPage);
   }
 });

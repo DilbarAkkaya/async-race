@@ -68,10 +68,9 @@ export async function driveCar(id) {
   try {
     const response = await fetch(`${urlEngine}?id=${id}&status=drive`, { method: 'PATCH' });
     return response.status !== 200 ? { success: false } : { success: true };
-  }
-  catch (err) {
+  } catch (err) {
     return err;
-  };
+  }
 }
 
 export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON_PAGE) {

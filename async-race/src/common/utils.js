@@ -14,7 +14,7 @@ export function createNewElement(el, attrs, text) {
         default: newElement.setAttribute(key, attrs[key]);
           break;
       }
-/*       if (key === 'class') {
+      /*       if (key === 'class') {
         newElement.className = attrs[key];
       } else if (key === 'id') {
         newElement.id = attrs[key];

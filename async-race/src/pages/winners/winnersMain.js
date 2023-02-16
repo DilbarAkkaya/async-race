@@ -33,6 +33,6 @@ function createMainElement() {
 
 export function renderWinnersMain() {
   createMainElement();
-  renderWinnersAndCount('.winner-tbody', store.winnersPage);
+  renderWinnersAndCount('.winner-tbody');
   return main;
 }

@@ -7,9 +7,16 @@ import {
 } from './pages/garage/uiGarage';
 import { inputCreateListener, inputUpdateListener } from './state/updateStateGarage';
 import { clickWinnersPaginationButtons } from './pages/winners/uiWinners';
+import { renderWinnersAndCount, writeWinnersToStore } from './pages/winners/listOfWinners';
+import { renderCarsAndCount, writeCarsToStore } from './pages/garage/listOfCars';
+import { renderGarageMain } from './pages/garage/garageMain';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  const mainGarage = document.querySelector('.main-garage');
+  await writeCarsToStore();
+  await writeWinnersToStore();
   renderCommonView();
+  mainGarage.append(renderGarageMain());
   clickGaragePagination();
   clickGenerateCars();
   clickSelectCar();

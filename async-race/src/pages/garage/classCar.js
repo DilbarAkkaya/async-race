@@ -20,7 +20,7 @@ export class Car {
     const carEngineContainer = createNewElement('div', { class: 'car-engine-container row' });
     const startButton = createButtonElement('icon btn-start', `start-${this.id}`, 'A');
     const stopButton = createButtonElement('icon btn-stop', `stop-${this.id}`, 'B');
-    stopButton.setAttribute('disabled', 'true')
+    stopButton.setAttribute('disabled', 'true');
     const flagContainer = createNewElement('div', { class: 'flag', id: `flag-${this.id}` }, '🚩');
     carEngineContainer.append(startButton);
     carEngineContainer.append(stopButton);

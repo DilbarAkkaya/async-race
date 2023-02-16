@@ -3,7 +3,10 @@ import { createNewElement } from '../common/utils';
 import { renderWinnersMain } from '../pages/winners/winnersMain';
 import { createErrorMain } from '../pages/error/error';
 import { store } from '../state/store';
-import { updateWinnerView } from '../state/updateStateGarage';
+import { removeWinners } from '../state/updateStateGarage';
+import { writeCarsToStore } from '../pages/garage/listOfCars';
+import { writeWinnersToStore } from '../pages/winners/listOfWinners';
+
 
 const mainPage = createNewElement('div', { class: 'main-page', id: 'main-page' });
 const bodyElement = document.body;
@@ -15,9 +18,12 @@ bodyElement.append(mainPage);
 mainPage.append(mainGarage);
 mainPage.append(mainWinner);
 mainPage.append(mainError);
-mainGarage.append(renderGarageMain());
 
 function handleLocation() {
+/*   const mainGarage = document.querySelector('.main-garage');
+const mainWinner = document.querySelector('.main-winner');
+const mainError = document.querySelector('.error');
+const modal = document.querySelector('.modal'); */
   if (window.location.pathname === '/') {
     mainWinner.style.display = 'none';
     mainGarage.style.display = 'block';
@@ -29,22 +35,22 @@ function handleLocation() {
     if (modal) {
       modal.style.display = 'none';
     }
-    updateWinnerView();
+    removeWinners();
     mainWinner.append(renderWinnersMain());
   } else {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'none';
   }
 }
-export function route(event) {
+export async function route(event) {
   const e = event || window.event;
   e.preventDefault();
   window.history.pushState(store, '', e.target.href);
-  updateWinnerView();
-  handleLocation();
+  removeWinners();
+  await handleLocation();
 }
 
 window.addEventListener('popstate', handleLocation);
 window.route = route;
-updateWinnerView();
+removeWinners();
 handleLocation();

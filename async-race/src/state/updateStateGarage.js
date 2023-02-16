@@ -1,7 +1,7 @@
 import { store } from './store';
 import { COLORS } from '../common/constants';
 
-export function updateGarageView() {
+export function removeGarage() {
   const carItems = document.querySelectorAll('.car-item');
   carItems.forEach((item) => item.remove());
 }
@@ -63,7 +63,7 @@ export const updateState = (idNextButton, idPrevButton, page, limit, data) => {
   }
 };
 
-export function updateWinnerView() {
+export function removeWinners() {
   const winnerItems = document.querySelectorAll('.winner-item');
   winnerItems.forEach((item) => item.remove());
 }

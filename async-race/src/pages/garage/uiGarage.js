@@ -1,9 +1,9 @@
 import {
   createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, createWinner, getWinnerStatus, updateWinner,
 } from '../../api/api';
-import { cleanInputValue, updateGarageView, updatePageNumber } from '../../state/updateStateGarage';
+import { cleanInputValue, removeGarage, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
-import { renderCarsAndCount } from './listOfCars';
+import { renderCarsAndCount, writeCarsToStore } from './listOfCars';
 import { generateRandomCars, disableFormElements, animation } from '../../common/utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
 import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../common/constants';
@@ -61,13 +61,13 @@ async function startMoveCar(id) {
 export function clickGaragePagination() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next')) {
-      updateGarageView();
+      removeGarage();
       store.carsPage++;
       renderCarsAndCount('.list-cars', store.carsPage);
       updatePageNumber('.page', store.carsPage);
     }
     if (e.target.closest('#prev')) {
-      updateGarageView();
+      removeGarage();
       store.carsPage--;
       renderCarsAndCount('.list-cars', store.carsPage);
       updatePageNumber('.page', store.carsPage);
@@ -81,8 +81,9 @@ export function clickGenerateCars() {
       e.target.disabled = true;
       const cars = generateRandomCars();
       await Promise.all(cars.map((car) => createCar(car)));
-      updateGarageView();
-      renderCarsAndCount('.list-cars', store.carsPage);
+      removeGarage();
+      writeCarsToStore();
+      renderCarsAndCount('.list-cars');
       e.target.disabled = false;
     }
   });
@@ -114,7 +115,7 @@ export function clickRemoveCar() {
       const idValue = e.target.getAttribute('id');
       const id = idValue.split('remove-')[1];
       await deleteCar(id);
-      updateGarageView();
+      removeGarage();
       renderCarsAndCount('.list-cars', store.carsPage);
       countCars.innerHTML = store.dataApi.count;
     }
@@ -203,7 +204,7 @@ export function clickCreate() {
       await createCar(car);
       e.target.children[1].disabled = true;
       e.target.children[2].disabled = true;
-      updateGarageView();
+      removeGarage();
       renderCarsAndCount('.list-cars', store.carsPage);
       cleanInputValue('.input-create', '#color-name-create');
     }
@@ -219,7 +220,7 @@ export function clickUpdate() {
         color: store.inputColor,
       };
       await updateCar(store.id, car);
-      updateGarageView();
+      removeGarage();
       renderCarsAndCount('.list-cars', store.carsPage);
       cleanInputValue('.input-update', '#color-name-update');
       disableFormElements(e.target.closest('#form-update'));
