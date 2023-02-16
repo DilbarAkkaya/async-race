@@ -35,8 +35,8 @@ const modal = document.querySelector('.modal'); */
     if (modal) {
       modal.style.display = 'none';
     }
-    removeWinners();
-    mainWinner.append(renderWinnersMain());
+    //removeWinners();
+    //mainWinner.append(renderWinnersMain());
   } else {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'none';
@@ -46,8 +46,8 @@ export async function route(event) {
   const e = event || window.event;
   e.preventDefault();
   window.history.pushState(store, '', e.target.href);
-  removeWinners();
-  await handleLocation();
+  // removeWinners();
+  handleLocation();
 }
 
 window.addEventListener('popstate', handleLocation);

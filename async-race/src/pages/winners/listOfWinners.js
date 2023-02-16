@@ -39,6 +39,6 @@ export async function renderWinnersAndCount(parent) {
   /*  const countWinners = document.querySelector('.count-win');
   console.log('count', countWinners)
   countWinners.innerHTML = store.dataWinners.count; */
-  // renderPaginationButtons('.title-win');
+  renderPaginationButtons('.title-win');
   updateState('next-win', 'prev-win', store.winnersPage, LIMIT_WINNERS_ON_PAGE, store.dataWinners.count);
 }
