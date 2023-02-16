@@ -52,5 +52,5 @@ export async function route(event) {
 
 window.addEventListener('popstate', handleLocation);
 window.route = route;
-removeWinners();
-handleLocation();
+// removeWinners();
+// handleLocation();

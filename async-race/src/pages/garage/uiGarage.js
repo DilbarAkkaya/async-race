@@ -63,13 +63,15 @@ export function clickGaragePagination() {
     if (e.target.closest('#next')) {
       removeGarage();
       store.carsPage++;
-      renderCarsAndCount('.list-cars', store.carsPage);
+      await writeCarsToStore();
+      renderCarsAndCount('.list-cars');
       updatePageNumber('.page', store.carsPage);
     }
     if (e.target.closest('#prev')) {
       removeGarage();
       store.carsPage--;
-      renderCarsAndCount('.list-cars', store.carsPage);
+      await writeCarsToStore();
+      renderCarsAndCount('.list-cars');
       updatePageNumber('.page', store.carsPage);
     }
   });
@@ -82,7 +84,7 @@ export function clickGenerateCars() {
       const cars = generateRandomCars();
       await Promise.all(cars.map((car) => createCar(car)));
       removeGarage();
-      writeCarsToStore();
+      await writeCarsToStore();
       renderCarsAndCount('.list-cars');
       e.target.disabled = false;
     }
@@ -116,7 +118,8 @@ export function clickRemoveCar() {
       const id = idValue.split('remove-')[1];
       await deleteCar(id);
       removeGarage();
-      renderCarsAndCount('.list-cars', store.carsPage);
+      await writeCarsToStore();
+      renderCarsAndCount('.list-cars');
       countCars.innerHTML = store.dataApi.count;
     }
   });
@@ -205,7 +208,8 @@ export function clickCreate() {
       e.target.children[1].disabled = true;
       e.target.children[2].disabled = true;
       removeGarage();
-      renderCarsAndCount('.list-cars', store.carsPage);
+      await writeCarsToStore();
+      renderCarsAndCount('.list-cars');
       cleanInputValue('.input-create', '#color-name-create');
     }
   });
@@ -221,7 +225,7 @@ export function clickUpdate() {
       };
       await updateCar(store.id, car);
       removeGarage();
-      renderCarsAndCount('.list-cars', store.carsPage);
+      renderCarsAndCount('.list-cars');
       cleanInputValue('.input-update', '#color-name-update');
       disableFormElements(e.target.closest('#form-update'));
     }

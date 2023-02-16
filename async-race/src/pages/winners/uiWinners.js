@@ -1,26 +1,27 @@
 import { updatePageNumber, removeWinners } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
-import { renderWinnersAndCount } from './listOfWinners';
+import { renderWinnersAndCount, writeWinnersToStore } from './listOfWinners';
 
 export function clickWinnersPaginationButtons() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next-win')) {
       removeWinners();
       store.winnersPage++;
-      renderWinnersAndCount('.winner-tbody', store.winnersPage);
-
+      await writeWinnersToStore();
+      renderWinnersAndCount('.winner-tbody');
       updatePageNumber('.page-win', store.winnersPage);
     }
     if (e.target.closest('#prev-win')) {
       removeWinners();
       store.winnersPage--;
-      renderWinnersAndCount('.winner-tbody', store.winnersPage);
+      await writeWinnersToStore();
+      renderWinnersAndCount('.winner-tbody');
       updatePageNumber('.page-win', store.winnersPage);
     }
   });
 }
 
-document.addEventListener('click', (e) => {
+document.addEventListener('click', async (e) => {
   if (e.target.closest('.table-wins')) {
     store.sort = 'wins';
     if (store.order === 'asc') {
@@ -31,7 +32,8 @@ document.addEventListener('click', (e) => {
       e.target.innerText = 'Wins ↑';
     }
     removeWinners();
-    renderWinnersAndCount('.winner-tbody', store.winnersPage);
+    await writeWinnersToStore();
+    renderWinnersAndCount('.winner-tbody');
   }
   if (e.target.closest('.table-time')) {
     store.sort = 'time';
@@ -43,6 +45,7 @@ document.addEventListener('click', (e) => {
       store.order = 'asc';
     }
     removeWinners();
-    renderWinnersAndCount('.winner-tbody', store.winnersPage);
+    await writeWinnersToStore();
+    renderWinnersAndCount('.winner-tbody');
   }
 });
