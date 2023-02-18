@@ -237,12 +237,3 @@ export function clickUpdate() {
     }
   });
 }
-
-   /* await Promise.any(promises)
-        .then(async (value) => {
-          store.winnerName = value.name;
-          store.winnerTime = value.time;
-          await createNewWinner(value);
-          return value;
-        })
-        .catch(new Error('Something went wrong')); */
