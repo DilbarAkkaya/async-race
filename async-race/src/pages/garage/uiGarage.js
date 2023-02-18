@@ -15,19 +15,19 @@ function disableButtons() {
   moveButtons.forEach((item) => { item.disabled = 'true'; });
 }
 
-function createNewWinner(value) {
+async function createNewWinner(value) {
   let newWinner = {
     id: value.id,
     wins: 1,
     time: value.time,
   };
-  getWinnerStatus(value.id)
-    .then((result) => {
+  await getWinnerStatus(value.id)
+    .then(async (result) => {
       if (result === 404) {
-        createWinner(newWinner);
+        await createWinner(newWinner);
       } else {
-        getWinner(value.id).then((result) => {
-          updateWinner(value.id, newWinner = {
+        await getWinner(value.id).then(async (result) => {
+          await updateWinner(value.id, newWinner = {
             id: result.id,
             wins: result.wins + 1,
             time: value.time > result.time ? result.time : value.time,
@@ -165,10 +165,10 @@ export function clickRace() {
       const cars = store.dataApi.items;
       const promises = cars.map((item) => startMoveCar(item.id));
       await Promise.any(promises)
-        .then((value) => {
+        .then(async (value) => {
           store.winnerName = value.name;
           store.winnerTime = value.time;
-          createNewWinner(value);
+          await createNewWinner(value);
           return value;
         })
         .catch(new Error('Something went wrong'));
@@ -177,7 +177,7 @@ export function clickRace() {
       // await getWinners();
       await writeWinnersToStore();
       //console.log(await res);
-      console.log(await store)
+      // console.log(await store)
       await renderWinnersAndCount('.winner-tbody');
       const resetBtn = document.querySelector('#reset');
       resetBtn.removeAttribute('disabled');

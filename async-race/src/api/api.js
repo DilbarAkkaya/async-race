@@ -29,7 +29,8 @@ export async function createCar(body) {
 export async function getCar(id) {
   const response = await fetch(`${url}/${id}`);
   if (response.ok) {
-    return response.json();
+    const result = await response.json();
+    return result;
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
@@ -43,7 +44,8 @@ export async function updateCar(id, body) {
     },
   });
   if (response.ok) {
-    return response.json();
+    const result = await response.json();
+    return result;
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
@@ -54,14 +56,16 @@ export async function deleteCar(id) {
 export async function startCar(id) {
   const response = await fetch(`${urlEngine}?id=${id}&status=started`, { method: 'PATCH' });
   if (response.ok) {
-    return response.json();
+    const result = await response.json();
+    return result;
   }
   throw new Error(`Could not fetch ${urlEngine}, status: ${response.status}`);
 }
 
 export async function stopCar(id) {
   const response = await fetch(`${urlEngine}?id=${id}&status=stopped`);
-  return response.json();
+  const result = await response.json();
+  return result;
 }
 
 export async function driveCar(id) {
@@ -94,7 +98,8 @@ export async function getWinners(sort, order, page = 1, limit = LIMIT_WINNERS_ON
 export async function getWinner(id) {
   const response = await fetch(`${urlWinners}/${id}`);
   if (response.ok) {
-    return response.json();
+    const result = await response.json();
+    return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
 }
@@ -106,7 +111,8 @@ export async function getWinnerStatus(id) {
 export async function deleteWinner(id) {
   const response = await fetch(`${urlWinners}/${id}`, { method: 'DELETE' });
   if (response.ok) {
-    return response.json();
+    const result = await response.json();
+    return result;
   }
   throw new Error(`Could not fetch ${urlWinners}, status: ${response.status}`);
 }
@@ -130,7 +136,8 @@ export async function updateWinner(id, body) {
     },
   });
   if (response.ok) {
-    return response.json();
+    const result = await response.json();
+    return result;
   }
   throw new Error(`Could not fetch ${url}, status: ${response.status}`);
 }
