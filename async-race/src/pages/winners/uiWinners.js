@@ -33,9 +33,6 @@ document.addEventListener('click', async (e) => {
       store.order = 'asc';
       e.target.innerText = 'Wins ↑';
     }
-    removeWinners();
-    await writeWinnersToStore();
-    await renderWinnersAndCount('.winner-tbody');
   }
   if (e.target.closest('.table-time')) {
     store.sort = 'time';
@@ -46,8 +43,8 @@ document.addEventListener('click', async (e) => {
       e.target.innerText = 'Best time (sec) ↓';
       store.order = 'asc';
     }
-    removeWinners();
-    await writeWinnersToStore();
-    await renderWinnersAndCount('.winner-tbody');
   }
+  removeWinners();
+  await writeWinnersToStore();
+  await renderWinnersAndCount('.winner-tbody');
 });
