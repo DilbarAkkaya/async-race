@@ -8,14 +8,14 @@ export function clickWinnersPaginationButtons() {
       removeWinners();
       store.winnersPage++;
       await writeWinnersToStore();
-      renderWinnersAndCount('.winner-tbody');
+      await renderWinnersAndCount('.winner-tbody');
       updatePageNumber('.page-win', store.winnersPage);
     }
     if (e.target.closest('#prev-win')) {
       removeWinners();
       store.winnersPage--;
       await writeWinnersToStore();
-      renderWinnersAndCount('.winner-tbody');
+      await renderWinnersAndCount('.winner-tbody');
       updatePageNumber('.page-win', store.winnersPage);
     }
   });
@@ -33,7 +33,7 @@ document.addEventListener('click', async (e) => {
     }
     removeWinners();
     await writeWinnersToStore();
-    renderWinnersAndCount('.winner-tbody');
+    await renderWinnersAndCount('.winner-tbody');
   }
   if (e.target.closest('.table-time')) {
     store.sort = 'time';
@@ -46,6 +46,6 @@ document.addEventListener('click', async (e) => {
     }
     removeWinners();
     await writeWinnersToStore();
-    renderWinnersAndCount('.winner-tbody');
+    await renderWinnersAndCount('.winner-tbody');
   }
 });
