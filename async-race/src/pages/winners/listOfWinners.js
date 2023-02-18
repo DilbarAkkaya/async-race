@@ -22,7 +22,6 @@ export function renderPaginationButtons(selector) {
 
 export async function writeWinnersToStore() {
   const response = await getWinners(store.sort, store.order, store.winnersPage);
-  console.log(response)
   store.dataWinners.items = response.items;
   store.dataWinners.count = response.count;
   return store;

@@ -1,8 +1,10 @@
 import {
   createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar,
-  getWinner, createWinner, getWinnerStatus, updateWinner, getWinners
+  getWinner, createWinner, getWinnerStatus, updateWinner,
 } from '../../api/api';
-import { cleanInputValue, removeGarage, removeWinners, updatePageNumber } from '../../state/updateStateGarage';
+import {
+  cleanInputValue, removeGarage, removeWinners, updatePageNumber,
+} from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount, writeCarsToStore } from './listOfCars';
 import { generateRandomCars, disableFormElements, animation } from '../../common/utils';
@@ -67,7 +69,6 @@ export function addGaragePaginationListener() {
       updatePageNumber('.page', store.carsPage);
     }
     if (e.target.closest('#prev')) {
-
       store.carsPage--;
       await writeCarsToStore();
       removeGarage();
@@ -166,15 +167,9 @@ export function addRaceListener() {
       store.winnerName = newWinner.name;
       store.winnerTime = newWinner.time;
       createWinnerPopap(store.winnerName, store.winnerTime, '.list-cars');
-      console.log(await newWinner.name);
-      console.log(await store.winnerName);
       await createNewWinner(newWinner);
-      
       removeWinners();
-      // await getWinners();
       await writeWinnersToStore();
-      //console.log(await res);
-      // console.log(await store)
       await renderWinnersAndCount('.winner-tbody');
       const resetBtn = document.querySelector('#reset');
       resetBtn.removeAttribute('disabled');

@@ -1,15 +1,15 @@
 import './style.scss';
 import { renderCommonView } from './pages/commonViewPage';
-import { addGaragePaginationListener, addStartCarListener, addStopCarListener, addRemoveCarListener, addRaceListener,
+import {
+  addGaragePaginationListener, addStartCarListener, addStopCarListener, addRemoveCarListener, addRaceListener,
   addSelectCarListener, addGenerateCarsListener, addResetListener, addCreateListener, addUpdateListener,
 } from './pages/garage/uiGarage';
-import { addInputCreateListener, addInputUpdateListener, removeWinners } from './state/updateStateGarage';
+import { addInputCreateListener, addInputUpdateListener } from './state/updateStateGarage';
 import { addWinnersPaginationButtonsListener } from './pages/winners/uiWinners';
 import { renderWinnersAndCount, writeWinnersToStore } from './pages/winners/listOfWinners';
-import { renderCarsAndCount, writeCarsToStore } from './pages/garage/listOfCars';
+import { writeCarsToStore } from './pages/garage/listOfCars';
 import { renderGarageMain } from './pages/garage/garageMain';
 import { renderWinnersMain } from './pages/winners/winnersMain';
-import { store } from './state/store';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const mainGarage = document.querySelector('.main-garage');

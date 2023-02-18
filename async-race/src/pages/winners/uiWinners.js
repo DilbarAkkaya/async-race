@@ -5,7 +5,6 @@ import { renderWinnersAndCount, writeWinnersToStore } from './listOfWinners';
 export function addWinnersPaginationButtonsListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next-win')) {
-
       store.winnersPage++;
       await writeWinnersToStore();
       removeWinners();

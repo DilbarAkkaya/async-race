@@ -1,11 +1,10 @@
-import { getCars, getWinners } from '../../api/api';
+import { getCars } from '../../api/api';
 import { Car } from './classCar';
 import { store } from '../../state/store';
 import { updateState } from '../../state/updateStateGarage';
 import { createButtonElement } from '../../components/button';
 import { createNewElement } from '../../common/utils';
 import { LIMIT_CARS_ON_PAGE } from '../../common/constants';
-import { writeWinnersToStore } from '../winners/listOfWinners';
 
 const prev = createButtonElement('btn btn-ptimary', 'prev', 'prev');
 prev.setAttribute('disabled', 'true');
@@ -28,20 +27,10 @@ export async function writeCarsToStore() {
 }
 
 export async function renderCarsAndCount(parentSelector) {
-  // console.log( await document.body.querySelector('.title-wrapper row'))
-  // const response = await getCars(pageCar);
-  // const responseWin = await getWinners(store.sort, store.order, pageWin);
-  // console.log(responseWin)
-/*   store.dataApi.items = response.items;
-  store.dataApi.count = response.count; */
-  /*   store.dataWinners.items = responseWin.items;
-  store.dataWinners.count = responseWin.count; */
   const { items, count } = store.dataApi;
   renderPaginationButtons('.title-wrapper');
   items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar());
- const countCars = document.querySelector('.count');
+  const countCars = document.querySelector('.count');
   countCars.innerHTML = count;
-
-  
   updateState('next', 'prev', store.carsPage, LIMIT_CARS_ON_PAGE, store.dataApi.count);
 }
