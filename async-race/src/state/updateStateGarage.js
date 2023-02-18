@@ -35,9 +35,9 @@ export function inputUpdateListener() {
   });
 }
 
-export function cleanInputValue(inputSelector1, inputCSelector2) {
-  const inputName = document.querySelector(inputSelector1);
-  const inputColor = document.querySelector(inputCSelector2);
+export function cleanInputValue(nameInputSelector, colorInputSelector) {
+  const inputName = document.querySelector(nameInputSelector);
+  const inputColor = document.querySelector(colorInputSelector);
   inputName.value = '';
   inputColor.value = COLORS.white;
 }
@@ -50,17 +50,11 @@ export function updatePageNumber(pageSelector, storePage) {
 export const updateState = (idNextButton, idPrevButton, page, limit, data) => {
   const next = document.getElementById(idNextButton);
   const prev = document.getElementById(idPrevButton);
-
-  if (page * limit < data) {
-    next.disabled = false;
-  } else {
-    next.disabled = true;
-  }
-  if (page > 1) {
-    prev.disabled = false;
-  } else {
-    prev.disabled = true;
-  }
+  const isNotLastPage = page * limit < data;
+  const isNotFirstPage = page > 1;
+  const boolean = true;
+  next.disabled = isNotLastPage ? !boolean : boolean;
+  prev.disabled = isNotFirstPage ? !boolean : boolean;
 };
 
 export function removeWinners() {

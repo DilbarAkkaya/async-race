@@ -8,7 +8,7 @@ export const store = {
   id: 0,
   dataApi: {
     items: [],
-    count: '4',
+    count: '0',
   },
   winnersPage: 1,
   winnerId: 0,
