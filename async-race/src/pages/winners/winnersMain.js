@@ -2,6 +2,7 @@ import { createTable } from './table';
 import { store } from '../../state/store';
 import { createNewElement } from '../../common/utils';
 import { renderWinnersAndCount } from './listOfWinners';
+import { removeWinners } from '../../state/updateStateGarage';
 
 const mainTag = createNewElement('main', { class: 'main column' });
 
@@ -26,7 +27,6 @@ function createMainElements() {
 
 export function renderWinnersMain() {
   createMainElements();
-  renderWinnersAndCount('.winner-tbody');
   return mainTag;
 }
 

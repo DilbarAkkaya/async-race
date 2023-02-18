@@ -1,12 +1,14 @@
 import {
-  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar, getWinner, createWinner, getWinnerStatus, updateWinner,
+  createCar, getCar, deleteCar, updateCar, startCar, driveCar, stopCar,
+  getWinner, createWinner, getWinnerStatus, updateWinner, getWinners
 } from '../../api/api';
-import { cleanInputValue, removeGarage, updatePageNumber } from '../../state/updateStateGarage';
+import { cleanInputValue, removeGarage, removeWinners, updatePageNumber } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderCarsAndCount, writeCarsToStore } from './listOfCars';
 import { generateRandomCars, disableFormElements, animation } from '../../common/utils';
 import { createWinnerPopap } from '../winners/winnersPopap';
 import { DIGIT_AFTER_DECIMAL, MILLISECONDS_IN_MINUTE, POSITION_RIGTH_FLAG } from '../../common/constants';
+import { renderWinnersAndCount, writeWinnersToStore } from '../winners/listOfWinners';
 
 function disableButtons() {
   const moveButtons = document.querySelectorAll('.move');
@@ -171,6 +173,12 @@ export function clickRace() {
         })
         .catch(new Error('Something went wrong'));
       createWinnerPopap(store.winnerName, store.winnerTime, '.list-cars');
+      removeWinners();
+      // await getWinners();
+      await writeWinnersToStore();
+      //console.log(await res);
+      console.log(await store)
+      await renderWinnersAndCount('.winner-tbody');
       const resetBtn = document.querySelector('#reset');
       resetBtn.removeAttribute('disabled');
     }
@@ -225,6 +233,7 @@ export function clickUpdate() {
       };
       await updateCar(store.id, car);
       removeGarage();
+      await writeCarsToStore();
       renderCarsAndCount('.list-cars');
       cleanInputValue('.input-update', '#color-name-update');
       disableFormElements(e.target.closest('#form-update'));

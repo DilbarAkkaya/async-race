@@ -39,7 +39,6 @@ export async function renderCarsAndCount(parentSelector) {
   store.dataWinners.count = responseWin.count; */
   renderPaginationButtons('.title-wrapper');
   store.dataApi.items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar());
-  console.log('111111', store)
  const countCars = document.querySelector('.count');
   countCars.innerHTML = store.dataApi.count;
 
