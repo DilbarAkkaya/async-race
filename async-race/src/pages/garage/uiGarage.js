@@ -21,20 +21,17 @@ async function createNewWinner(value) {
     wins: 1,
     time: value.time,
   };
-  await getWinnerStatus(value.id)
-    .then(async (result) => {
-      if (result === 404) {
-        await createWinner(newWinner);
-      } else {
-        await getWinner(value.id).then(async (result) => {
-          await updateWinner(value.id, newWinner = {
-            id: result.id,
-            wins: result.wins + 1,
-            time: value.time > result.time ? result.time : value.time,
-          });
-        });
-      }
+  const response = await getWinnerStatus(value.id);
+  if (response === 404) {
+    await createWinner(newWinner);
+  } else {
+    const result = await getWinner(value.id);
+    await updateWinner(value.id, newWinner = {
+      id: result.id,
+      wins: result.wins + 1,
+      time: value.time > result.time ? result.time : value.time,
     });
+  }
 }
 
 async function startMoveCar(id) {
