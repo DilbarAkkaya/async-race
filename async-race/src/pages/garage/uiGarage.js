@@ -63,17 +63,18 @@ async function startMoveCar(id) {
 export function clickGaragePagination() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next')) {
-      removeGarage();
       store.carsPage++;
       await writeCarsToStore();
-      renderCarsAndCount('.list-cars');
+      removeGarage();
+      await renderCarsAndCount('.list-cars');
       updatePageNumber('.page', store.carsPage);
     }
     if (e.target.closest('#prev')) {
-      removeGarage();
+
       store.carsPage--;
       await writeCarsToStore();
-      renderCarsAndCount('.list-cars');
+      removeGarage();
+      await renderCarsAndCount('.list-cars');
       updatePageNumber('.page', store.carsPage);
     }
   });
@@ -164,15 +165,14 @@ export function clickRace() {
       disableButtons();
       const cars = store.dataApi.items;
       const promises = cars.map((item) => startMoveCar(item.id));
-      await Promise.any(promises)
-        .then(async (value) => {
-          store.winnerName = value.name;
-          store.winnerTime = value.time;
-          await createNewWinner(value);
-          return value;
-        })
-        .catch(new Error('Something went wrong'));
+      const newWinner = await Promise.any(promises);
+      store.winnerName = newWinner.name;
+      store.winnerTime = newWinner.time;
       createWinnerPopap(store.winnerName, store.winnerTime, '.list-cars');
+      console.log(await newWinner.name);
+      console.log(await store.winnerName);
+      await createNewWinner(newWinner);
+      
       removeWinners();
       // await getWinners();
       await writeWinnersToStore();
@@ -240,3 +240,12 @@ export function clickUpdate() {
     }
   });
 }
+
+   /* await Promise.any(promises)
+        .then(async (value) => {
+          store.winnerName = value.name;
+          store.winnerTime = value.time;
+          await createNewWinner(value);
+          return value;
+        })
+        .catch(new Error('Something went wrong')); */
