@@ -57,7 +57,7 @@ async function startMoveCar(id) {
   });
 }
 
-export function clickGaragePagination() {
+export function addGaragePaginationListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next')) {
       store.carsPage++;
@@ -77,7 +77,7 @@ export function clickGaragePagination() {
   });
 }
 
-export function clickGenerateCars() {
+export function addGenerateCarsListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#generate-btn')) {
       e.target.disabled = true;
@@ -91,7 +91,7 @@ export function clickGenerateCars() {
   });
 }
 
-export function clickSelectCar() {
+export function addSelectCarListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('select-btn')) {
       const formUpdate = document.getElementById('form-update');
@@ -110,7 +110,7 @@ export function clickSelectCar() {
   });
 }
 
-export function clickRemoveCar() {
+export function addRemoveCarListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('remove-btn')) {
       const countCars = document.querySelector('.count');
@@ -125,7 +125,7 @@ export function clickRemoveCar() {
   });
 }
 
-export function clickStartCar() {
+export function addStartCarListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-start')) {
       e.target.setAttribute('disabled', 'true');
@@ -137,7 +137,7 @@ export function clickStartCar() {
     }
   });
 }
-export function clickStopCar() {
+export function addStopCarListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.classList.contains('btn-stop')) {
       const idValue = e.target.getAttribute('id');
@@ -155,7 +155,7 @@ export function clickStopCar() {
   });
 }
 
-export function clickRace() {
+export function addRaceListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#race')) {
       store.isAnimated = true;
@@ -182,7 +182,7 @@ export function clickRace() {
   });
 }
 
-export function clickReset() {
+export function addResetListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#reset')) {
       const cars = store.dataApi.items;
@@ -201,7 +201,7 @@ export function clickReset() {
   });
 }
 
-export function clickCreate() {
+export function addCreateListener() {
   document.addEventListener('submit', async (e) => {
     if (e.target.closest('#form-create')) {
       e.preventDefault();
@@ -220,7 +220,7 @@ export function clickCreate() {
   });
 }
 
-export function clickUpdate() {
+export function addUpdateListener() {
   document.addEventListener('submit', async (e) => {
     if (e.target.closest('#form-update')) {
       e.preventDefault();

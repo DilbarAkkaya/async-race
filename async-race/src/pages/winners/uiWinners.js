@@ -2,7 +2,7 @@ import { updatePageNumber, removeWinners } from '../../state/updateStateGarage';
 import { store } from '../../state/store';
 import { renderWinnersAndCount, writeWinnersToStore } from './listOfWinners';
 
-export function clickWinnersPaginationButtons() {
+export function addWinnersPaginationButtonsListener() {
   document.addEventListener('click', async (e) => {
     if (e.target.closest('#next-win')) {
 

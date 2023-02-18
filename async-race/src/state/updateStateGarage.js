@@ -6,7 +6,7 @@ export function removeGarage() {
   carItems.forEach((item) => item.remove());
 }
 
-export function inputCreateListener() {
+export function addInputCreateListener() {
   const inputName = document.querySelector('.input-create');
   const inputColor = document.querySelector('.input-color');
   const createButton = document.getElementById('create');
@@ -22,7 +22,7 @@ export function inputCreateListener() {
     }
   });
 }
-export function inputUpdateListener() {
+export function addInputUpdateListener() {
   const inputName = document.querySelector('.input-update');
   const inputColor = document.querySelector('#color-name-update');
   document.addEventListener('input', (event) => {
