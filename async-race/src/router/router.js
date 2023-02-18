@@ -29,9 +29,7 @@ function handleLocation() {
     mainError.style.display = 'none';
     //removeWinners();
     //await renderWinnersAndCount('.winner-tbody');
-    if (modal) {
-      modal.style.display = 'none';
-    }
+    //modal.style.display = 'none';
   } else {
     mainGarage.style.display = 'none';
     mainWinner.style.display = 'none';

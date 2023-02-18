@@ -12,7 +12,7 @@ import { renderWinnersAndCount, writeWinnersToStore } from '../winners/listOfWin
 
 function disableButtons() {
   const moveButtons = document.querySelectorAll('.move');
-  moveButtons.forEach((item) => { item.disabled = 'true'; });
+  moveButtons.forEach((item) => { item.disabled = true; });
 }
 
 async function createNewWinner(value) {
