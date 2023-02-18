@@ -30,11 +30,11 @@ export async function writeWinnersToStore() {
 
 export async function renderWinnersAndCount(parent) {
   const countWinners = document.querySelector('.count-win');
-  countWinners.innerHTML = store.dataWinners.count;
-  const { items } = store.dataWinners;
+  const { items, count } = store.dataWinners;
+  countWinners.innerHTML = count;
   items.forEach((item, i) => {
     new Winner((i + 1), item.car.color, item.car.name, item.wins, item.time, item.id, parent).renderWinner();
   });
   renderPaginationButtons('.title-win');
-  updateState('next-win', 'prev-win', store.winnersPage, LIMIT_WINNERS_ON_PAGE, store.dataWinners.count);
+  updateState('next-win', 'prev-win', store.winnersPage, LIMIT_WINNERS_ON_PAGE, count);
 }

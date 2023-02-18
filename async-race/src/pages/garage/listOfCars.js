@@ -28,7 +28,6 @@ export async function writeCarsToStore() {
 }
 
 export async function renderCarsAndCount(parentSelector) {
-  console.log(document.body)
   // console.log( await document.body.querySelector('.title-wrapper row'))
   // const response = await getCars(pageCar);
   // const responseWin = await getWinners(store.sort, store.order, pageWin);
@@ -37,10 +36,11 @@ export async function renderCarsAndCount(parentSelector) {
   store.dataApi.count = response.count; */
   /*   store.dataWinners.items = responseWin.items;
   store.dataWinners.count = responseWin.count; */
+  const { items, count } = store.dataApi;
   renderPaginationButtons('.title-wrapper');
-  store.dataApi.items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar());
+  items.forEach((item) => new Car(item.name, item.id, item.color, parentSelector).renderCar());
  const countCars = document.querySelector('.count');
-  countCars.innerHTML = store.dataApi.count;
+  countCars.innerHTML = count;
 
   
   updateState('next', 'prev', store.carsPage, LIMIT_CARS_ON_PAGE, store.dataApi.count);
